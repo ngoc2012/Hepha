@@ -1,0 +1,7 @@
+zap/zig-linux-x86_64-0.13.0/zig
+.env
+gin/src/go1.22.5.linux-amd64.tar.gz
+database/ib_logfile0
+database/ib_logfile*
+next/node_modules/@next/swc-linux-x64-gnu/next-swc.linux-x64-gnu.node
+next/node_modules/@next/swc-linux-x64-musl/next-swc.linux-x64-musl.node

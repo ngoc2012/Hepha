@@ -1,0 +1,121 @@
+services:
+  nginx:
+    container_name: nginx
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+      no_cache: false
+    depends_on:
+      - adminer
+    ports:
+      - 80:80
+      - 443:443
+    restart: always
+    networks:
+      - network
+    # profiles:
+    #   - donotstart
+
+  mysql:
+    container_name: mysql
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+      no_cache: false
+    ports:
+      - ${DB_PORT}
+    volumes:
+      - ./${DB_STORAGE}:/var/lib/mysql
+    env_file:
+     - .env
+    networks:
+      - network
+    # profiles:
+    #   - donotstart
+
+  zap:
+    container_name: zap
+    build:
+      context: ./zap
+      dockerfile: Dockerfile
+      no_cache: false
+    ports:
+      - ${EXCUTION_PORT}
+    volumes:
+      - ./zap/zig-linux-x86_64-0.13.0:/app/zig
+      - ./zap/build:/app/build
+      # - ./${FILES_STORAGE}:/var/lib/files
+    restart: always
+    env_file:
+     - .env
+    networks:
+      - network
+    # profiles:
+    #   - donotstart
+
+  gin:
+    container_name: gin
+    build:
+      context: ./gin
+      dockerfile: Dockerfile
+      no_cache: false
+    ports:
+      - ${BACKEND_PORT}
+    depends_on:
+      - zap
+      - mysql
+    #   - nginx
+    volumes:
+      - ./go-mod-cache:/go/pkg/mod
+      - ./gin/src:/app/src
+      - ./${FILES_STORAGE}:${BACKEND_FOLDER}
+    restart: always
+    env_file:
+     - .env
+    networks:
+      - network
+    # profiles:
+    #   - donotstart
+
+  next:
+    container_name: next
+    build:
+      context: ./next
+      dockerfile: Dockerfile
+      no_cache: false
+    ports:
+      - ${FRONTEND_PORT}
+      # - ${FRONTEND_PORT}:${FRONTEND_PORT}
+    depends_on:
+      - gin
+      # - zap
+    #   - nginx
+    volumes:
+      - ./next:/app
+    restart: always
+    env_file:
+     - .env
+    networks:
+      - network
+    # profiles:
+    #   - donotstart
+
+  adminer:
+    container_name: adminer
+    build:
+      context: ./adminer
+      dockerfile: Dockerfile
+      no_cache: false
+    restart: always
+    depends_on:
+      - mysql
+    expose:
+     - ${ADMIN_PORT}
+    networks:
+      - network
+    # profiles:
+    #   - donotstart
+
+networks:
+  network:
+    driver: bridge
