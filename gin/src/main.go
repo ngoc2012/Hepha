@@ -44,6 +44,7 @@ func main() {
 	r := gin.Default()
 	r.POST("/sheets", func(c *gin.Context) { routes.Sheets(db, c) })
 	r.POST("/new_box", func(c *gin.Context) { routes.NewBox(db, c) })
+	r.POST("/new_sheet", func(c *gin.Context) { routes.NewBox(db, c) })
 	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
 

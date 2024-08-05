@@ -2,9 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import { Sheet } from '../types/sheet';
+import { redirect } from 'next/navigation'
+
 import Box from  "../components/box";
 
 import getSheets from '../getSheets';
+import newSheet from '@/newSheet';
 
 interface Props {
   sheets: Sheet[];
@@ -21,6 +24,15 @@ export default function Home() {
     fetchSheets();
   }, []);
 
+  const handleNewSheetButtonClick = async () => {
+    const res = await newSheet("hepha");
+    if (res.error) {
+      console.error(res.error);
+      return;
+    }
+    redirect('/sheet/' + res.id + res.slug);
+  };
+
   return (
     <div>
         {/* <Navbar /> */}
@@ -28,8 +40,9 @@ export default function Home() {
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           // onClick={newButton}
+          onClick={handleNewSheetButtonClick}
         >
-          New
+          New Sheet
         </button>
         <h1>Sheet List</h1>
         <ul>
@@ -38,7 +51,7 @@ export default function Home() {
               <div className="flex space-x-4">
                 <h2>{sheet.title}</h2>
                 <p>{sheet.description}</p>
-                <p>Owner: {sheet.owner}</p>
+                <p> by {sheet.owner}</p>
                 {/* <p>Protection: {sheet.protection}</p>
                 <p>Searchable: {sheet.searchable ? 'Yes' : 'No'}</p>
                 <p>Executed Times: {sheet.exe_times}</p>

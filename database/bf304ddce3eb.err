@@ -1,0 +1,49 @@
+2024-08-05 15:44:01 0 [Note] Starting MariaDB 10.11.8-MariaDB source revision 3a069644682e336e445039e48baae9693f9a08ee as process 168
+2024-08-05 15:44:02 0 [Note] InnoDB: Compressed tables use zlib 1.3.1
+2024-08-05 15:44:02 0 [Note] InnoDB: Number of transaction pools: 1
+2024-08-05 15:44:02 0 [Note] InnoDB: Using crc32 + pclmulqdq instructions
+2024-08-05 15:44:02 0 [Note] mariadbd: O_TMPFILE is not supported on /var/tmp (disabling future attempts)
+2024-08-05 15:44:02 0 [Note] InnoDB: Using Linux native AIO
+2024-08-05 15:44:02 0 [Note] InnoDB: Initializing buffer pool, total size = 128.000MiB, chunk size = 2.000MiB
+2024-08-05 15:44:02 0 [Note] InnoDB: Completed initialization of buffer pool
+2024-08-05 15:44:02 0 [Note] InnoDB: File system buffers for log disabled (block size=4096 bytes)
+2024-08-05 15:44:03 0 [Note] InnoDB: End of log at LSN=461769
+2024-08-05 15:44:03 0 [Note] InnoDB: 128 rollback segments are active.
+2024-08-05 15:44:03 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+2024-08-05 15:44:03 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+2024-08-05 15:44:03 0 [Note] InnoDB: log sequence number 461769; transaction id 864
+2024-08-05 15:44:03 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+2024-08-05 15:44:03 0 [Note] Plugin 'FEEDBACK' is disabled.
+2024-08-05 15:44:05 0 [Note] /usr/bin/mariadbd: ready for connections.
+Version: '10.11.8-MariaDB'  socket: '/run/mysqld/mysqld.sock'  port: 0  Alpine Linux
+2024-08-05 15:44:05 0 [Note] InnoDB: Buffer pool(s) load completed at 240805 15:44:05
+2024-08-05 15:44:05 0 [Note] /usr/bin/mariadbd (initiated by: root[root] @ localhost []): Normal shutdown
+2024-08-05 15:44:05 0 [Note] InnoDB: FTS optimize thread exiting.
+2024-08-05 15:44:05 0 [Note] InnoDB: Starting shutdown...
+2024-08-05 15:44:05 0 [Note] InnoDB: Dumping buffer pool(s) to /var/lib/mysql/ib_buffer_pool
+2024-08-05 15:44:05 0 [Note] InnoDB: Buffer pool(s) dump completed at 240805 15:44:05
+2024-08-05 15:44:06 0 [Note] InnoDB: Removed temporary tablespace data file: "./ibtmp1"
+2024-08-05 15:44:06 0 [Note] InnoDB: Shutdown completed; log sequence number 461769; transaction id 865
+2024-08-05 15:44:06 0 [Note] /usr/bin/mariadbd: Shutdown complete
+
+2024-08-05 15:44:06 0 [Note] Starting MariaDB 10.11.8-MariaDB source revision 3a069644682e336e445039e48baae9693f9a08ee as process 275
+2024-08-05 15:44:07 0 [Note] InnoDB: Compressed tables use zlib 1.3.1
+2024-08-05 15:44:07 0 [Note] InnoDB: Number of transaction pools: 1
+2024-08-05 15:44:07 0 [Note] InnoDB: Using crc32 + pclmulqdq instructions
+2024-08-05 15:44:07 0 [Note] mariadbd: O_TMPFILE is not supported on /var/tmp (disabling future attempts)
+2024-08-05 15:44:07 0 [Note] InnoDB: Using Linux native AIO
+2024-08-05 15:44:07 0 [Note] InnoDB: Initializing buffer pool, total size = 128.000MiB, chunk size = 2.000MiB
+2024-08-05 15:44:07 0 [Note] InnoDB: Completed initialization of buffer pool
+2024-08-05 15:44:07 0 [Note] InnoDB: File system buffers for log disabled (block size=4096 bytes)
+2024-08-05 15:44:08 0 [Note] InnoDB: End of log at LSN=461769
+2024-08-05 15:44:11 0 [Note] InnoDB: 128 rollback segments are active.
+2024-08-05 15:44:11 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+2024-08-05 15:44:11 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+2024-08-05 15:44:11 0 [Note] InnoDB: log sequence number 461769; transaction id 864
+2024-08-05 15:44:11 0 [Note] Plugin 'FEEDBACK' is disabled.
+2024-08-05 15:44:11 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+2024-08-05 15:44:11 0 [Note] Server socket created on IP: '0.0.0.0'.
+2024-08-05 15:44:11 0 [Warning] 'proxies_priv' entry '@% hepha@72fe202f6e03' ignored in --skip-name-resolve mode.
+2024-08-05 15:44:11 0 [Note] /usr/bin/mariadbd: ready for connections.
+Version: '10.11.8-MariaDB'  socket: '/run/mysqld/mysqld.sock'  port: 3306  Alpine Linux
+2024-08-05 15:44:11 0 [Note] InnoDB: Buffer pool(s) load completed at 240805 15:44:11
