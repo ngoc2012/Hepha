@@ -6,7 +6,9 @@ RUN apk update && \
     apk add --no-cache postgresql
 
 # Create a directory for PostgreSQL data
-RUN mkdir -p /var/lib/postgresql/data
+# RUN mkdir -p /var/lib/postgresql/data
+RUN mkdir -p /var/lib/postgresql/data && \
+    chown -R hepha:hepha /var/lib/postgresql/data
 
 # Set environment variables for PostgreSQL
 # ENV POSTGRES_US/ER=postgres
@@ -29,7 +31,7 @@ EXPOSE 5432
 RUN addgroup hepha
 RUN adduser -D -G hepha hepha
 
-RUN chown -R hepha:hepha /var/lib/postgresql/data
+# RUN chown -R hepha:hepha /var/lib/postgresql/data
 
 USER hepha
 
