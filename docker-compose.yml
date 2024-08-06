@@ -13,8 +13,8 @@ services:
     restart: always
     networks:
       - network
-    # profiles:
-    #   - donotstart
+    profiles:
+      - donotstart
 
   mysql:
     container_name: mysql
@@ -30,8 +30,8 @@ services:
      - .env
     networks:
       - network
-    # profiles:
-    #   - donotstart
+    profiles:
+      - donotstart
 
   postgres:
     container_name: postgres
@@ -40,9 +40,9 @@ services:
       dockerfile: Dockerfile
       no_cache: false
     ports:
-      - ${DB_PORT}
+      - ${POSTGRES_PORT}
     volumes:
-      - ./${DB_STORAGE}:/var/lib/mysql
+      - ./${POSTGRES_PORT}:/var/lib/mysql
     env_file:
      - .env
     networks:
@@ -67,8 +67,8 @@ services:
      - .env
     networks:
       - network
-    # profiles:
-    #   - donotstart
+    profiles:
+      - donotstart
 
   gin:
     container_name: gin
@@ -91,8 +91,8 @@ services:
      - .env
     networks:
       - network
-    # profiles:
-    #   - donotstart
+    profiles:
+      - donotstart
 
   next:
     container_name: next
@@ -114,8 +114,8 @@ services:
      - .env
     networks:
       - network
-    # profiles:
-    #   - donotstart
+    profiles:
+      - donotstart
 
   adminer:
     container_name: adminer
@@ -125,7 +125,8 @@ services:
       no_cache: false
     restart: always
     depends_on:
-      - mysql
+      # - mysql
+      - postgres
     expose:
      - ${ADMIN_PORT}
     networks:

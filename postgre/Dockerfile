@@ -9,12 +9,19 @@ RUN apk update && \
 RUN mkdir -p /var/lib/postgresql/data
 
 # Set environment variables for PostgreSQL
-ENV POSTGRES_USER=postgres
-ENV POSTGRES_PASSWORD=mysecretpassword
-ENV POSTGRES_DB=mydatabase
+# ENV POSTGRES_US/ER=postgres
+# ENV POSTGRES_PASSWORD=mysecretpassword
+# ENV POSTGRES_DB=mydatabase
 
+WORKDIR /app
+
+COPY postgres.sh .
+COPY create_db.sql .
+RUN chmod +x postgres.sh
 # Copy the custom postgresql.conf file into the container
 COPY postgresql.conf /var/lib/postgresql/data/postgresql.conf
+
+# COPY init.sql /docker-entrypoint-initdb.d/init.sql
 
 # Expose the PostgreSQL port
 EXPOSE 5432

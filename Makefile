@@ -31,6 +31,7 @@ remove_images:
 	@docker image prune --all --force
 
 re:
+	@make gitd M="provisoire"
 	@make clean
 	@make down
 	@make up
