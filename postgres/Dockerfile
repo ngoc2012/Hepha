@@ -26,6 +26,11 @@ COPY postgresql.conf /var/lib/postgresql/data/postgresql.conf
 # Expose the PostgreSQL port
 EXPOSE 5432
 
+RUN addgroup hepha
+RUN adduser -D -G hepha hepha
+
+USER hepha
+
 # Initialize the PostgreSQL database
 RUN /usr/bin/initdb -D /var/lib/postgresql/data
 
