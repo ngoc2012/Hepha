@@ -29,6 +29,8 @@ EXPOSE 5432
 RUN addgroup hepha
 RUN adduser -D -G hepha hepha
 
+RUN chown -R hepha:hepha /var/lib/postgresql/data
+
 USER hepha
 
 # Initialize the PostgreSQL database

@@ -42,7 +42,7 @@ services:
     ports:
       - ${POSTGRES_PORT}
     volumes:
-      - ./${POSTGRES_PORT}:/var/lib/mysql
+      - ./${POSTGRES_FOLDER}:/var/lib/postgresql/data
     env_file:
      - .env
     networks:
