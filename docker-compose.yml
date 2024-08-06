@@ -33,6 +33,23 @@ services:
     # profiles:
     #   - donotstart
 
+  postgres:
+    container_name: postgres
+    build:
+      context: ./postgres
+      dockerfile: Dockerfile
+      no_cache: false
+    ports:
+      - ${DB_PORT}
+    volumes:
+      - ./${DB_STORAGE}:/var/lib/mysql
+    env_file:
+     - .env
+    networks:
+      - network
+    # profiles:
+    #   - donotstart
+
   zap:
     container_name: zap
     build:
