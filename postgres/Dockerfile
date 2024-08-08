@@ -15,24 +15,23 @@ RUN apk update && \
 # ENV POSTGRES_PASSWORD=mysecretpassword
 # ENV POSTGRES_DB=mydatabase
 
+RUN addgroup hepha
+RUN adduser -D -G hepha hepha
+
 WORKDIR /app
 
 COPY postgres.sh .
 COPY create_db.sql .
 RUN chmod +x postgres.sh
-# Copy the custom postgresql.conf file into the container
-COPY postgresql.conf /var/lib/postgresql/data/postgresql.conf
+COPY postgresql.conf .
 
 # COPY init.sql /docker-entrypoint-initdb.d/init.sql
 
 # Expose the PostgreSQL port
 EXPOSE 5432
 
-RUN addgroup hepha
-RUN adduser -D -G hepha hepha
-
-RUN mkdir -p /var/lib/postgresql/data
-
+# RUN mkdir -p /var/lib/postgresql/data
+# RUN chown postgres /var/lib/postgresql/data
 RUN chown -R hepha:hepha /var/lib/postgresql/data
 
 USER hepha
