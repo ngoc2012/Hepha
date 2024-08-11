@@ -42,22 +42,16 @@ clean:
 	-docker rmi -f $$(docker images -qa)
 	-docker volume rm $$(docker volume ls -q)
 	-docker network rm $$(docker network ls -q)
-	cd next && npm run clean
+	gio trash -f next/.next
 	gio trash -f database/*.err database/*.log database/*.pid
 	sudo gio trash -f zap/build/.zig-cache
 
 cleanNext:
 	cd next && gio trash -f node_modules
-	npm install
+	cd next && npm install
 
 cleanAll:
 	-docker system prune
-
-rmbigfiles:
-	git rm next/node_modules/next/next-swc-fallback/@next/swc-linux-x64-gnu/next-swc.linux-x64-gnu.node
-	git rm next/node_modules/next/next-swc-fallback/@next/swc-linux-x64-musl/next-swc.linux-x64-musl.node
-	git commit -m "Remove large files"
-	git push origin main
 
 gitd:
 	git add -A -- :!*.o :!*.swp :!*.env :!*.crt :!*.key
