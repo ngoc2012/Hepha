@@ -16,3 +16,6 @@ npm run build
 npm run preview
 
 https://notes.alexkehayias.com/gracefully-fetch-api-data-with-react-and-typescript/
+
+npm install compression
+npm install @types/compression @types/express --save-dev
