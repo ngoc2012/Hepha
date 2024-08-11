@@ -1,22 +1,11 @@
-import React from "react";
-import { createRoot, hydrateRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import App from "./App";
-import "./index.css";
+import './index.css'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
 
-const container = document.getElementById("app");
-
-const FullApp = () => (
+ReactDOM.hydrateRoot(
+  document.getElementById('root') as HTMLElement,
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <App />
   </React.StrictMode>
-);
-
-if (import.meta.hot || !container?.innerText) {
-  const root = createRoot(container!);
-  root.render(<FullApp />);
-} else {
-  hydrateRoot(container!, <FullApp />);
-}
+)
