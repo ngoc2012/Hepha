@@ -8,9 +8,9 @@ RUN apk update && \
 
 WORKDIR /app
 
-COPY entrypoint.sh .
-RUN chmod +x entrypoint.sh
-ENTRYPOINT [ "./entrypoint.sh" ]
+COPY next.sh .
+RUN chmod +x next.sh
+ENTRYPOINT [ "./next.sh" ]
 
 EXPOSE 3000
 

@@ -61,12 +61,20 @@ func Sheets(db *sql.DB, c *gin.Context) {
 	var rows *sql.Rows
 	var err error
 
+	// if jsonData["name"].(string) == "" {
+	// 	fmt.Println("SELECT * FROM Sheet LIMIT ?, ?", (page-1)*length, length)
+	// 	rows, err = db.Query("SELECT * FROM Sheet LIMIT ?, ?", (page-1)*length, length)
+	// } else {
+	// 	rows, err = db.Query("SELECT * FROM Sheet WHERE name = ? LIMIT ?, ?", jsonData["name"], (page-1)*length, length)
+	// }
+
 	if jsonData["name"].(string) == "" {
 		fmt.Println("SELECT * FROM Sheet LIMIT ?, ?", (page-1)*length, length)
 		rows, err = db.Query("SELECT * FROM Sheet LIMIT ?, ?", (page-1)*length, length)
 	} else {
 		rows, err = db.Query("SELECT * FROM Sheet WHERE name = ? LIMIT ?, ?", jsonData["name"], (page-1)*length, length)
 	}
+
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{"error": err.Error()})
 		return

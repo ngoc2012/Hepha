@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export MYSQL_URL=$(busybox ping -c 1 mysql | busybox head -1 | busybox awk -F'[()]' '{print $2}')
+# export MYSQL_URL=$(busybox ping -c 1 mysql | busybox head -1 | busybox awk -F'[()]' '{print $2}')
 
 rm -rf /usr/local/go && tar -C /usr/local -xzf src/go1.22.5.linux-amd64.tar.gz
 

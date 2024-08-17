@@ -17,6 +17,7 @@ RUN apk update && \
 	php8-curl \
 	php8-xml \
 	php8-mysqli \
+	php8-pgsql \
 	php8-imap \
 	php8-pdo \
 	php8-pdo_mysql \

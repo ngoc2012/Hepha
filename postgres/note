@@ -1,0 +1,6 @@
+/app # su postgres -
+/app $ whoami
+postgres
+/app $ psql
+
+\c hepha_db

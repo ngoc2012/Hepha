@@ -13,8 +13,8 @@ services:
     restart: always
     networks:
       - network
-    profiles:
-      - donotstart
+    # profiles:
+    #   - donotstart
 
   mysql:
     container_name: mysql
@@ -23,9 +23,9 @@ services:
       dockerfile: Dockerfile
       no_cache: false
     ports:
-      - ${DB_PORT}
+      - ${MYSQL_PORT}
     volumes:
-      - ./${DB_STORAGE}:/var/lib/mysql
+      - ./${MYSQL_STORAGE}:/var/lib/mysql
     env_file:
      - .env
     networks:
@@ -42,7 +42,7 @@ services:
     ports:
       - ${POSTGRES_PORT}
     volumes:
-      - ./${POSTGRES_FOLDER}:/var/lib/postgresql/data
+      - ./${POSTGRES_STORAGE}:/var/lib/postgresql/data
     env_file:
      - .env
     networks:
@@ -78,9 +78,9 @@ services:
       no_cache: false
     ports:
       - ${BACKEND_PORT}
-    depends_on:
-      - zap
-      - mysql
+    # depends_on:
+    #   - zap
+    #   - mysql
     #   - nginx
     volumes:
       - ./go-mod-cache:/go/pkg/mod
@@ -91,8 +91,8 @@ services:
      - .env
     networks:
       - network
-    profiles:
-      - donotstart
+    # profiles:
+    #   - donotstart
 
   next:
     container_name: next
@@ -114,8 +114,8 @@ services:
      - .env
     networks:
       - network
-    profiles:
-      - donotstart
+    # profiles:
+    #   - donotstart
 
   vite:
     container_name: vite
@@ -137,8 +137,8 @@ services:
      - .env
     networks:
       - network
-    # profiles:
-    #   - donotstart
+    profiles:
+      - donotstart
 
   adminer:
     container_name: adminer

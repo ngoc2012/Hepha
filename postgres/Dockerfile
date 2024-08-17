@@ -3,20 +3,9 @@ FROM alpine:latest
 
 # Install PostgreSQL
 RUN apk update && \
-    apk add --no-cache postgresql
-
-# Create a directory for PostgreSQL data
-
-# RUN mkdir -p /var/lib/postgresql/data && \
-#     chown -R hepha:hepha /var/lib/postgresql/data
-
-# Set environment variables for PostgreSQL
-# ENV POSTGRES_US/ER=postgres
-# ENV POSTGRES_PASSWORD=mysecretpassword
-# ENV POSTGRES_DB=mydatabase
-
-RUN addgroup hepha
-RUN adduser -D -G hepha hepha
+    apk add --no-cache postgresql \
+    bash su-exec \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
@@ -25,16 +14,21 @@ COPY create_db.sql .
 RUN chmod +x postgres.sh
 COPY postgresql.conf .
 
-# COPY init.sql /docker-entrypoint-initdb.d/init.sql
+RUN mkdir /run/postgresql
+RUN chown postgres:postgres /run/postgresql/
+
+# RUN addgroup postgres
+# RUN adduser -D -G postgres hepha
+
+# RUN mkdir /run/postgresql && \
+#     chown hepha:postgres /run/postgresql && \
+#     chmod 755 /run/postgresql
 
 # Expose the PostgreSQL port
 EXPOSE $POSTGRES_PORT
-
-# RUN mkdir -p /var/lib/postgresql/data
-# RUN chown postgres /var/lib/postgresql/data
-
 
 # Start PostgreSQL server with the custom configuration file
 # CMD ["postgres", "-c", "config_file=/var/lib/postgresql/data/postgresql.conf", "-D", "/var/lib/postgresql/data"]
 
 ENTRYPOINT [ "./postgres.sh" ]
+# CMD [ "tail", "-f", "/dev/null" ]

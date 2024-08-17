@@ -8,33 +8,51 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/lib/pq"
+
+	// _ "github.com/go-sql-driver/mysql"
 
 	"hepha/routes"
 )
 
 func main() {
-	fmt.Printf("mysql ip: %s\n", fmt.Sprintf("%s:3306", os.Getenv("MYSQL_URL")))
+	// fmt.Printf("mysql ip: %s\n", fmt.Sprintf("%s:3306", os.Getenv("MYSQL_URL")))
 
-	// cfg := mysql.Config{
-	// 	User:   os.Getenv("DB_USER"),
-	// 	Passwd: os.Getenv("DB_PASSWORD"),
-	// 	Addr:   fmt.Sprintf("%s:3306", os.Getenv("MYSQL_URL")),
-	// 	DBName: os.Getenv("DB_NAME"),
+	// // cfg := mysql.Config{
+	// // 	User:   os.Getenv("DB_USER"),
+	// // 	Passwd: os.Getenv("DB_PASSWORD"),
+	// // 	Addr:   fmt.Sprintf("%s:3306", os.Getenv("MYSQL_URL")),
+	// // 	DBName: os.Getenv("DB_NAME"),
+	// // }
+	// // var db *sql.DB
+	// // db, err := sql.Open("mysql", cfg.FormatDSN())
+	// db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@tcp(mysql:3306)/%s", os.Getenv("DB_USER"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_NAME")))
+
+	// if err != nil {
+	// 	panic(err)
 	// }
-	// var db *sql.DB
-	// db, err := sql.Open("mysql", cfg.FormatDSN())
-	db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@tcp(mysql:3306)/%s", os.Getenv("DB_USER"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_NAME")))
+	// defer db.Close()
+	// pingErr := db.Ping()
+	// if pingErr != nil {
+	// 	log.Fatal(pingErr)
+	// }
+	// fmt.Println("Connected!")
 
+	psqlInfo := fmt.Sprintf("host=postgres port=%s user=%s password=%s dbname=%s sslmode=disable",
+		os.Getenv("POSTGRES_PORT"), os.Getenv("POSTGRES_USER"), os.Getenv("POSTGRES_PASSWORD"), os.Getenv("POSTGRES_DB"))
+
+	db, err := sql.Open("postgres", psqlInfo)
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer db.Close()
-	pingErr := db.Ping()
-	if pingErr != nil {
-		log.Fatal(pingErr)
+
+	err = db.Ping()
+	if err != nil {
+		log.Fatal(err)
 	}
-	fmt.Println("Connected!")
+
+	fmt.Println("Successfully connected!")
 
 	// See "Important settings" section.
 	db.SetConnMaxLifetime(time.Minute * 3)
