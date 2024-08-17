@@ -57,7 +57,7 @@ services:
       dockerfile: Dockerfile
       no_cache: false
     ports:
-      - ${EXCUTION_PORT}
+      - ${ZAP_PORT}
     volumes:
       - ./zap/zig-linux-x86_64-0.13.0:/app/zig
       - ./zap/build:/app/build
