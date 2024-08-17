@@ -2,7 +2,7 @@
 
 export default async function getSheets(length: number, page: number) {
 
-  const res = await fetch('http://' + process.env.BACKEND_ADDR + '/sheets', {
+  const res = await fetch('http://' + process.env.GIN_ADDR + '/sheets', {
     method: 'POST',
     headers: {
       'Content-Type': 'text/plain',

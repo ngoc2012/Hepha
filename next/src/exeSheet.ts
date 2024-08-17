@@ -3,7 +3,7 @@
 export default async function exeSheet(data: string) {
 
   // const res = await fetch('http://'+ url + ':4000/user?id=1', {
-  const res = await fetch('http://' + process.env.BACKEND_ADDR + '/new_box', {
+  const res = await fetch('http://' + process.env.GIN_ADDR + '/new_box', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

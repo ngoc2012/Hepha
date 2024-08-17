@@ -74,7 +74,7 @@ func NewSheet(db *sql.DB, c *gin.Context) {
 	fmt.Printf("New %s item %d added\n", jsonData["type"], sheet_id)
 
 	// Open the file for writing
-	var file_name = fmt.Sprintf("%s/%s/%d.%s", os.Getenv("BACKEND_FOLDER"), jsonData["type"], sheet_id, get_extension(jsonData["language"].(string)))
+	var file_name = fmt.Sprintf("%s/%s/%d.%s", os.Getenv("GIN_FOLDER"), jsonData["type"], sheet_id, get_extension(jsonData["language"].(string)))
 	file, err := os.OpenFile(file_name, os.O_WRONLY|os.O_CREATE, 0644)
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{"error": err.Error()})
