@@ -2,35 +2,31 @@
 
 import { useEffect, useState } from 'react';
 import { Sheet } from '../types/sheet';
-import { redirect } from 'next/navigation'
-
-import Box from  "../components/box";
+import { useRouter } from 'next/navigation'
 
 import getSheets from '../getSheets';
 import newSheet from '@/newSheet';
 
-interface Props {
-  sheets: Sheet[];
-}
-
 export default function Home() {
-  const [sheets, setSheets] = useState<Sheet[]>([]);
+  const router = useRouter()
+  const [sheets, setSheets] = useState<Sheet[]>([])
 
   useEffect(() => {
     async function fetchSheets() {
       setSheets(await getSheets(10, 1));
-      console.log(sheets);
+      console.log(sheets)
     }
     fetchSheets();
   }, []);
 
   const handleNewSheetButtonClick = async () => {
-    const res = await newSheet("hepha");
+    const res = await newSheet("hepha", "No title", "No description")
     if (res.error) {
-      console.error(res.error);
+      console.error(res.error)
       return;
     }
-    redirect('/sheet/' + res.id + res.slug);
+    console.log(res)
+    router.push('/sheet/' + res.slug)
   };
 
   return (
@@ -64,7 +60,6 @@ export default function Home() {
             </li>
           ))}
         </ul>
-        <Box />
     </div>
   );
 }

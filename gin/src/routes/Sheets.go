@@ -2,7 +2,6 @@ package routes
 
 import (
 	"database/sql"
-	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -61,6 +60,7 @@ func Sheets(db *sql.DB, c *gin.Context) {
 	var rows *sql.Rows
 	var err error
 
+	// mysql
 	// if jsonData["name"].(string) == "" {
 	// 	fmt.Println("SELECT * FROM Sheet LIMIT ?, ?", (page-1)*length, length)
 	// 	rows, err = db.Query("SELECT * FROM Sheet LIMIT ?, ?", (page-1)*length, length)
@@ -68,11 +68,11 @@ func Sheets(db *sql.DB, c *gin.Context) {
 	// 	rows, err = db.Query("SELECT * FROM Sheet WHERE name = ? LIMIT ?, ?", jsonData["name"], (page-1)*length, length)
 	// }
 
+	// postgres
 	if jsonData["name"].(string) == "" {
-		fmt.Println("SELECT * FROM Sheet LIMIT ?, ?", (page-1)*length, length)
-		rows, err = db.Query("SELECT * FROM Sheet LIMIT ?, ?", (page-1)*length, length)
+		rows, err = db.Query("SELECT * FROM Sheet LIMIT $1 OFFSET $2;", length, (page-1)*length)
 	} else {
-		rows, err = db.Query("SELECT * FROM Sheet WHERE name = ? LIMIT ?, ?", jsonData["name"], (page-1)*length, length)
+		rows, err = db.Query("SELECT * FROM Sheet WHERE name = $1 LIMIT $2 OFFSET $3;", jsonData["name"], length, (page-1)*length)
 	}
 
 	if err != nil {
@@ -100,6 +100,11 @@ func Sheets(db *sql.DB, c *gin.Context) {
 		s.ModDate = string(modDateBytes)
 
 		sheets = append(sheets, s)
+	}
+	// fmt.Print(sheets)
+	if len(sheets) == 0 {
+		c.JSON(http.StatusOK, gin.H{"error": "No sheets found"})
+		return
 	}
 	c.JSON(http.StatusOK, sheets)
 }

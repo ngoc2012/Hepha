@@ -109,3 +109,16 @@ CREATE TABLE Share (
     shared_user VARCHAR(255),
     privilege VARCHAR(63)
 );
+
+-- Create indexes on the primary keys of each table
+CREATE INDEX idx_user_id ON "User" (id);
+CREATE INDEX idx_sheet_id ON Sheet (id);
+CREATE INDEX idx_box_id ON Box (id);
+CREATE INDEX idx_code_id ON Code (id);
+CREATE INDEX idx_input_id ON Input (id);
+CREATE INDEX idx_output_id ON Output (id);
+CREATE INDEX idx_text_id ON Text (id);
+CREATE INDEX idx_equation_id ON Equation (id);
+CREATE INDEX idx_image_id ON Image (id);
+CREATE INDEX idx_graph_id ON Graph (id);
+CREATE INDEX idx_share_id ON Share (id);

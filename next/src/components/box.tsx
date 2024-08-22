@@ -1,4 +1,5 @@
-"use client" 
+'use client'
+
 // components/Box.tsx
 import React, {useState} from 'react';
 import exeBox from '../exeBox';

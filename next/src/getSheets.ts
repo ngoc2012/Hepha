@@ -10,7 +10,8 @@ export default async function getSheets(length: number, page: number) {
     body: JSON.stringify({ name: "", length: length, page : page }),
     cache: 'no-cache'
   });
- 
+
+  // console.log("getSheets", res)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }

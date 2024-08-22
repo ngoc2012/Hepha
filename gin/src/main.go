@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strconv"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -62,7 +63,23 @@ func main() {
 	r := gin.Default()
 	r.POST("/sheets", func(c *gin.Context) { routes.Sheets(db, c) })
 	r.POST("/new_box", func(c *gin.Context) { routes.NewBox(db, c) })
-	r.POST("/new_sheet", func(c *gin.Context) { routes.NewBox(db, c) })
+	r.POST("/new_sheet", func(c *gin.Context) { routes.NewSheet(db, c) })
+	r.GET("/sheet/:id", func(c *gin.Context) {
+		id, err := strconv.Atoi(c.Param("id"))
+		if err != nil {
+			fmt.Println(c.Request.URL, err)
+			return
+		}
+		routes.GetSheet(db, c, id)
+	})
+	// r.GET("/edit/:id", func(c *gin.Context) {
+	// 	id, err := strconv.Atoi(c.Param("id"))
+	// 	if err != nil {
+	// 		fmt.Println(c.Request.URL, err)
+	// 		return
+	// 	}
+	// 	routes.EditSheet(db, c, id)
+	// })
 	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
 

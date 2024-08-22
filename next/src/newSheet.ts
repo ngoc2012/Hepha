@@ -1,6 +1,6 @@
 'use server'
 
-export default async function newSheet(user: string) {
+export default async function newSheet(owner: string, title: string, description: string) {
 
   // const res = await fetch('http://'+ url + ':4000/user?id=1', {
   const res = await fetch('http://' + process.env.GIN_ADDR + '/new_sheet', {
@@ -8,7 +8,7 @@ export default async function newSheet(user: string) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ user: user }),
+    body: JSON.stringify({ owner: owner, title: title, description: description }),
     cache: 'no-cache'
   });
  

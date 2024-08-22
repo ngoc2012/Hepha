@@ -4,3 +4,80 @@ postgres
 /app $ psql
 
 \c hepha_db
+
+
+postgres=# \d sheet-id_seq;
+Did not find any relation named "sheet-id_seq".
+postgres=# \d sheet_id_seq;
+                        Sequence "public.sheet_id_seq"
+  Type  | Start | Minimum |       Maximum       | Increment | Cycles? | Cache 
+--------+-------+---------+---------------------+-----------+---------+-------
+ bigint |     1 |       1 | 9223372036854775807 |         1 | no      |     1
+
+postgres=# \dp sheet_id_seq;
+                                    Access privileges
+ Schema |     Name     |   Type   |   Access privileges   | Column privileges | Policies 
+--------+--------------+----------+-----------------------+-------------------+----------
+ public | sheet_id_seq | sequence | postgres=rwU/postgres+|                   | 
+        |              |          | ngoc2012=rU/postgres  |                   | 
+(1 row)
+
+postgres=# SELECT current_user;
+ current_user 
+--------------
+ postgres
+(1 row)
+
+postgres=# exit
+a41f8c957457:~$ psql -U ngoc2012 -d hepha_db -h local -p 5432
+psql: error: could not translate host name "local" to address: Try again
+a41f8c957457:~$ psql -U ngoc2012 -d hepha_db -h localhost -p 5432
+psql (16.3)
+Type "help" for help.
+
+hepha_db=> \d sheet-id_seq;
+Did not find any relation named "sheet-id_seq".
+hepha_db=> CREATE SEQUENCE sheet_id_seq;
+ERROR:  permission denied for schema public
+hepha_db=> 
+
+
+a41f8c957457:~$ psql
+psql (16.3)
+Type "help" for help.
+
+postgres=# GRANT CREATE ON SCHEMA public TO ngoc2012;
+GRANT
+postgres=# exit
+a41f8c957457:~$ psql -U ngoc2012 -d hepha_db -h localhost -p 5432
+psql (16.3)
+Type "help" for help.
+
+hepha_db=> SELECT current_schema();
+ current_schema 
+----------------
+ public
+(1 row)
+
+hepha_db=> CREATE SEQUENCE sheet_id_seq;
+ERROR:  permission denied for schema public
+hepha_db=> 
+
+a41f8c957457:~$ psql
+psql (16.3)
+Type "help" for help.
+
+postgres=# GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO ngoc2012;
+GRANT
+postgres=# exit
+a41f8c957457:~$ psql -U ngoc2012 -d hepha_db -h localhost -p 5432
+psql (16.3)
+Type "help" for help.
+
+hepha_db=> \dp public;
+                            Access privileges
+ Schema | Name | Type | Access privileges | Column privileges | Policies 
+--------+------+------+-------------------+-------------------+----------
+(0 rows)
+
+hepha_db=> 
