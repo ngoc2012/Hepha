@@ -71,14 +71,6 @@ func NewSheet(db *sql.DB, c *gin.Context) {
 		return
 	}
 
-	// mysql
-	// sheet, err := db.Exec("INSERT INTO your_table_name ( title, description, owner, protection, searchable, exe_times, comments, evaluations, star, created_date, mod_date) VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW());", jsonData["title"], jsonData["description"], jsonData["owner"], 0, 0, 0, 0, 0, -1)
-	// if err != nil {
-	// 	// c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-	// 	c.JSON(http.StatusOK, gin.H{"error": err.Error()})
-	// 	return
-	// }
-
 	// postgres
 	var sheet_id int64
 	err := db.QueryRow("INSERT INTO sheet (title, description, owner, protection, searchable, exe_times, comments, evaluations, star, created_date, mod_date) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) RETURNING id;", jsonData["title"], jsonData["description"], jsonData["owner"], 0, 0, 0, 0, 0, -1).Scan(&sheet_id)
@@ -161,14 +153,6 @@ func GetSheets(db *sql.DB, c *gin.Context) {
 	var rows *sql.Rows
 	var err error
 
-	// mysql
-	// if jsonData["name"].(string) == "" {
-	// 	fmt.Println("SELECT * FROM Sheet LIMIT ?, ?", (page-1)*length, length)
-	// 	rows, err = db.Query("SELECT * FROM Sheet LIMIT ?, ?", (page-1)*length, length)
-	// } else {
-	// 	rows, err = db.Query("SELECT * FROM Sheet WHERE name = ? LIMIT ?, ?", jsonData["name"], (page-1)*length, length)
-	// }
-
 	// postgres
 	if jsonData["name"].(string) == "" {
 		rows, err = db.Query("SELECT * FROM Sheet ORDER BY created_date DESC LIMIT $1 OFFSET $2;", length, (page-1)*length)
@@ -184,7 +168,6 @@ func GetSheets(db *sql.DB, c *gin.Context) {
 
 	var sheets []Sheet
 	var s Sheet
-	// var createdDate, modDate time.Time
 	var createdDateBytes, modDateBytes []uint8
 	for rows.Next() {
 		// err := rows.Scan(&s.ID, &s.Title, &s.Description, &s.Owner, &s.Protection, &s.Searchable, &s.ExeTimes, &s.Comments, &s.Evaluations, &s.Star, &s.CreatedDate, &s.ModDate)
