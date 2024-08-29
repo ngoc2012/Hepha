@@ -1,11 +1,44 @@
 "use client" 
 
 import { useEffect, useState } from 'react';
-import { Sheet } from '../types/sheet';
 import { useRouter } from 'next/navigation'
 
-import getSheets from '../getSheets';
-import newSheet from '@/newSheet';
+import {getSheets, newSheet} from '../SSR/sheet';
+
+interface Sheet {
+  id: number;
+  title: string;
+  description: string;
+  owner: string;
+  protection: number;
+  searchable: boolean;
+  exe_times: number;
+  comments: number;
+  evaluations: number;
+  star: number;
+  created_date: Date;
+  mod_date: Date;
+}
+
+function generateSlug(title: string): string {
+  // Convert to lowercase
+  let slug = title.toLowerCase();
+
+  // Replace spaces with hyphens
+  slug = slug.replace(/ /g, '-');
+
+  // Remove special characters
+  slug = slug.replace(/[^a-z0-9-]/g, '');
+
+  // Remove multiple hyphens
+  slug = slug.replace(/-+/g, '-');
+
+  // Trim leading and trailing hyphens
+  slug = slug.replace(/^-+|-+$/g, '');
+
+  return slug;
+}
+
 
 export default function Home() {
   const router = useRouter()
@@ -14,7 +47,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchSheets() {
       setSheets(await getSheets(10, 1));
-      console.log(sheets)
+      // console.log(sheets)
     }
     fetchSheets();
   }, []);
@@ -25,10 +58,15 @@ export default function Home() {
       console.error(res.error)
       return;
     }
-    console.log(res)
+    // console.log(res)
     router.push('/sheet/' + res.slug)
   };
 
+  const handleSheetClick = (id: number, title: string) => () => {
+    router.push('/sheet/' + id + '-' + generateSlug(title))
+  };
+
+  // https://tailwindcss.com/docs/hover-focus-and-other-states
   return (
     <div>
         {/* <Navbar /> */}
@@ -44,8 +82,9 @@ export default function Home() {
         <ul>
           {sheets.map((sheet) => (
             <li key={sheet.id}>
-              <div className="flex space-x-4">
+              <div className="flex space-x-4" onClick={handleSheetClick(sheet.id, sheet.title)}>
                 <h2>{sheet.title}</h2>
+                <p>{sheet.id}</p>
                 <p>{sheet.description}</p>
                 <p> by {sheet.owner}</p>
                 {/* <p>Protection: {sheet.protection}</p>

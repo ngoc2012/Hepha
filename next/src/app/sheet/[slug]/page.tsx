@@ -1,36 +1,43 @@
-import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 import Box from "@/components/box";
+import Text from "@/components/text";
 
 type SheetProps = {
   id: number
-  slug: string
+  title: string
+  description?: string
+  owner?: string
+  protection?: number
+  searchable?: boolean
+  exeTimes?: number
+  comments?: number
+  evaluations?: number
+  star?: number
+  createdDate?: string
+  modDate?: string
 }
 
-export const getServerSideProps = (async (context) => {
-  if (!context.params || !context.params.slug  || typeof context.params.slug !== 'string') {
-    return { notFound: true }
-  }
+export default async function Sheet({ params }: { params: { slug: string } }) {
 
-  const match = context.params.slug.match(/^(\d+)/)
+  const match = params.slug.match(/^(\d+)/);
   if (!match) {
-    return { notFound: true }
+    // Handle error, maybe redirect to a 404 page
+    return;
   }
 
-  const id = match[1]
+  const id = match[1];
 
   // Fetch data from external API
   const res = await fetch(`http://${process.env.GIN_ADDR}/sheet/${id}`, {
     method: 'GET',
     cache: 'no-cache'
   });
-  const repo: SheetProps = await res.json()
-  return { props: { repo } }
-}) satisfies GetServerSideProps<{ repo: SheetProps }>
 
-export default function Sheet({ repo,}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const repo: SheetProps = await res.json();
+
+  // console.log(repo)
+  
   return <>
-    <div>{repo.id}</div>
-    <div>My Sheet : {repo.slug}</div>
+    <Text table="sheet" id={id} field="title" value={repo.title} format="text-4xl"/>
     <Box />
-  </>
+  </>;
 }

@@ -2,9 +2,9 @@
 
 // components/Box.tsx
 import React, {useState} from 'react';
-import exeBox from '../exeBox';
+import {exeBox} from '../SSR/box';
 
-interface TextAreaProps {
+interface Props {
   value: string;
   onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   onKeyDown: (event: React.KeyboardEvent<HTMLTextAreaElement>) => void;
@@ -13,7 +13,7 @@ interface TextAreaProps {
   cols?: number;
 }
 
-const TextArea: React.FC<TextAreaProps> = ({
+const TextArea: React.FC<Props> = ({
   value,
   onChange,
   onKeyDown,
@@ -23,7 +23,7 @@ const TextArea: React.FC<TextAreaProps> = ({
 }) => {
   return (
     <textarea
-      className="border border-gray-400 rounded"
+      className="border border-gray-400 rounded font-sans"
       value={value}
       onChange={onChange}
       onKeyDown={onKeyDown}
@@ -117,7 +117,7 @@ const Box: React.FC = () => {
         </div>
       </div>
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className="bg-blue-500 hover:bg-blue-700 text-black font-mono font-bold py-2 px-4 rounded"
         onClick={handleButtonClick}
       >
         Run
