@@ -6,7 +6,7 @@
 #    By: minh-ngu <minh-ngu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2024/09/07 10:00:02 by ngoc             ###   ########.fr        #
+#    Updated: 2024/09/07 10:03:03 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ remove_images:
 	@docker image prune --all --force
 
 re:
-	@make gitd M="provisoire"
+	-@make gitd M="provisoire"
 	#@make clean
 	@make down
 	@make up
