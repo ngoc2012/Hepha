@@ -6,7 +6,7 @@
 #    By: minh-ngu <minh-ngu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2024/07/24 00:59:42 by ngoc             ###   ########.fr        #
+#    Updated: 2024/09/07 10:00:02 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,8 @@ remove_images:
 	@docker image prune --all --force
 
 re:
-	# @make gitd M="provisoire"
-	@make clean
+	@make gitd M="provisoire"
+	#@make clean
 	@make down
 	@make up
 
@@ -142,6 +142,14 @@ gin:
 	@docker compose build --no-cache gin
 	@docker compose up -d gin
 
+next:
+	@docker compose build --no-cache next
+	@docker compose up -d next
+
+remix:
+	@docker compose build --no-cache remix
+	@docker compose up -d remix
+
 mysql:
 	@docker compose build --no-cache mysql
 	@docker compose up -d mysql
@@ -152,4 +160,4 @@ zig:
 
 test:
 	cd zap/build/src && zig build-exe test.zig && ./test
-.PHONY: all clean fclean re test zap zig gin mysql
+.PHONY: all clean fclean re test zap zig gin mysql next remix

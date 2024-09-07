@@ -114,31 +114,31 @@ services:
      - .env
     networks:
       - network
-    # profiles:
-    #   - donotstart
+    profiles:
+      - donotstart
 
-  vite:
-    container_name: vite
+  remix:
+    container_name: remix
     build:
-      context: ./vite
+      context: ./remix
       dockerfile: Dockerfile
       no_cache: false
     ports:
-      - ${VITE_PORT}
+      - ${REMIX_PORT}
       # - ${NEXT_PORT}:${NEXT_PORT}
     # depends_on:
     #   - gin
       # - zap
     #   - nginx
     volumes:
-      - ./vite:/app
+      - ./remix:/app
     restart: always
     env_file:
      - .env
     networks:
       - network
-    profiles:
-      - donotstart
+    # profiles:
+    #   - donotstart
 
   adminer:
     container_name: adminer

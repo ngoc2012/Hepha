@@ -10,7 +10,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-func Update(db *sql.DB, c *gin.Context, table string, id int) {
+func UpdateById(db *sql.DB, c *gin.Context, table string, id int) {
 
 	var jsonData map[string]interface{}
 	if err := c.ShouldBindJSON(&jsonData); err != nil {

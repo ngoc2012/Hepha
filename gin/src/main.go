@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
+	"net/http"
 	"os"
 	"strconv"
 	"time"
@@ -60,32 +61,54 @@ func main() {
 	db.SetMaxIdleConns(10)
 
 	r := gin.Default()
-	r.POST("/sheets", func(c *gin.Context) { routes.GetSheets(db, c) })
-	r.POST("/new_box", func(c *gin.Context) { routes.NewBox(db, c) })
-	r.POST("/new_sheet", func(c *gin.Context) { routes.NewSheet(db, c) })
-	r.GET("/run_code/:id", func(c *gin.Context) {
+
+	// Database
+	r.POST("/update/:table/:id", func(c *gin.Context) {
 		id, err := strconv.Atoi(c.Param("id"))
 		if err != nil {
-			fmt.Println(c.Request.URL, err)
+			c.JSON(http.StatusOK, gin.H{"error": err.Error()})
 			return
 		}
-		routes.RunCode(db, c, id)
+		routes.UpdateById(db, c, c.Param("table"), id)
 	})
+
+	// Sheet
+	r.POST("/sheets", func(c *gin.Context) { routes.GetSheets(db, c) })
+	r.POST("/new_sheet", func(c *gin.Context) { routes.NewSheet(db, c) })
 	r.GET("/sheet/:id", func(c *gin.Context) {
 		id, err := strconv.Atoi(c.Param("id"))
 		if err != nil {
-			fmt.Println(c.Request.URL, err)
+			c.JSON(http.StatusOK, gin.H{"error": err.Error()})
 			return
 		}
 		routes.GetSheet(db, c, id)
 	})
-	r.POST("/update/:table/:id", func(c *gin.Context) {
-		id, err := strconv.Atoi(c.Param("id"))
+
+	// Code
+	r.POST("/new_code", func(c *gin.Context) {
+		id, err := routes.NewCode(db, c)
 		if err != nil {
-			fmt.Println(c.Request.URL, err)
+			c.JSON(http.StatusOK, gin.H{"error": err.Error()})
 			return
 		}
-		routes.Update(db, c, c.Param("table"), id)
+		routes.NewBox(db, c, id)
 	})
+	r.GET("/run_code/:id", func(c *gin.Context) {
+		id, err := strconv.Atoi(c.Param("id"))
+		if err != nil {
+			c.JSON(http.StatusOK, gin.H{"error": err.Error()})
+			return
+		}
+		routes.RunCode(db, c, id)
+	})
+	r.GET("/save_code/:id", func(c *gin.Context) {
+		id, err := strconv.Atoi(c.Param("id"))
+		if err != nil {
+			c.JSON(http.StatusOK, gin.H{"error": err.Error()})
+			return
+		}
+		routes.UpdateById(db, c, "code", id)
+	})
+
 	r.Run(":" + os.Getenv("GIN_PORT")) // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }

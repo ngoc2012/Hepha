@@ -170,7 +170,6 @@ func GetSheets(db *sql.DB, c *gin.Context) {
 	var s Sheet
 	var createdDateBytes, modDateBytes []uint8
 	for rows.Next() {
-		// err := rows.Scan(&s.ID, &s.Title, &s.Description, &s.Owner, &s.Protection, &s.Searchable, &s.ExeTimes, &s.Comments, &s.Evaluations, &s.Star, &s.CreatedDate, &s.ModDate)
 		err := rows.Scan(&s.ID, &s.Title, &s.Description, &s.Owner, &s.Protection, &s.Searchable, &s.ExeTimes, &s.Comments, &s.Evaluations, &s.Star, &createdDateBytes, &modDateBytes)
 		if err != nil {
 			c.JSON(http.StatusOK, gin.H{"error": err.Error()})

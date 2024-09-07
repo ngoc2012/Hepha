@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"os"
 	"strings"
 	"time"
 
@@ -66,4 +67,47 @@ func RunCode(db *sql.DB, c *gin.Context, id int) {
 	fmt.Println(string(body_res))
 	c.JSON(http.StatusOK, gin.H{"response": string(body_res)})
 
+}
+
+func NewCode(db *sql.DB, c *gin.Context) (int64, error) {
+	var jsonData map[string]interface{}
+	if err := c.ShouldBindJSON(&jsonData); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"status": "error", "message": "Invalid request body"})
+		return 0, err
+	}
+
+	// Check if required keys are present in jsonData
+	requiredKeys := []string{"language", "language_version", "type", "data"}
+	for _, key := range requiredKeys {
+		if _, ok := jsonData[key]; !ok {
+			c.JSON(http.StatusBadRequest, gin.H{"status": "error", "message": fmt.Sprintf("Missing required key: %s", key)})
+			return 0, fmt.Errorf("missing required key: %s", key)
+		}
+	}
+
+	// postgres
+	var id int64
+	err := db.QueryRow("INSERT INTO code (parent_id, language, language_version, executions, errors, last_error_date, created_date, mod_date) VALUES ($1, $2, $3, $4, $5, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);", 0, jsonData["language"], jsonData["language_version"], 0, 0).Scan(&id)
+	if err != nil {
+		c.JSON(http.StatusOK, gin.H{"error": err.Error()})
+		return 0, err
+	}
+	fmt.Printf("New %s item %d added\n", jsonData["type"], id)
+
+	// Open the file for writing
+	var file_name = fmt.Sprintf("%s/%s/%d.%s", os.Getenv("GIN_FOLDER"), jsonData["type"], id, get_extension(jsonData["language"].(string)))
+	file, err := os.OpenFile(file_name, os.O_WRONLY|os.O_CREATE, 0644)
+	if err != nil {
+		c.JSON(http.StatusOK, gin.H{"error": err.Error()})
+		return 0, err
+	}
+	defer file.Close()
+
+	// Write the string to the file
+	if _, err := file.WriteString(jsonData["data"].(string)); err != nil {
+		c.JSON(http.StatusOK, gin.H{"error": err.Error()})
+		return 0, err
+	}
+	fmt.Printf("Writed to file %s\n", file_name)
+	return id, nil
 }

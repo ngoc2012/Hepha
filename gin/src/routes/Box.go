@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"fmt"
 	"net/http"
-	"os"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -37,7 +36,7 @@ func get_extension(language string) string {
 	}
 }
 
-func NewBox(db *sql.DB, c *gin.Context) {
+func NewBox(db *sql.DB, c *gin.Context, box_id int64) {
 	var jsonData map[string]interface{}
 	if err := c.ShouldBindJSON(&jsonData); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"status": "error", "message": "Invalid request body"})
@@ -45,39 +44,7 @@ func NewBox(db *sql.DB, c *gin.Context) {
 	}
 
 	if jsonData["type"] == "Code" {
-		box, err := db.Exec("INSERT INTO Code (parent_id, language, language_version, executions, errors, last_error_date, created_date, mod_date) VALUES (?, ?, ?, ?, ?, NULL, NOW(), NOW());", 0, jsonData["language"], jsonData["language_version"], 0, 0)
-		if err != nil {
-			// c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-			c.JSON(http.StatusOK, gin.H{"error": err.Error()})
-			return
-		}
-
-		box_id, err := box.LastInsertId()
-		if err != nil {
-			c.JSON(http.StatusOK, gin.H{"error": err.Error()})
-			return
-		}
-		fmt.Printf("New %s item %d added\n", jsonData["type"], box_id)
-
-		// Open the file for writing
-		var file_name = fmt.Sprintf("%s/%s/%d.%s", os.Getenv("GIN_FOLDER"), jsonData["type"], box_id, get_extension(jsonData["language"].(string)))
-		file, err := os.OpenFile(file_name, os.O_WRONLY|os.O_CREATE, 0644)
-		if err != nil {
-			c.JSON(http.StatusOK, gin.H{"error": err.Error()})
-			return
-			// log.Fatal(err)
-		}
-		defer file.Close()
-
-		// Write the string to the file
-		if _, err := file.WriteString(jsonData["data"].(string)); err != nil {
-			c.JSON(http.StatusOK, gin.H{"error": err.Error()})
-			return
-			// log.Fatal(err)
-		}
-		fmt.Printf("Writed to file %s\n", file_name)
-
-		result, err := db.Exec("INSERT INTO Box (sheet_id, position, type, box_id, caption, created_date, mod_date) VALUES (?, ?, ?, ?, ?, NOW(), NOW());", 1, 0, jsonData["type"], box_id, jsonData["caption"])
+		result, err := db.Exec("INSERT INTO Box (sheet_id, position, type, box_id, caption, created_date, mod_date) VALUES ($1, $2, $3, $4, $5, NOW(), NOW());", 1, 0, jsonData["type"], box_id, jsonData["caption"])
 		if err != nil {
 			// c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			c.JSON(http.StatusOK, gin.H{"error": err.Error()})
@@ -89,7 +56,6 @@ func NewBox(db *sql.DB, c *gin.Context) {
 			return
 		}
 		fmt.Printf("New box item %d added\n", id)
-
 		c.JSON(http.StatusOK, gin.H{"box_id": box_id})
 	} else {
 		c.JSON(http.StatusOK, gin.H{"error": "Invalid box type"})
