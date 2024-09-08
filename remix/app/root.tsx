@@ -1,13 +1,13 @@
 import type { LinksFunction } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
-import {getSheets, newSheet} from './sheet.server';
+import {newSheet} from './sheet.server';
 import {
   // Form,
-  NavLink,
+  // Link,
   Links,
   Meta,
-  // Outlet,
-  // Scripts,
+  Outlet,
+  Scripts,
   // ScrollRestoration,
   useLoaderData,
   // useNavigation,
@@ -44,14 +44,13 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
 ];
 
-export const loader = async () => {
+// export const loader = async () => {
   // const contacts = await getContacts();
-  const sheets = await getSheets(10, 1)
-  return json({ sheets });
-};
+  // const sheets = await getSheets(10, 1)
+  // return json({ sheets });
+// };
 
 export default function App() {
-  const { sheets } = useLoaderData<typeof loader>();
   // const navigate = useNavigate();
 
   return (
@@ -63,68 +62,23 @@ export default function App() {
         <Links />
       </head>
       <body>
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        // onClick={newButton}
-        // onClick={handleNewSheetButtonClick}
-      >
-        New Sheet
-      </button>
-      <h1>Sheet List</h1>
-      {sheets.length ? (
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
-          <tr>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Name
-            </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Id
-            </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Description
-            </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Author
-            </th>
-          </tr>
-        </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
-          {sheets.map((sheet: any) => (
-          <tr className="hover:bg-slate-100"
-            key={sheet.id}
-            // onClick={handleSheetClick(sheet.id, sheet.title)}
-            >
-            <NavLink to={`/sheet/${sheet.id}-${generateSlug(sheet.title)}`}>
-            <td className="px-6 py-4 whitespace-nowrap">
-              <div className="flex items-center">
-                <div className="ml-4">
-                  <div className="text-sm font-medium text-gray-900">
-                  {sheet.title}
-                  </div>
-                </div>
-              </div>
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap">
-              <div className="text-sm text-gray-900">{sheet.id}</div>
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap">
-              <div className="text-sm text-gray-900">{sheet.description}</div>
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap">
-              <div className="text-sm text-gray-900">{sheet.owner}</div>
-            </td>
-            </NavLink>
-          </tr>
-          ))}
-        </tbody>
-      </table>
-
-      ) : (
-        <p>
-          <i>No sheets</i>
-        </p>
-      )}
+        <nav className="flex">
+          <h1>Remix Sheets</h1>
+          <div>
+            <form method="post">
+              <button
+                type="submit"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              >
+                New Sheet
+              </button>
+            </form>
+          </div>
+        </nav>
+        <div id="main">
+          <Outlet />
+        </div>
+        <Scripts />
       </body>
     </html>
   );

@@ -2,7 +2,7 @@
 
 // components/Box.tsx
 import React, {useState} from 'react';
-import {exeBox} from '../SSR/box';
+import {exeBox} from '../app/box.server';
 
 interface Props {
   value: string;

@@ -1,6 +1,6 @@
 'use client'
 
-import { editText } from '@/SSR/text';
+import { editText } from '../app/text.server';
 import React, { useState, useRef, useEffect } from 'react';
 
 interface Props {

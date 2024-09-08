@@ -26,6 +26,28 @@ export async function getSheets(length: number, page: number) {
   return json
 }
 
+export async function getSheet(id: string) {
+
+  const res = await fetch('http://' + process.env.GIN_ADDR + '/sheet/' + id, {
+    method: 'GET',
+    cache: 'no-cache'
+  });
+
+  // console.log("getSheet", res)
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
+  }
+
+  const json = await res.json();
+  // console.log(json);
+  if (json.error) {
+    console.error(json.error);
+    return [];
+  }
+
+  return json
+}
+
 export async function exeSheet(data: string) {
 
   // const res = await fetch('http://'+ url + ':4000/user?id=1', {
