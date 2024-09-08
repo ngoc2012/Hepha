@@ -6,7 +6,7 @@
 #    By: minh-ngu <minh-ngu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2024/09/07 10:03:35 by ngoc             ###   ########.fr        #
+#    Updated: 2024/09/07 13:18:35 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -154,10 +154,14 @@ mysql:
 	@docker compose build --no-cache mysql
 	@docker compose up -d mysql
 
+nginx:
+	@docker compose build --no-cache nginx
+	@docker compose up -d nginx
+
 # @echo "PATH = $$PATH"
 zig:
 	cd zap/build && zig build
 
 test:
 	cd zap/build/src && zig build-exe test.zig && ./test
-.PHONY: all clean fclean re test zap zig gin mysql next remix
+.PHONY: all clean fclean re test zap zig gin mysql next remix nginx

@@ -1,37 +1,58 @@
 import type { LinksFunction } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
+import {getSheets, newSheet} from './sheet.server';
 import {
-  Form,
+  // Form,
   NavLink,
   Links,
   Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
+  // Outlet,
+  // Scripts,
+  // ScrollRestoration,
   useLoaderData,
-  useNavigation,
+  // useNavigation,
+  // useNavigate,
 } from "@remix-run/react";
-import appStylesHref from "./app.css?url";
-import { createEmptyContact, getContacts } from "./data";
+import stylesheet from "~/tailwind.css?url";
+// import { createEmptyContact, getContacts } from "./data";
+
+function generateSlug(title: string): string {
+  // Convert to lowercase
+  let slug = title.toLowerCase();
+
+  // Replace spaces with hyphens
+  slug = slug.replace(/ /g, '-');
+
+  // Remove special characters
+  slug = slug.replace(/[^a-z0-9-]/g, '');
+
+  // Remove multiple hyphens
+  slug = slug.replace(/-+/g, '-');
+
+  // Trim leading and trailing hyphens
+  slug = slug.replace(/^-+|-+$/g, '');
+
+  return slug;
+}
 
 export const action = async () => {
-  const contact = await createEmptyContact();
-  return redirect(`/contacts/${contact.id}/edit`);
+  // const contact = await createEmptyContact();
+  // return redirect(`/contacts/${contact.id}/edit`);
 };
 
 export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: appStylesHref },
+  { rel: "stylesheet", href: stylesheet },
 ];
 
 export const loader = async () => {
-  const contacts = await getContacts();
-  return json({ contacts });
+  // const contacts = await getContacts();
+  const sheets = await getSheets(10, 1)
+  return json({ sheets });
 };
 
-
 export default function App() {
-  const { contacts } = useLoaderData<typeof loader>();
-  const navigation = useNavigation();
+  const { sheets } = useLoaderData<typeof loader>();
+  // const navigate = useNavigate();
 
   return (
     <html lang="en">
@@ -42,59 +63,68 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <div id="sidebar">
-          <h1>Remix Contacts</h1>
-          <div>
-            <Form id="search-form" role="search">
-              <input
-                id="q"
-                aria-label="Search contacts"
-                placeholder="Search"
-                type="search"
-                name="q"
-              />
-              <div id="search-spinner" aria-hidden hidden={true} />
-            </Form>
-            <Form method="post">
-              <button type="submit">New</button>
-            </Form>
-          </div>
-          <nav>
-            {contacts.length ? (
-              <ul>
-                {contacts.map((contact) => (
-                  <li key={contact.id}>
-                    <NavLink to={`contacts/${contact.id}`}>
-                      {contact.first || contact.last ? (
-                        <>
-                          {contact.first} {contact.last}
-                        </>
-                      ) : (
-                        <i>No Name</i>
-                      )}{" "}
-                      {contact.favorite ? (
-                        <span>★</span>
-                      ) : null}
-                    </NavLink>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>
-                <i>No contacts</i>
-              </p>
-            )}
-          </nav>
-        </div>
-        <div
-          className={
-            navigation.state === "loading" ? "loading" : ""
-          }
-          id="detail">
-          <Outlet />
-        </div>
-        <ScrollRestoration />
-        <Scripts />
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        // onClick={newButton}
+        // onClick={handleNewSheetButtonClick}
+      >
+        New Sheet
+      </button>
+      <h1>Sheet List</h1>
+      {sheets.length ? (
+      <table className="min-w-full divide-y divide-gray-200">
+        <thead className="bg-gray-50">
+          <tr>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Name
+            </th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Id
+            </th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Description
+            </th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Author
+            </th>
+          </tr>
+        </thead>
+        <tbody className="bg-white divide-y divide-gray-200">
+          {sheets.map((sheet: any) => (
+          <tr className="hover:bg-slate-100"
+            key={sheet.id}
+            // onClick={handleSheetClick(sheet.id, sheet.title)}
+            >
+            <NavLink to={`/sheet/${sheet.id}-${generateSlug(sheet.title)}`}>
+            <td className="px-6 py-4 whitespace-nowrap">
+              <div className="flex items-center">
+                <div className="ml-4">
+                  <div className="text-sm font-medium text-gray-900">
+                  {sheet.title}
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap">
+              <div className="text-sm text-gray-900">{sheet.id}</div>
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap">
+              <div className="text-sm text-gray-900">{sheet.description}</div>
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap">
+              <div className="text-sm text-gray-900">{sheet.owner}</div>
+            </td>
+            </NavLink>
+          </tr>
+          ))}
+        </tbody>
+      </table>
+
+      ) : (
+        <p>
+          <i>No sheets</i>
+        </p>
+      )}
       </body>
     </html>
   );

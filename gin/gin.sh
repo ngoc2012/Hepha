@@ -14,11 +14,11 @@ go version
 
 cd src
 
-echo "go mod download ... start"
+# echo "go mod download ... start"
 
 go mod download
 
-echo "go mod download ... done"
+# echo "go mod download ... done"
 
 # go run main.go
 go build -o hepha
