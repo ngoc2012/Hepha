@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{.Title}}</title>
+</head>
+<body>
+  <div id="app">
+    {{template "components/partial.html" .}}
+    {{if .Condition}}
+      <p>Condition is true</p>
+    {{else}}
+      <p>Condition is false</p>
+    {{end}}
+    <ul>
+      {{range .Items}}
+        <li>{{.}}</li>
+      {{end}}
+    </ul>
+  </div>
+</body>
+</html>
+
