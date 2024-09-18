@@ -82,5 +82,5 @@ keep_scroll = true
 #  app_port = 8080
 [proxy]
   enabled = true
-  proxy_port = 443
+  proxy_port = 8090
   app_port = 7070
