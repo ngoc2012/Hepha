@@ -8,9 +8,6 @@ go version
 
 go mod download
 
-ls
-echo pwd
-
 make build
 
 make run
