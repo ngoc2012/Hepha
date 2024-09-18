@@ -1,6 +1,6 @@
 #!/bin/sh
 
-rm -rf /usr/local/go && tar -C /usr/local -xzf src/go1.22.5.linux-amd64.tar.gz
+rm -rf /usr/local/go && tar -C /usr/local -xzf src/go1.23.1.linux-amd64.tar.gz
 
 export PATH="$PATH:/usr/local/go/bin"
 
