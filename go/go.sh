@@ -12,10 +12,10 @@ export PATH=$PATH:$(go env GOPATH)/bin
 
 # ls $(go env GOPATH)/bin/air
 # cp /root/go/bin/air /app
-cp /app/air /root/go/bin
+# cp /app/air /root/go/bin
 
 make build
 
 make run
 
-air -c air.toml
+./air -c air.toml
