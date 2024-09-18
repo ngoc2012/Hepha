@@ -6,14 +6,13 @@ export PATH="$PATH:/usr/local/go/bin"
 
 go version
 
-# go mod download
-
-go install github.com/air-verse/air@latest
+# go install github.com/air-verse/air@latest
 
 export PATH=$PATH:$(go env GOPATH)/bin
 
 # ls $(go env GOPATH)/bin/air
-cp /root/go/bin/air /app
+# cp /root/go/bin/air /app
+cp /app/air /root/go/bin
 
 make build
 
