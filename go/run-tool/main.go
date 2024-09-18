@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 )
 
 type PageData struct {
@@ -12,8 +13,8 @@ type PageData struct {
 }
 
 func main() {
-	http.Handle("/", http.FileServer(http.Dir(".")))
+	http.Handle("/", http.FileServer(http.Dir("./dist")))
 
-	log.Println("Server is running on http://localhost:8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Println("Server is running on http://localhost:7070" + os.Getenv("GO_PORT"))
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("GO_PORT"), nil))
 }

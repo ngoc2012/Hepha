@@ -4,20 +4,56 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{.Title}}</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="fonts/inter.css">
 </head>
 <body>
   <div id="app">
-    {{template "components/partial.html" .}}
-    {{if .Condition}}
-      <p>Condition is true</p>
-    {{else}}
-      <p>Condition is false</p>
-    {{end}}
-    <ul>
-      {{range .Items}}
-        <li>{{.}}</li>
+    <!-- <div id="app">
+      {{template "components/partial.html" .}}
+      {{if .Condition}}
+        <p>Condition is true</p>
+      {{else}}
+        <p>Condition is false</p>
       {{end}}
-    </ul>
+      <ul>
+        {{range .Items}}
+          <li>{{.}}</li>
+        {{end}}
+      </ul>
+    </div> -->
+    <nav class="crumbs">
+      <ol>
+        <li class="crumb"><a href="#">Bikes</a></li>
+        <li class="crumb"><a href="#">BMX</a></li>
+        <li class="crumb">Jump Bike 3000</li>
+      </ol>
+    </nav>
+    <button class="main-btn">
+      New Sheet
+    </button>
+    <h1>Sheet List</h1>
+    <!-- <table className="min-w-full divide-y divide-gray-200">
+      <thead className="bg-gray-50">
+        <tr>
+          <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Name
+          </th>
+          <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Id
+          </th>
+          <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Description
+          </th>
+          <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Author
+          </th>
+        </tr>
+      </thead>
+      <tbody className="bg-white divide-y divide-gray-200">
+        
+      </tbody>
+    </table> -->
   </div>
 </body>
 </html>

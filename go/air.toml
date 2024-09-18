@@ -9,19 +9,20 @@ tmp_dir = "tmp"
 # Array of commands to run before each build
 pre_cmd = []
 # Just plain old shell command. You could use `make` as well.
-cmd = "make dev"
+cmd = "./build"
 # Array of commands to run after ^C
 post_cmd = []
 # Binary file yields from `cmd`.
 bin = "./run"
 # Customize binary, can setup environment variables when run your app.
-full_bin = "APP_ENV=dev APP_USER=air ./tmp/main"
+full_bin = "APP_ENV=dev APP_USER=air ./run"
 # Add additional arguments when running binary (bin/full_bin). Will run './tmp/main hello world'.
 args_bin = []
 # Watch these filename extensions.
-include_ext = ["go", "tpl", "tmpl", "html"]
+#include_ext = ["go", "tpl", "tmpl", "html"]
+include_ext = ["go", "html", "css", "ts", "js"]
 # Ignore these filename extensions or directories.
-exclude_dir = ["assets", "tmp", "vendor", "frontend/node_modules"]
+exclude_dir = ["dist", "assets", "tmp", "vendor", "frontend/node_modules"]
 # Watch these directories if you specified.
 include_dir = []
 # Watch these files.
@@ -75,7 +76,11 @@ clear_on_rebuild = true
 keep_scroll = true
 
 # Enable live-reloading on the browser.
+#[proxy]
+#  enabled = true
+#  proxy_port = 8090
+#  app_port = 8080
 [proxy]
   enabled = true
-  proxy_port = 8090
-  app_port = 8080
+  proxy_port = 443
+  app_port = 7070

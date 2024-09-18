@@ -34,5 +34,5 @@ func main() {
 		fmt.Printf("Failed to execute template: %v\n", err)
 	}
 
-	fmt.Printf("Template output written\n")
+	fmt.Printf("Built done\n")
 }

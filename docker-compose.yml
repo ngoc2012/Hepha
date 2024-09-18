@@ -7,6 +7,8 @@ services:
       no_cache: false
     depends_on:
       - adminer
+    volumes:
+      - ./go/dist:/var/www/html
     ports:
       - 80:80
       - 443:443
@@ -83,9 +85,28 @@ services:
     #   - mysql
     #   - nginx
     volumes:
-      - ./go-mod-cache:/go/pkg/mod
+      - ./gin-mod-cache:/go/pkg/mod
       - ./gin/src:/app/src
       - ./${FILES_STORAGE}:${GIN_FOLDER}
+    restart: always
+    env_file:
+     - .env
+    networks:
+      - network
+    profiles:
+      - donotstart
+
+  go:
+    container_name: go
+    build:
+      context: ./go
+      dockerfile: Dockerfile
+      no_cache: false
+    ports:
+      - ${GO_PORT}
+    volumes:
+      - ./go-mod-cache:/go/pkg/mod
+      - ./go:/app
     restart: always
     env_file:
      - .env
@@ -137,8 +158,8 @@ services:
      - .env
     networks:
       - network
-    # profiles:
-    #   - donotstart
+    profiles:
+      - donotstart
 
   adminer:
     container_name: adminer
@@ -154,8 +175,8 @@ services:
      - ${ADMIN_PORT}
     networks:
       - network
-    # profiles:
-    #   - donotstart
+    profiles:
+      - donotstart
 
 networks:
   network:

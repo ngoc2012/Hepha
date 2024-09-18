@@ -12,7 +12,8 @@
 
 all:
 	air -c air.toml
-dev:
+build:
 	cd build-tool && go build -o ../build .
+run:
 	cd run-tool && go build -o ../run .
 .PHONY: all clean fclean re build
