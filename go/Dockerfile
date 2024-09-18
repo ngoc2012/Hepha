@@ -1,4 +1,8 @@
 FROM alpine:latest
+
+RUN apk update && \
+    apk add --no-cache make \
+    && rm -rf /var/cache/apk/*
     
 RUN mkdir -p /var/lib/files
 
