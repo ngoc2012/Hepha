@@ -12,4 +12,6 @@ make build
 
 make run
 
-./run
+go install github.com/air-verse/air@latest
+
+air -c air.toml
