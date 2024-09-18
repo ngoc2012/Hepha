@@ -6,16 +6,16 @@ export PATH="$PATH:/usr/local/go/bin"
 
 go version
 
-go mod download
-
-make build
-
-make run
+# go mod download
 
 go install github.com/air-verse/air@latest
 
 export PATH=$PATH:$(go env GOPATH)/bin
 
-ls $(go env GOPATH)/bin/air
+# ls $(go env GOPATH)/bin/air
 
-air -c air.toml
+make build
+
+make run
+
+# air -c air.toml
