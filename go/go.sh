@@ -14,4 +14,8 @@ make run
 
 go install github.com/air-verse/air@latest
 
+export PATH=$PATH:$(go env GOPATH)/bin
+
+ls $(go env GOPATH)/bin/air
+
 air -c air.toml
