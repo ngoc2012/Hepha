@@ -5,8 +5,8 @@ services:
       context: ./nginx
       dockerfile: Dockerfile
       no_cache: false
-    depends_on:
-      - adminer
+    # depends_on:
+    #   - adminer
     volumes:
       - ./go/dist:/var/www/html
     ports:
