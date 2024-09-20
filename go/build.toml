@@ -9,7 +9,7 @@ tmp_dir = "tmp"
 # Array of commands to run before each build
 pre_cmd = []
 # Just plain old shell command. You could use `make` as well.
-cmd = "make build && ./build"
+cmd = "make build && ./files conf.json && ./build"
 # Array of commands to run after ^C
 post_cmd = []
 # Binary file yields from `cmd`.
