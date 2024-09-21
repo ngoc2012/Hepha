@@ -1,41 +1,24 @@
 package main
 
 import (
+	"build/Component"
 	"fmt"
-	"html/template"
 	"os"
 	"path/filepath"
+	"text/template"
 )
 
-type PageData struct {
-	Title     string
-	Items     []string
-	Condition bool
+type Components struct {
+	C  Component.Mycomponent
+	C2 Component.Mycomponent2
 }
 
 func main() {
-	// tmpl := template.Must(template.ParseFiles("index.html", "partial.html"))
-	// tmpl := template.Must(template.ParseGlob("src/**/*.html"))
 
-	// data := PageData{
-	// 	Title:     "Main HTML",
-	// 	Items:     []string{"Item 1", "Item 2", "Item 3"},
-	// 	Condition: true,
-	// }
-
-	// // Create a file to write the output
-	// file, err := os.Create("dist/index.html")
-	// if err != nil {
-	// 	fmt.Printf("Failed to create file: %v\n", err)
-	// }
-	// defer file.Close()
-
-	// err = tmpl.Execute(file, data)
-	// if err != nil {
-	// 	fmt.Printf("Failed to execute template: %v\n", err)
-	// }
-
-	// fmt.Printf("Built done\n")
+	cs := Components{}
+	cs.C.Init()
+	cs.C2.Init()
+	fmt.Println(cs.C.Html)
 
 	// Parse all HTML files in the src/components directory as partial templates
 	partialTmpl := template.Must(template.ParseGlob("src/components/*.html"))
@@ -88,14 +71,8 @@ func main() {
 			}
 			defer file.Close()
 
-			data := PageData{
-				Title:     "Main HTML",
-				Items:     []string{"Item 1", "Item 2", "Item 3"},
-				Condition: true,
-			}
-
 			// Execute the template and write the output to the file
-			err = tmpl.ExecuteTemplate(file, filepath.Base(path), data)
+			err = tmpl.ExecuteTemplate(file, filepath.Base(path), cs)
 			if err != nil {
 				fmt.Printf("Failed to execute template: %v\n", err)
 				return err

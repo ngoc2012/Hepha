@@ -118,7 +118,7 @@ func filesAreEqual(file1, file2 string) bool {
 
 func main() {
 	// Load the configuration from the JSON file
-	config, err := LoadConfig("config.json")
+	config, err := LoadConfig("conf.json")
 	if err != nil {
 		fmt.Printf("failed to load config: %s\n", err)
 		return

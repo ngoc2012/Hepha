@@ -9,20 +9,6 @@
 </head>
 <body>
   <div id="app">
-    <!-- <div id="app">
-      {{template "components/partial.html" .}}
-      {{if .Condition}}
-        <p>Condition is true</p>
-      {{else}}
-        <p>Condition is false</p>
-      {{end}}
-      <ul>
-        {{range .Items}}
-          <li>{{.}}</li>
-        {{end}}
-      </ul>
-    </div> -->
-
     <nav id="menu">
       <ul>
         <li><a href="#"><img src="icons/home.svg" alt="Home"></a></li>
@@ -35,7 +21,7 @@
     <button class="main-btn">
       New Sheet
     </button>
-    <h1>Sheet List</h1>
+    {{ .C.Html }}
     <!-- <table className="min-w-full divide-y divide-gray-200">
       <thead className="bg-gray-50">
         <tr>
