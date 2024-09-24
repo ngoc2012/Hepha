@@ -27,7 +27,7 @@ import (
 // }
 
 func Render2Html(inputPath string, s interface{}) template.HTML {
-	log.Println("Render to string", inputPath)
+	log.Println("Render to string: ", inputPath)
 	tmpl := template.Must(template.ParseFiles(inputPath))
 
 	var buf bytes.Buffer
@@ -41,7 +41,7 @@ func Render2Html(inputPath string, s interface{}) template.HTML {
 }
 
 func Render2File(inputPath string, outputPath string, s interface{}) {
-	log.Println("Render to file", inputPath, outputPath)
+	log.Println("Render to file: ", inputPath, outputPath)
 	if err := os.MkdirAll(filepath.Dir(outputPath), 0755); err != nil {
 		log.Fatalf("Failed to create output directory structure: %v\n", err)
 	}
