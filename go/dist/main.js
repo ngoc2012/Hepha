@@ -5,7 +5,6 @@ class Button {
         this.e = e
         this.number = 1
         onClick(this.e, () => {
-            console.log('click')
             this.number++
             this.render()
         })
