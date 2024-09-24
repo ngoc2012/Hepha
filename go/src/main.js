@@ -1,4 +1,10 @@
-export const qs = s => document.querySelector(s);
-export const qsa = s => document.querySelectorAll(s);
-export const ready = c => document.addEventListener('DOMContentLoaded', c);
-  
+import { qsa, ready } from "./utils";
+
+ready(() => {
+    let buttons = qsa('.main.content')
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            console.log('clicked');
+        });
+    });
+});

@@ -1,5 +1,5 @@
 {
-	"inputFolder": "src/app",
+	"inputFolder": "src",
 	"outputFolder": "dist",
 	"compileExtension": ["html", "js", "ts"],  
 	"publicExtension": ["css", "tff", "woff", "woff2", "svg", "icon"]
