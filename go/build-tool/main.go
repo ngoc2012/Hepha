@@ -24,17 +24,15 @@ func main() {
 	// Create a new instance of the app
 	buton := contentButon{}
 	buton.Number = 1
-	buton.Html = Render2String("src/Buton.html", buton)
+	buton.Html = component.Render2String("src/Buton.html", buton)
 	print(buton.Html)
 
 	content := appContent{}
-	content.Input = "src/Content.html"
 	content.Buton = buton
-	content.Render2String(content)
+	content.Html = component.Render2String(content)
 
 	print(content.Html)
 	index := app{}
-	index.Input = "src/layout.html"
 	index.Content = content
-	index.Render2File(index, "dist/index.html")
+	index.Html = component.Render2File("src/layout.html", "dist/index.html", index)
 }
