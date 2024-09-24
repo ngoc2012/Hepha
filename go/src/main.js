@@ -9,9 +9,7 @@ class Button {
             this.render()
         })
     }
-    render() {
-        this.e.innerHTML = "Count " + this.number
-    }
+    render() {this.e.innerHTML = "Count " + this.number}
 }
 
 ready(() => {
