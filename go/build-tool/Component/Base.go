@@ -1,4 +1,4 @@
-package Component
+package component
 
 import (
 	"bytes"
@@ -11,14 +11,7 @@ import (
 
 type Base struct {
 	Input string
-	Html  string
-}
-
-func (t *Base) New(input string) Base {
-	return Base{
-		Input: input,
-		Html:  "",
-	}
+	Html  template.HTML
 }
 
 func (t *Base) GeComponentName(s interface{}) string {
@@ -35,7 +28,7 @@ func (t *Base) GeComponentName(s interface{}) string {
 }
 
 func (t *Base) Render2String(s interface{}) {
-	log.Println(t.Input)
+	log.Println("Render to string", t.Input)
 	tmpl := template.Must(template.ParseFiles(t.Input))
 
 	var buf bytes.Buffer
@@ -44,11 +37,11 @@ func (t *Base) Render2String(s interface{}) {
 		log.Fatalf("Error executing template: %v", err)
 	}
 
-	t.Html = buf.String()
+	t.Html = template.HTML(buf.String())
 }
 
 func (t *Base) Render2File(s interface{}, outputPath string) {
-
+	log.Println("Render to file", t.Input, outputPath)
 	// Ensure the output directory structure exists
 	if err := os.MkdirAll(filepath.Dir(outputPath), 0755); err != nil {
 		log.Fatalf("Failed to create output directory structure: %v\n", err)
@@ -61,22 +54,20 @@ func (t *Base) Render2File(s interface{}, outputPath string) {
 	}
 	defer file.Close()
 
-	log.Println(outputPath)
 	tmpl := template.Must(template.ParseFiles(outputPath))
 
 	// Execute the template and write the output to the file
-	err = tmpl.ExecuteTemplate(file, filepath.Base(outputPath), s)
+	err = tmpl.Execute(file, s)
 	if err != nil {
 		log.Fatalf("Failed to execute template: %v\n", err)
 	}
 }
 
-func (t *Base) File2String() {
-	// Read the file content into a byte slice
-	byteValue, err := os.ReadFile(t.Input)
+func (t *Base) FileContent2String(path string) {
+	byteValue, err := os.ReadFile(path)
 	if err != nil {
-		log.Fatalf("Failed to read file: %v\n", err)
+		log.Fatalf("Component.Base.File2String error: %v: '%s'\n", err, path)
 	} else {
-		t.Html = string(byteValue)
+		t.Html = template.HTML(string(byteValue))
 	}
 }

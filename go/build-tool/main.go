@@ -1,36 +1,38 @@
 package main
 
-import "build/Component"
+import component "build/Component"
 
 type app struct {
-	Component.Base
+	component.Base
 	Content appContent
 }
 
 type appContent struct {
-	Component.Base
+	component.Base
 	Buton contentButon
 }
 
 type contentButon struct {
-	Component.Base
+	component.Base
 	Number int
 }
 
 func main() {
 	// Create a new instance of the app
 	buton := contentButon{}
-	buton.New("src/Buton.html")
+	buton.Input = "src/Buton.html"
 	buton.Number = 1
-	buton.File2String()
+	buton.Render2String(buton)
+	print(buton.Html)
 
 	content := appContent{}
-	content.New("src/Content.html")
+	content.Input = "src/Content.html"
 	content.Buton = buton
 	content.Render2String(content)
 
+	print(content.Html)
 	index := app{}
-	index.New("src/layout.html")
+	index.Input = "src/layout.html"
 	index.Content = content
 	index.Render2File(index, "dist/index.html")
 }
