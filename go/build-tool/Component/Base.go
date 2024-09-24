@@ -34,7 +34,7 @@ func Render2String(inputPath string, s interface{}) template.HTML {
 	err := tmpl.Execute(&buf, s)
 	if err != nil {
 		log.Fatalf("Error executing template: %v", err)
-		return err
+		return ""
 	}
 
 	return template.HTML(buf.String())
@@ -64,7 +64,7 @@ func FileContent2String(path string) template.HTML {
 	byteValue, err := os.ReadFile(path)
 	if err != nil {
 		log.Fatalf("Component.Base.File2String error: %v: '%s'\n", err, path)
-		return err
+		return ""
 	} else {
 		return template.HTML(string(byteValue))
 	}
