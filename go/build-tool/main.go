@@ -2,6 +2,7 @@ package main
 
 import (
 	"build/component"
+	"build/file"
 	"html/template"
 )
 
@@ -20,7 +21,7 @@ type contentButton struct {
 }
 
 func main() {
-	file.Clean("dist")
+	file.Clean()
 	button := contentButton{Number: 1}
 	button.Html = component.Render2Html("src/Button.html", button)
 
