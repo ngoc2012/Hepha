@@ -10,7 +10,7 @@ type app struct {
 }
 
 type appContent struct {
-	Html  template.HTML
+	Html   template.HTML
 	Button contentButton
 }
 
@@ -20,12 +20,13 @@ type contentButton struct {
 }
 
 func main() {
-	button := contentButton{ Number: 1 }
+	file.Clean("dist")
+	button := contentButton{Number: 1}
 	button.Html = component.Render2Html("src/Button.html", button)
 
-	content := appContent{ Button: button }
+	content := appContent{Button: button}
 	content.Html = component.Render2Html("src/Content.html", content)
 
-	index := app{ Content: content }
+	index := app{Content: content}
 	component.Render2File("src/layout.html", "dist/index.html", index)
 }

@@ -196,7 +196,6 @@ func Clean() {
 				os.MkdirAll(distPath, 0755)
 			}
 		} else if !toCompile(path, config) && isPublicExtension(path, config) {
-			// Copy all non-HTML and non-JS files to the equivalent folder in outputDir
 			relPath, err := filepath.Rel(inputDir, path)
 			if err != nil {
 				return err
