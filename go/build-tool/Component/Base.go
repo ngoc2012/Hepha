@@ -26,7 +26,7 @@ import (
 // 	return typ.Name()
 // }
 
-func Render2String(inputPath string, s interface{}) template.HTML {
+func Render2Html(inputPath string, s interface{}) template.HTML {
 	log.Println("Render to string", inputPath)
 	tmpl := template.Must(template.ParseFiles(inputPath))
 
@@ -60,10 +60,10 @@ func Render2File(inputPath string, outputPath string, s interface{}) {
 	}
 }
 
-func FileContent2String(path string) template.HTML {
+func FileContent2Html(path string) template.HTML {
 	byteValue, err := os.ReadFile(path)
 	if err != nil {
-		log.Fatalf("Component.Base.File2String error: %v: '%s'\n", err, path)
+		log.Fatalf("Component.Base.File2Html error: %v: '%s'\n", err, path)
 		return ""
 	} else {
 		return template.HTML(string(byteValue))

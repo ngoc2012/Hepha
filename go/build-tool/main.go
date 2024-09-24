@@ -6,12 +6,12 @@ import (
 )
 
 type app struct {
-	Html   template.HTML
+	Html    template.HTML
 	Content appContent
 }
 
 type appContent struct {
-	Html   template.HTML
+	Html  template.HTML
 	Buton contentButon
 }
 
@@ -24,12 +24,12 @@ func main() {
 	// Create a new instance of the app
 	buton := contentButon{}
 	buton.Number = 1
-	buton.Html = component.Render2String("src/Buton.html", buton)
+	buton.Html = component.Render2Html("src/Buton.html", buton)
 	print(buton.Html)
 
 	content := appContent{}
 	content.Buton = buton
-	content.Html = component.Render2String(content)
+	content.Html = component.Render2Html(content)
 
 	print(content.Html)
 	index := app{}
