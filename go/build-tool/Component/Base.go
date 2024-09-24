@@ -26,7 +26,7 @@ import (
 // 	return typ.Name()
 // }
 
-func Render2String(s interface{}) {
+func Render2String(s interface{}) template.HTML {
 	log.Println("Render to string", t.Input)
 	tmpl := template.Must(template.ParseFiles(t.Input))
 
@@ -36,17 +36,15 @@ func Render2String(s interface{}) {
 		log.Fatalf("Error executing template: %v", err)
 	}
 
-	t.Html = template.HTML(buf.String())
+	return template.HTML(buf.String())
 }
 
 func Render2File(inputPath string, outputPath string, s interface{}) {
 	log.Println("Render to file", inputPath, outputPath)
-	// Ensure the output directory structure exists
 	if err := os.MkdirAll(filepath.Dir(outputPath), 0755); err != nil {
 		log.Fatalf("Failed to create output directory structure: %v\n", err)
 	}
 
-	// Create a file to write the output
 	file, err := os.Create(outputPath)
 	if err != nil {
 		log.Fatalf("Failed to create file: %v\n", err)
@@ -55,18 +53,18 @@ func Render2File(inputPath string, outputPath string, s interface{}) {
 
 	tmpl := template.Must(template.ParseFiles(inputPath))
 
-	// Execute the template and write the output to the file
 	err = tmpl.Execute(file, s)
 	if err != nil {
 		log.Fatalf("Failed to execute template: %v\n", err)
 	}
 }
 
-func FileContent2String(path string) {
+func FileContent2String(path string) template.HTML {
 	byteValue, err := os.ReadFile(path)
 	if err != nil {
 		log.Fatalf("Component.Base.File2String error: %v: '%s'\n", err, path)
+		return err
 	} else {
-		t.Html = template.HTML(string(byteValue))
+		return template.HTML(string(byteValue))
 	}
 }
