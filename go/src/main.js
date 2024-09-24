@@ -1,25 +1,22 @@
 import { $, ready, onClick } from "/utils.js";
 
 class Button {
-    constructor(element) {
-        this.element = element;
-        this.state = 'default'; // Initial state
+    constructor(e) {
+        this.e = e
+        this.number = 1
+        onClick(this.e, () => {
+            this.number++
+            this.render()
+        })
     }
-
-    setState(newState) {
-        this.state = newState;
-    }
-
-    getState() {
-        return this.state;
+    render() {
+        this.e.innnerHtml = "Count " + this.number
     }
 }
 
 ready(() => {
     let buttons = $('.main.content')
     buttons.forEach(button => {
-        onClick(button, () => {
-            console.log('clicked')
-        });
+        new Button(button)
     });
 });
