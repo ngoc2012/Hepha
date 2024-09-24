@@ -1,7 +1,7 @@
-import { qsa, ready, onClick } from "/utils.js";
+import { $a, ready, onClick } from "/utils.js";
 
 ready(() => {
-    let buttons = qsa('.main.content')
+    let buttons = $a('.main.content')
     buttons.forEach(button => {
         onClick(button, () => {
             console.log('clicked')
