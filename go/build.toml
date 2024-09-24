@@ -9,7 +9,7 @@ tmp_dir = "tmp"
 # Array of commands to run before each build
 pre_cmd = []
 # Just plain old shell command. You could use `make` as well.
-cmd = "make build && ./files conf.json && ./build"
+cmd = "make build && ./build"
 # Array of commands to run after ^C
 post_cmd = []
 # Binary file yields from `cmd`.
@@ -23,7 +23,7 @@ include_ext = ["go", "html", "css", "ts", "js"]
 # Ignore these filename extensions or directories.
 exclude_dir = []
 # Watch these directories if you specified.
-include_dir = ["src", "dist/fonts", "dist/icons", "build-tool"]
+include_dir = ["src", "build-tool"]
 # Watch these files.
 include_file = ["*.ico:"]
 # Exclude files.
