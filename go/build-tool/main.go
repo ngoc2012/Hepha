@@ -1,28 +1,30 @@
 package main
 
-import component "build/Component"
+import (
+	"build/component"
+	"html/template"
+)
 
 type app struct {
-	component.Base
+	Html   template.HTML
 	Content appContent
 }
 
 type appContent struct {
-	component.Base
+	Html   template.HTML
 	Buton contentButon
 }
 
 type contentButon struct {
-	component.Base
+	Html   template.HTML
 	Number int
 }
 
 func main() {
 	// Create a new instance of the app
 	buton := contentButon{}
-	buton.Input = "src/Buton.html"
 	buton.Number = 1
-	buton.Render2String(buton)
+	buton.Html = Render2String("src/Buton.html", buton)
 	print(buton.Html)
 
 	content := appContent{}
