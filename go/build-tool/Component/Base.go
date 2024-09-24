@@ -39,8 +39,8 @@ func Render2String(s interface{}) {
 	t.Html = template.HTML(buf.String())
 }
 
-func Render2File(s interface{}, outputPath string) {
-	log.Println("Render to file", t.Input, outputPath)
+func Render2File(inputPath string, outputPath string, s interface{}) {
+	log.Println("Render to file", inputPath, outputPath)
 	// Ensure the output directory structure exists
 	if err := os.MkdirAll(filepath.Dir(outputPath), 0755); err != nil {
 		log.Fatalf("Failed to create output directory structure: %v\n", err)
@@ -53,7 +53,7 @@ func Render2File(s interface{}, outputPath string) {
 	}
 	defer file.Close()
 
-	tmpl := template.Must(template.ParseFiles(outputPath))
+	tmpl := template.Must(template.ParseFiles(inputPath))
 
 	// Execute the template and write the output to the file
 	err = tmpl.Execute(file, s)
