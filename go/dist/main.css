@@ -48,3 +48,9 @@ body {
 	padding: 0;
 	border: 1px solid black;
 }
+
+.main.content button {
+	padding: 0;
+	margin: 0;
+	border: 1px solid black;
+}
