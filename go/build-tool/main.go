@@ -20,7 +20,6 @@ type contentButon struct {
 }
 
 func main() {
-	// Create a new instance of the app
 	buton := contentButon{ Number: 1 }
 	buton.Html = component.Render2Html("src/Buton.html", buton)
 
