@@ -12,8 +12,6 @@
 
 all:
 	air -c run.toml
-files:
-	cd files-manager && go build -o ../files .
 build:
 	cd build-tool && go build -o ../build .
 run:

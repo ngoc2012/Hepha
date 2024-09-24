@@ -1,4 +1,0 @@
-<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="50 50 100 100" transform="rotate(90)" style="background-color: #1b4079;">
-<path d="M60 60q40 40 80 0m-80 80q40-40 80 0M100 40v120m-60-60h120" stroke="#4d7c8a" stroke-width="5" fill="none"/>
-<circle cx="100" cy="100" r="20" fill="none" stroke="#8fad88" stroke-width="5"/>
-</svg>
