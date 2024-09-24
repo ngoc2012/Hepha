@@ -5,18 +5,17 @@ class Button {
         this.e = e
         this.number = 1
         onClick(this.e, () => {
+            console.log('click')
             this.number++
             this.render()
         })
     }
     render() {
-        this.e.innnerHtml = "Count " + this.number
+        this.e.innerHTML = "Count " + this.number
     }
 }
 
 ready(() => {
     let buttons = $('.main.content')
-    buttons.forEach(button => {
-        new Button(button)
-    });
+    buttons.forEach(button => {new Button(button)});
 });
