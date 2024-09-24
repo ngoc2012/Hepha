@@ -1,15 +1,16 @@
 import { $, ready, onClick } from "/utils.js";
 
 ready(() => {
-    let button = $('.main.contenst')
-    console.log(button)
-    onClick(button, () => {
+    let buttons = $('.main.contenst')
+    if (buttons instanceof NodeList) {
+        buttons.forEach(button => {
+            onClick(button, () => {
+                console.log('clicked')
+            });
+        });
+    } else {
+        onClick(buttons, () => {
         console.log('clicked')
-    });
-    // let buttons = $('.main.content')
-    // buttons.forEach(button => {
-    //     onClick(button, () => {
-    //         console.log('clicked')
-    //     });
-    // });
+        });
+    }
 });
