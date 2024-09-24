@@ -29,7 +29,7 @@ func main() {
 
 	content := appContent{}
 	content.Buton = buton
-	content.Html = component.Render2Html(content)
+	content.Html = component.Render2Html("src/Content.html", content)
 
 	print(content.Html)
 	index := app{}
