@@ -1,10 +1,10 @@
-import { qsa, ready } from "/utils.js";
+import { qsa, ready, onClick } from "/utils.js";
 
 ready(() => {
     let buttons = qsa('.main.content')
     buttons.forEach(button => {
-        button.addEventListener('click', () => {
-            console.log('clicked');
+        onClick(button, () => {
+            console.log('clicked')
         });
     });
 });
