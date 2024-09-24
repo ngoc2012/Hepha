@@ -1,4 +1,4 @@
-import { qsa, ready } from "./utils";
+import { qsa, ready } from "/utils.js";
 
 ready(() => {
     let buttons = qsa('.main.content')
