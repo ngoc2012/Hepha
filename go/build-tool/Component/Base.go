@@ -26,14 +26,15 @@ import (
 // 	return typ.Name()
 // }
 
-func Render2String(s interface{}) template.HTML {
-	log.Println("Render to string", t.Input)
-	tmpl := template.Must(template.ParseFiles(t.Input))
+func Render2String(inputPath string, s interface{}) template.HTML {
+	log.Println("Render to string", inputPath)
+	tmpl := template.Must(template.ParseFiles(inputPath))
 
 	var buf bytes.Buffer
 	err := tmpl.Execute(&buf, s)
 	if err != nil {
 		log.Fatalf("Error executing template: %v", err)
+		return err
 	}
 
 	return template.HTML(buf.String())
