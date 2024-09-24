@@ -6,7 +6,6 @@ import (
 )
 
 type app struct {
-	Html    template.HTML
 	Content appContent
 }
 
@@ -34,5 +33,5 @@ func main() {
 	print(content.Html)
 	index := app{}
 	index.Content = content
-	index.Html = component.Render2File("src/layout.html", "dist/index.html", index)
+	component.Render2File("src/layout.html", "dist/index.html", index)
 }
