@@ -8,24 +8,6 @@ import (
 	"path/filepath"
 )
 
-// type Base struct {
-// 	Input string
-// 	Html  template.HTML
-// }
-
-// func (t *Base) GeComponentName(s interface{}) string {
-// 	// Get the reflect.Type of s
-// 	typ := reflect.TypeOf(s)
-
-// 	// If s is a pointer, get the underlying type
-// 	if typ.Kind() == reflect.Ptr {
-// 		typ = typ.Elem()
-// 	}
-
-// 	// Get the name of the type
-// 	return typ.Name()
-// }
-
 func Render2Html(inputPath string, s interface{}) template.HTML {
 	log.Println("Render to string: ", inputPath)
 	tmpl := template.Must(template.ParseFiles(inputPath))
