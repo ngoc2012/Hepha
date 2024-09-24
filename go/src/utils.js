@@ -1,7 +1,8 @@
 export const $ = s => {
-    const e = document.querySelector(s)
+    const e = document.querySelectorAll(s)
     if (!e) throw new Error(`Element not found: ${s}`)
-    if (e.length === 1) return e
+    console.log(e)
+    if (e.length === 1) return e[0]
     return e
 }
 export const ready = c => document.addEventListener('DOMContentLoaded', c)
