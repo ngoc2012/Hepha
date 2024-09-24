@@ -11,19 +11,19 @@ type app struct {
 
 type appContent struct {
 	Html  template.HTML
-	Buton contentButon
+	Button contentButton
 }
 
-type contentButon struct {
+type contentButton struct {
 	Html   template.HTML
 	Number int
 }
 
 func main() {
-	buton := contentButon{ Number: 1 }
-	buton.Html = component.Render2Html("src/Buton.html", buton)
+	button := contentButton{ Number: 1 }
+	button.Html = component.Render2Html("src/Button.html", button)
 
-	content := appContent{ Buton: buton }
+	content := appContent{ Button: button }
 	content.Html = component.Render2Html("src/Content.html", content)
 
 	index := app{ Content: content }
