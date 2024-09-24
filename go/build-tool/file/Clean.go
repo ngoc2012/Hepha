@@ -40,8 +40,8 @@ func LoadConfig(filePath string) (Config, error) {
 	return config, nil
 }
 
-// isHTMLorJS checks if the file is an HTML, JS, or TS file based on the configuration
-func isHTMLorJS(path string, config Config) bool {
+// toCompile checks if the file is an HTML, JS, or TS file based on the configuration
+func toCompile(path string, config Config) bool {
 	ext := strings.ToLower(filepath.Ext(path))
 	for _, allowedExt := range config.CompileExtension {
 		if ext == "."+allowedExt {
@@ -156,8 +156,8 @@ func Clean() {
 				fmt.Printf("Deleting non-existent subfolder in src/app: %s\n", path)
 				os.RemoveAll(path)
 			}
-			// } else if !isHTMLorJS(path, config) {
-		} else if !isHTMLorJS(path, config) {
+			// } else if !toCompile(path, config) {
+		} else if !toCompile(path, config) {
 			// Get the relative path from outputDir
 			relPath, err := filepath.Rel(outputDir, path)
 			if err != nil {
@@ -195,7 +195,7 @@ func Clean() {
 				fmt.Printf("Creating missing subfolder in dist: %s\n", distPath)
 				os.MkdirAll(distPath, 0755)
 			}
-		} else if !isHTMLorJS(path, config) && isPublicExtension(path, config) {
+		} else if !toCompile(path, config) && isPublicExtension(path, config) {
 			// Copy all non-HTML and non-JS files to the equivalent folder in outputDir
 			relPath, err := filepath.Rel(inputDir, path)
 			if err != nil {
