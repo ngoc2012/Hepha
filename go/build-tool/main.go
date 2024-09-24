@@ -21,20 +21,14 @@ type contentButon struct {
 
 func main() {
 	// Create a new instance of the app
-	buton := contentButon{
-		Number: 1,
-		Html: component.Render2Html("src/Buton.html", buton)
-	}
+	buton := contentButon{ Number: 1 }
+	buton.Html = component.Render2Html("src/Buton.html", buton),
 	print(buton.Html)
 
-	content := appContent{
-		Buton: buton,
-		Html: component.Render2Html("src/Content.html", content)
-	}
+	content := appContent{ Buton: buton }
+	Content.Html = component.Render2Html("src/Content.html", content),
 
 	print(content.Html)
-	index := app{
-		Content: content,
-		component.Render2File("src/layout.html", "dist/index.html", index)
-	}
+	index := app{ Content: content }
+	component.Render2File("src/layout.html", "dist/index.html", index),
 }
