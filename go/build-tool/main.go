@@ -11,7 +11,7 @@ func examples_page() {
 		"Number": 1,
 	})
 
-	buttons := make([]template.HTML, 10)
+	var buttons [10]template.HTML
 	for i := 0; i < 10; i++ {
 		buttons[i] = button
 	}
