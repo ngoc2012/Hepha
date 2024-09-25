@@ -12,8 +12,11 @@ func main() {
 
 	button := component.Render2Html("src/examples/Button.html", 1)
 
-	content := component.Render2Html("src/examples/Content.html")
+	content := component.Render2Html("src/examples/Content.html", map[string]interface{}{
+		"Button": button,
+	})
 
-	examples_index := page{Content: content}
-	component.Render2File("src/layout.html", "dist/examples/index.html", examples_index)
+	component.Render2File("src/layout.html", "dist/examples/index.html", map[string]interface{}{
+		"Content": content,
+	})
 }
