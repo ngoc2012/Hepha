@@ -1,9 +1,9 @@
 package main
 
 import (
-	"html/template"
 	"build/component"
 	"build/file"
+	"html/template"
 )
 
 func main() {
@@ -11,15 +11,14 @@ func main() {
 
 	component.Render2File("src/layout.html", "dist/index.html", component.FileContent2Html("src/Content.html"))
 
-	button template.HTML
-	button = component.Render2Html("src/examples/Button.html", map[string]interface{}{
+	button := component.Render2Html("src/examples/Button.html", map[string]interface{}{
 		"Number": 1,
 	})
 	content := component.Render2Html("src/examples/Content.html", map[string]interface{}{
-		"Button": button,
+		"Button": template.HTML(button),
 	})
 
 	component.Render2File("src/layout.html", "dist/examples/index.html", map[string]interface{}{
-		"Content": content,
+		"Content": template.HTML(content),
 	})
 }
