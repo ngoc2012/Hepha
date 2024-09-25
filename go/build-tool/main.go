@@ -7,12 +7,10 @@ import (
 )
 
 func examples_page() {
-	// examples page
 	button := component.Render2Html("src/examples/Button.html", map[string]interface{}{
 		"Number": 1,
 	})
 
-	// Create a slice of buttons
 	buttons := make([]template.HTML, 10)
 	for i := 0; i < 10; i++ {
 		buttons[i] = button
@@ -24,6 +22,7 @@ func examples_page() {
 
 	component.Render2File("src/layout.html", "dist/examples/index.html", content)
 }
+
 func main() {
 	file.Clean()
 
