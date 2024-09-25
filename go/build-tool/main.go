@@ -18,7 +18,5 @@ func main() {
 		"Button": template.HTML(button),
 	})
 
-	component.Render2File("src/layout.html", "dist/examples/index.html", map[string]interface{}{
-		"Content": template.HTML(content),
-	})
+	component.Render2File("src/layout.html", "dist/examples/index.html", content)
 }
