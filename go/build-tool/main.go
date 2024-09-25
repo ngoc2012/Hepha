@@ -31,6 +31,6 @@ func main() {
 	index := page{Content: content}
 	component.Render2File("src/layout.html", "dist/index.html", index)
 
-	examples_index := page{Content: content}
-	component.Render2File("src/layout.html", "dist/examples/index.html", examples_index)
+	examples_index := page{Content: component.FileContent2Html("src/Content.html")}
+	component.Render2File("src/examples/layout.html", "dist/examples/index.html", examples_index)
 }
