@@ -6,11 +6,8 @@ import (
 	"html/template"
 )
 
-func main() {
-	file.Clean()
-
-	component.Render2File("src/layout.html", "dist/index.html", component.FileContent2Html("src/Content.html"))
-
+func examples_page() {
+	// examples page
 	button := component.Render2Html("src/examples/Button.html", map[string]interface{}{
 		"Number": 1,
 	})
@@ -26,4 +23,11 @@ func main() {
 	})
 
 	component.Render2File("src/layout.html", "dist/examples/index.html", content)
+}
+func main() {
+	file.Clean()
+
+	component.Render2File("src/layout.html", "dist/index.html", component.FileContent2Html("src/Content.html"))
+
+	examples_page()
 }
