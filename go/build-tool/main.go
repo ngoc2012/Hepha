@@ -10,10 +10,6 @@ type page struct {
 	Html template.HTML
 }
 
-type examplesPage struct {
-	Html examplesContent
-}
-
 type examplesContent struct {
 	Html   template.HTML
 	Button examplesButton
@@ -28,7 +24,7 @@ func main() {
 	file.Clean()
 
 	main_index := page{
-		Content: component.FileContent2Html("src/Content.html"),
+		Html: component.FileContent2Html("src/Content.html"),
 	}
 	component.Render2File("src/layout.html", "dist/index.html", main_index)
 
