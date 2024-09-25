@@ -6,13 +6,17 @@ import (
 	"html/template"
 )
 
-type page struct {
-	Content pageContent
+type mainPage struct {
+	Content template.HTML
+}
+
+type examplesPage struct {
+	Content examplesContent
 }
 
 type examplesContent struct {
 	Html   template.HTML
-	Button contentButton
+	Button examplesButton
 }
 
 type examplesButton struct {
@@ -23,10 +27,8 @@ type examplesButton struct {
 func main() {
 	file.Clean()
 
-	content := pageContent{Html: component.FileContent2Html("src/Content.html")}
-
-	index := page{Content: content}
-	component.Render2File("src/layout.html", "dist/index.html", index)
+	main_index := page{Content: component.FileContent2Html("src/Content.html")}
+	component.Render2File("src/layout.html", "dist/index.html", main_index)
 
 	button := contentButton{Number: 1}
 	button.Html = component.Render2Html("src/Button.html", button)
