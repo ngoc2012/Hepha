@@ -7,20 +7,16 @@ import (
 )
 
 func react_page() {
-	button := component.Render2Html("src/examples/Button.html", map[string]interface{}{
-		"Number": 1,
-	})
+	button := component.Render2Html("src/examples/react/Button.html", map[string]interface{}{ "Number": 1, })
 
 	var buttons [10]template.HTML
 	for i := 0; i < 10; i++ {
 		buttons[i] = button
 	}
 
-	content := component.Render2Html("src/examples/Content.html", map[string]interface{}{
-		"Buttons": buttons,
-	})
+	content := component.Render2Html("src/examples/react/Content.html", map[string]interface{}{ "Buttons": buttons, })
 
-	component.Render2File("src/layout.html", "dist/examples/index.html", content)
+	component.Render2File("src/layout.html", "dist/examples/react/index.html", content)
 }
 
 func main() {
