@@ -22,7 +22,7 @@ func Render2Html(inputPath string, s interface{}) template.HTML {
 	return template.HTML(buf.String())
 }
 
-func Render2File(inputPath string, outputPath string, s interface{}) {
+func Render2File(outputPath string, inputPath string, s interface{}) {
 	log.Println("Render to file: ", inputPath, outputPath)
 	if err := os.MkdirAll(filepath.Dir(outputPath), 0755); err != nil {
 		log.Fatalf("Failed to create output directory structure: %v\n", err)
