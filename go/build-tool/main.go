@@ -9,39 +9,39 @@ import (
 type Map map[string]interface{}
 
 func react_page() {
-	button := cmp.Render("src/examples/react/Button.html", Map{"Number": 1})
+	button := cmp.Render2Html("src/examples/react/Button.html", Map{"Number": 1})
 
 	var buttons [10]template.HTML
 	for i := 0; i < 10; i++ {
 		buttons[i] = button
 	}
 
-	content := cmp.Render("src/examples/react/Content.html", Map{"Buttons": buttons})
+	content := cmp.Render2Html("src/examples/react/Content.html", Map{"Buttons": buttons})
 
-	cmp.Render2File("dist/examples/react/index.html", "src/layout.html", Map{"Content": content})
+	cmp.Render("dist/examples/react/index.html", "src/layout.html", Map{"Content": content})
 }
 
 func remix_page() {
-	button := cmp.Render("src/examples/react/Button.html", Map{"Number": 1})
+	button := cmp.Render2Html("src/examples/react/Button.html", Map{"Number": 1})
 
 	var buttons [10]template.HTML
 	for i := 0; i < 10; i++ {
 		buttons[i] = button
 	}
 
-	content := cmp.Render("src/examples/react/Content.html", Map{"Buttons": buttons})
+	content := cmp.Render2Html("src/examples/react/Content.html", Map{"Buttons": buttons})
 
-	cmp.Render2File("dist/examples/react/index.html", "src/layout.html", Map{"Content": content})
+	cmp.Render("dist/examples/react/index.html", "src/layout.html", Map{"Content": content})
 }
 
 func main() {
 	file.Clean()
 
-	cmp.Render2File("dist/index.html", "src/layout.html", Map{
+	cmp.Render("dist/index.html", "src/layout.html", Map{
 		"Content": cmp.Read("src/Content.html"),
 		"Style":   []string{"/main.css", "/fonts/inter.css"},
 	})
-	cmp.Render2File("dist/examples/index.html", "src/layout.html", Map{"Content": cmp.Read("src/examples/Content.html")})
+	cmp.Render("dist/examples/index.html", "src/layout.html", Map{"Content": cmp.Read("src/examples/Content.html")})
 
 	react_page()
 	remix_page()

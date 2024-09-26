@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 )
 
-func Render(inputPath string, s interface{}) template.HTML {
+func Render2Html(inputPath string, s interface{}) template.HTML {
 	log.Println("Render to string: ", inputPath)
 	tmpl := template.Must(template.ParseFiles(inputPath))
 
@@ -22,7 +22,7 @@ func Render(inputPath string, s interface{}) template.HTML {
 	return template.HTML(buf.String())
 }
 
-func Render2File(outputPath string, inputPath string, s interface{}) {
+func Render(outputPath string, inputPath string, s interface{}) {
 	log.Println("Render to file: ", inputPath, outputPath)
 	if err := os.MkdirAll(filepath.Dir(outputPath), 0755); err != nil {
 		log.Fatalf("Failed to create output directory structure: %v\n", err)
