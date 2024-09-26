@@ -19,7 +19,7 @@
     </nav>
 {{ .Content }}
   </div>
-  <script type="module" src="/utils.js"></script>
-  <script type="module" src="/main.js" defer></script>
+  {{range $i := .Script}}
+  <script type="module" src="{{ . }}" defer></script> {{end}}
 </body>
 </html>

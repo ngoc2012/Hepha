@@ -40,13 +40,13 @@ func main() {
 	cmp.Render("dist/index.html", "src/layout.html", Map{
 		"Content": cmp.Read("src/Content.html"),
 		"Style":   []string{"/main.css", "/fonts/inter.css"},
-		"Script":   []string{"/utils.js", "/main.js"},
+		"Script":  []string{"/utils.js", "/main.js"},
 	})
 	cmp.Render("dist/examples/index.html", "src/layout.html", Map{
-		"Content": cmp.Read("src/examples/Content.html")},
+		"Content": cmp.Read("src/examples/Content.html"),
 		"Style":   []string{"/main.css", "/fonts/inter.css"},
-		"Script":   []string{"/utils.js", "/main.js"},
-	)
+		"Script":  []string{"/utils.js", "/main.js"},
+	})
 
 	react_page()
 	remix_page()
