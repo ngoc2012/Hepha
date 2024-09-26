@@ -16,7 +16,7 @@ func react_page() {
 
 	content := component.Render2Html("src/examples/react/Content.html", map[string]interface{}{"Buttons": buttons})
 
-	component.Render2File("dist/examples/react/index.html", "src/layout.html", content)
+	component.Render2File("dist/examples/react/index.html", "src/layout.html", map[string]interface{}{"Content": content})
 }
 
 func remix_page() {
@@ -29,14 +29,14 @@ func remix_page() {
 
 	content := component.Render2Html("src/examples/react/Content.html", map[string]interface{}{"Buttons": buttons})
 
-	component.Render2File("dist/examples/react/index.html", "src/layout.html", content)
+	component.Render2File("dist/examples/react/index.html", "src/layout.html", map[string]interface{}{"Content": content})
 }
 
 func main() {
 	file.Clean()
 
-	component.Render2File("dist/index.html", "src/layout.html", component.FileContent2Html("src/Content.html"))
-	component.Render2File("dist/examples/index.html", "src/layout.html", component.FileContent2Html("src/examples/Content.html"))
+	component.Render2File("dist/index.html", "src/layout.html", map[string]interface{}{"Content": component.FileContent2Html("src/Content.html")})
+	component.Render2File("dist/examples/index.html", "src/layout.html", map[string]interface{}{"Content": component.FileContent2Html("src/examples/Content.html")})
 
 	react_page()
 	remix_page()
