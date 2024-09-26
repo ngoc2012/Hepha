@@ -16,13 +16,13 @@
       ) : (
         <i>No Name</i>
 		) }}{" "}
-	  <Favorite contact={{ .Contact }} />
+	  <Favorite contact="{{ .Contact }}" />
     </h1>
 
     {{ .Contact.twitter ? (
       <p>
         <a
-						href={`https://twitter.com/${{ .Contact.twitter }}`}
+						href="https://twitter.com/{{ .Contact.twitter }}"
         >
 		{{ .Contact.twitter }}
         </a>
@@ -32,11 +32,11 @@
 	{{ .Contact.notes ? <p>{{ .Contact.notes }}</p> : null }}
 
     <div>
-      <Form action="edit">
+      <form action="edit">
         <button type="submit">Edit</button>
-      </Form>
+      </form>
 
-      <Form
+      <form
         action="destroy"
         method="post"
         onSubmit={(event) => {
@@ -49,7 +49,7 @@
         }}
       >
         <button type="submit">Delete</button>
-      </Form>
+      </form>
     </div>
   </div>
 </div>
