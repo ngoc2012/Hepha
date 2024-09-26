@@ -42,7 +42,7 @@ func Render2File(outputPath string, inputPath string, s interface{}) {
 	}
 }
 
-func FileContent2Html(path string) template.HTML {
+func Read(path string) template.HTML {
 	byteValue, err := os.ReadFile(path)
 	if err != nil {
 		log.Fatalf("Component.Base.File2Html error: %v: '%s'\n", err, path)

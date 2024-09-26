@@ -38,10 +38,10 @@ func main() {
 	file.Clean()
 
 	cmp.Render2File("dist/index.html", "src/layout.html", Map{
-		"Content": cmp.FileContent2Html("src/Content.html"),
+		"Content": cmp.Read("src/Content.html"),
 		"Style":   []string{"/main.css", "/fonts/inter.css"},
 	})
-	cmp.Render2File("dist/examples/index.html", "src/layout.html", Map{"Content": cmp.FileContent2Html("src/examples/Content.html")})
+	cmp.Render2File("dist/examples/index.html", "src/layout.html", Map{"Content": cmp.Read("src/examples/Content.html")})
 
 	react_page()
 	remix_page()
