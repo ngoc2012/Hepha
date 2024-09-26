@@ -1,18 +1,18 @@
 <div id="contact">
   <div>
     <img
-					alt=`{{ .Contact.first }} ${{ .Contact.last }} avatar`
-					key={{ .Contact.avatar }}
-					src={{ .Contact.avatar }}
+			alt="{{ .Contact.first }} {{ .Contact.last }} avatar"
+			key="{{ .Contact.avatar }}"
+			src="{{ .Contact.avatar }}"
     />
   </div>
 
   <div>
     <h1>
       {{ .Contact.first || contact.last ? (
-        <>
+        <p>
 					{{ .Contact.first }} {{ .Contact.last }}
-        </>
+        </p>
       ) : (
         <i>No Name</i>
 		) }}{" "}
