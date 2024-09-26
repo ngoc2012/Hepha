@@ -9,27 +9,27 @@ import (
 type Map map[string]interface{}
 
 func react_page() {
-	button := cmp.Render2Html("src/examples/react/Button.html", Map{"Number": 1})
+	button := cmp.Render("src/examples/react/Button.html", Map{"Number": 1})
 
 	var buttons [10]template.HTML
 	for i := 0; i < 10; i++ {
 		buttons[i] = button
 	}
 
-	content := cmp.Render2Html("src/examples/react/Content.html", Map{"Buttons": buttons})
+	content := cmp.Render("src/examples/react/Content.html", Map{"Buttons": buttons})
 
 	cmp.Render2File("dist/examples/react/index.html", "src/layout.html", Map{"Content": content})
 }
 
 func remix_page() {
-	button := cmp.Render2Html("src/examples/react/Button.html", Map{"Number": 1})
+	button := cmp.Render("src/examples/react/Button.html", Map{"Number": 1})
 
 	var buttons [10]template.HTML
 	for i := 0; i < 10; i++ {
 		buttons[i] = button
 	}
 
-	content := cmp.Render2Html("src/examples/react/Content.html", Map{"Buttons": buttons})
+	content := cmp.Render("src/examples/react/Content.html", Map{"Buttons": buttons})
 
 	cmp.Render2File("dist/examples/react/index.html", "src/layout.html", Map{"Content": content})
 }

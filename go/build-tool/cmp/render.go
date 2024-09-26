@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 )
 
-func Render2Html(inputPath string, s interface{}) template.HTML {
+func Render(inputPath string, s interface{}) template.HTML {
 	log.Println("Render to string: ", inputPath)
 	tmpl := template.Must(template.ParseFiles(inputPath))
 
