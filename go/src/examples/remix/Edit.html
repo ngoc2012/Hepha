@@ -1,8 +1,8 @@
-<Form key={contact.id} id="contact-form" method="post">
+<Form key={{ .Contact.id }} id="contact-form" method="post">
   <p>
     <span>Name</span>
     <input
-      defaultValue={contact.first}
+			defaultValue={{ .Contact.first }}
       aria-label="First name"
       name="first"
       type="text"
@@ -10,7 +10,7 @@
     />
     <input
       aria-label="Last name"
-      defaultValue={contact.last}
+	  defaultValue={{ .Contact.last }}
       name="last"
       placeholder="Last"
       type="text"
@@ -19,7 +19,7 @@
   <label>
     <span>Twitter</span>
     <input
-      defaultValue={contact.twitter}
+					defaultValue={{ .Contact.twitter }}
       name="twitter"
       placeholder="@jack"
       type="text"
@@ -29,7 +29,7 @@
     <span>Avatar URL</span>
     <input
       aria-label="Avatar URL"
-      defaultValue={contact.avatar}
+	  defaultValue={{ .Contact.avatar }}
       name="avatar"
       placeholder="https://example.com/avatar.jpg"
       type="text"
@@ -38,7 +38,7 @@
   <label>
     <span>Notes</span>
     <textarea
-      defaultValue={contact.notes}
+					defaultValue={{ .Contact.notes }}
       name="notes"
       rows={6}
     />
