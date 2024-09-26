@@ -6,6 +6,8 @@ import (
 	"html/template"
 )
 
+type Map map[string]interface{}
+
 func react_page() {
 	button := component.Render2Html("src/examples/react/Button.html", map[string]interface{}{"Number": 1})
 
@@ -35,7 +37,10 @@ func remix_page() {
 func main() {
 	file.Clean()
 
-	component.Render2File("dist/index.html", "src/layout.html", map[string]interface{}{"Content": component.FileContent2Html("src/Content.html")})
+	component.Render2File("dist/index.html", "src/layout.html", map[string]interface{}{
+		"Content": component.FileContent2Html("src/Content.html"),
+		"Style": ["/main.css", "/fonts/inter.css"],
+	})
 	component.Render2File("dist/examples/index.html", "src/layout.html", map[string]interface{}{"Content": component.FileContent2Html("src/examples/Content.html")})
 
 	react_page()
