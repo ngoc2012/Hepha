@@ -6,7 +6,7 @@ import (
 	"html/template"
 )
 
-func examples_page() {
+func react_page() {
 	button := component.Render2Html("src/examples/Button.html", map[string]interface{}{
 		"Number": 1,
 	})
@@ -27,7 +27,7 @@ func main() {
 	file.Clean()
 
 	component.Render2File("dist/index.html", "src/layout.html", component.FileContent2Html("src/Content.html"))
-	component.Render2File("src/layout.html", "dist/index.html", component.FileContent2Html("src/Content.html"))
+	component.Render2File("dist/examples/index.html", "src/layout.html", component.FileContent2Html("src/examples/Content.html"))
 
-	examples_page()
+	react_page()
 }
