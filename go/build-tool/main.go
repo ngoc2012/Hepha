@@ -27,6 +27,7 @@ func main() {
 	file.Clean()
 
 	component.Render2File("src/layout.html", "dist/index.html", component.FileContent2Html("src/Content.html"))
+	component.Render2File("src/layout.html", "dist/index.html", component.FileContent2Html("src/Content.html"))
 
 	examples_page()
 }
