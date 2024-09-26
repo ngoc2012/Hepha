@@ -1,14 +1,12 @@
-<li key={{ .Contact.id }}>
+<li key="{{ .Contact.id }}">
 		<a href="contacts/{{ .Contact.id }}">
                 {{ .Contact.first || contact.last ? (
-                  <>
 			  {{ .Contact.first }} {{ .Contact.last }}
-                  </>
                 ) : (
-                  <i>No Name</i>
+                  <span>No Name</span>
                 )}{" "}
                 {{ .Contact.favorite ? (
                   <span>★</span>
 				  ) : null }}
-              </Link>
+              </a>
             </li>
