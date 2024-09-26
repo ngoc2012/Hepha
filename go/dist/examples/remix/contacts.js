@@ -1,28 +1,27 @@
-async getAll() {
+async function getAll() {
     return Object.keys(fakeContacts.records).map((key) => fakeContacts.records[key]).sort(sortBy("-createdAt", "last"));
-  },
-  async get(id) {
-    return fakeContacts.records[id] || null;
-  },
-  async create(values) {
-    const id = values.id || Math.random().toString(36).substring(2, 9);
-    const createdAt = (/* @__PURE__ */ new Date()).toISOString();
-    const newContact = { id, createdAt, ...values };
-    fakeContacts.records[id] = newContact;
-    return newContact;
-  },
-  async set(id, values) {
-    const contact = await fakeContacts.get(id);
-    invariant(contact, `No contact found for ${id}`);
-    const updatedContact = { ...contact, ...values };
-    fakeContacts.records[id] = updatedContact;
-    return updatedContact;
-  },
-  destroy(id) {
-    delete fakeContacts.records[id];
-    return null;
   }
-};
+async function get(id) {
+  return fakeContacts.records[id] || null;
+}
+async function create(values) {
+  const id = values.id || Math.random().toString(36).substring(2, 9);
+  const createdAt = (/* @__PURE__ */ new Date()).toISOString();
+  const newContact = { id, createdAt, ...values };
+  fakeContacts.records[id] = newContact;
+  return newContact;
+}
+async function set(id, values) {
+  const contact = await fakeContacts.get(id);
+  invariant(contact, `No contact found for ${id}`);
+  const updatedContact = { ...contact, ...values };
+  fakeContacts.records[id] = updatedContact;
+  return updatedContact;
+}
+function destroy(id) {
+  delete fakeContacts.records[id];
+  return null;
+}
 
 async function getContacts(query) {
   await new Promise((resolve) => setTimeout(resolve, 500));
