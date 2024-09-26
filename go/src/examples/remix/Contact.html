@@ -1,14 +1,14 @@
-            <li key={contact.id}>
-              <Link to={`contacts/${contact.id}`}>
-                {contact.first || contact.last ? (
+<li key={{ .Contact.id }}>
+		<a href="contacts/{{ .Contact.id }}">
+                {{ .Contact.first || contact.last ? (
                   <>
-                    {contact.first} {contact.last}
+			  {{ .Contact.first }} {{ .Contact.last }}
                   </>
                 ) : (
                   <i>No Name</i>
                 )}{" "}
-                {contact.favorite ? (
+                {{ .Contact.favorite ? (
                   <span>★</span>
-                ) : null}
+				  ) : null }}
               </Link>
             </li>
