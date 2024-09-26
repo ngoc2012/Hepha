@@ -39,7 +39,7 @@ func main() {
 
 	component.Render2File("dist/index.html", "src/layout.html", Map{
 		"Content": component.FileContent2Html("src/Content.html"),
-		"Style": ["/main.css", "/fonts/inter.css"],
+		"Style":   []string{"/main.css", "/fonts/inter.css"},
 	})
 	component.Render2File("dist/examples/index.html", "src/layout.html", Map{"Content": component.FileContent2Html("src/examples/Content.html")})
 
