@@ -18,7 +18,11 @@ func react_page() {
 
 	content := cmp.Render2Html("src/examples/react/Content.html", Map{"Buttons": buttons})
 
-	cmp.Render("dist/examples/react/index.html", "src/layout.html", Map{"Content": content})
+	cmp.Render("dist/examples/react/index.html", "src/layout.html", Map{
+		"Content": content,
+		"Style":   []string{"/main.css", "/fonts/inter.css"},
+		"Script":  []string{"/utils.js", "/main.js"},
+	})
 }
 
 func remix_page() {
@@ -31,7 +35,11 @@ func remix_page() {
 
 	content := cmp.Render2Html("src/examples/react/Content.html", Map{"Buttons": buttons})
 
-	cmp.Render("dist/examples/react/index.html", "src/layout.html", Map{"Content": content})
+	cmp.Render("dist/examples/react/index.html", "src/layout.html", Map{
+		"Content": content,
+		"Style":   []string{"/main.css", "/fonts/inter.css"},
+		"Script":  []string{"/utils.js", "/main.js"},
+	})
 }
 
 func main() {
