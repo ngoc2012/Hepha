@@ -5,3 +5,5 @@
   {{range $i := .Buttons}}
   {{ . }} {{end}}
 </div>
+{{range $i := .Script}}
+<script type="module" src="{{ . }}" defer></script> {{end}}
