@@ -21,7 +21,7 @@ func react_page() {
 	cmp.Render("dist/examples/react/index.html", "src/layout.html", Map{
 		"Content": content,
 		"Style":   []string{"/main.css", "/fonts/inter.css"},
-		"Script":  []string{"/utils.js", "/main.js"},
+		"Script":  []string{"/utils.js", "/button.js"},
 	})
 }
 
@@ -38,7 +38,7 @@ func remix_page() {
 	cmp.Render("dist/examples/react/index.html", "src/layout.html", Map{
 		"Content": content,
 		"Style":   []string{"/main.css", "/fonts/inter.css"},
-		"Script":  []string{"/utils.js", "/main.js"},
+		"Script":  []string{},
 	})
 }
 
@@ -53,7 +53,7 @@ func main() {
 	cmp.Render("dist/examples/index.html", "src/layout.html", Map{
 		"Content": cmp.Read("src/examples/Content.html"),
 		"Style":   []string{"/main.css", "/fonts/inter.css"},
-		"Script":  []string{"/utils.js", "/main.js"},
+		"Script":  []string{},
 	})
 
 	react_page()
