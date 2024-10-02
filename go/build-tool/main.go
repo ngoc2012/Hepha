@@ -27,7 +27,7 @@ func react_page() {
 
 func remix_page() {
 	cmp.Render("dist/examples/remix/index.html", "src/layout.html", Map{
-		"Content": cmp.Read("src/Content.html"),
+		"Content": cmp.Read("src/examples/remix/Content.html"),
 		"Style":   []string{"/main.css", "/fonts/inter.css"},
 		"Script":  []string{},
 	})
