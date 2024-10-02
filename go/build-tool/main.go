@@ -26,16 +26,16 @@ func react_page() {
 }
 
 func remix_page() {
-	button := cmp.Render2Html("src/examples/react/Button.html", Map{"Number": 1})
+	button := cmp.Render2Html("src/examples/remix/Button.html", Map{"Number": 1})
 
 	var buttons [10]template.HTML
 	for i := 0; i < 10; i++ {
 		buttons[i] = button
 	}
 
-	content := cmp.Render2Html("src/examples/react/Content.html", Map{"Buttons": buttons})
+	content := cmp.Render2Html("src/examples/remix/Content.html", Map{"Buttons": buttons})
 
-	cmp.Render("dist/examples/react/index.html", "src/layout.html", Map{
+	cmp.Render("dist/examples/remix/index.html", "src/layout.html", Map{
 		"Content": content,
 		"Style":   []string{"/main.css", "/fonts/inter.css"},
 		"Script":  []string{},
@@ -53,7 +53,7 @@ func main() {
 	cmp.Render("dist/examples/index.html", "src/layout.html", Map{
 		"Content": cmp.Read("src/examples/Content.html"),
 		"Style":   []string{"/main.css", "/fonts/inter.css"},
-		"Script":  []string{},
+		"Script":  []string{"/utils.js"},
 	})
 
 	react_page()
