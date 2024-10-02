@@ -21,7 +21,7 @@ func react_page() {
 	cmp.Render("dist/examples/react/index.html", "src/layout.html", Map{
 		"Content": content,
 		"Style":   []string{"/main.css", "/fonts/inter.css"},
-		"Script":  []string{"/utils.js", "/button.js"},
+		"Script":  []string{"/utils.js", "button.js"},
 	})
 }
 
