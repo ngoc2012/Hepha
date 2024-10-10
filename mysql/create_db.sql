@@ -2,14 +2,14 @@
 USE INFORMATION_SCHEMA;
 SELECT SCHEMA_NAME
 FROM SCHEMATA
-WHERE SCHEMA_NAME = 'hepha_db';
+WHERE SCHEMA_NAME = 'hefa_db';
 
 -- If the database doesn't exist, create it
-DROP DATABASE IF EXISTS hepha_db;
-CREATE DATABASE IF NOT EXISTS hepha_db;
+DROP DATABASE IF EXISTS hefa_db;
+CREATE DATABASE IF NOT EXISTS hefa_db;
 
 -- Use the newly created database
-USE hepha_db;
+USE hefa_db;
 
 -- Create the tables
 -- CREATE TABLE IF NOT EXISTS system (

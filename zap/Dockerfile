@@ -11,9 +11,9 @@ RUN apk update && \
 
 # RUN mkdir -p /var/lib/files
 
-RUN adduser -D hepha
-RUN mkdir -p /home/hepha/app
-RUN chown -R hepha:hepha /home/hepha/app
+RUN adduser -D hefa
+RUN mkdir -p /home/hefa/app
+RUN chown -R hefa:hefa /home/hefa/app
 
 WORKDIR /app
 
@@ -28,7 +28,7 @@ COPY rebuild.sh .
 RUN chmod +x zap.sh
 RUN chmod +x rebuild.sh
 
-# USER hepha
+# USER hefa
 
 # ENV PATH=/app/zig-linux-x86_64-0.13.0:$PATH
 
@@ -36,7 +36,7 @@ RUN chmod +x rebuild.sh
 
 # RUN zig build
 #
-#WORKDIR /home/hepha/app/build/zig-out/bin
+#WORKDIR /home/hefa/app/build/zig-out/bin
 
 EXPOSE 4000
 

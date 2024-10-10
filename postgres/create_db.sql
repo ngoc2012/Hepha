@@ -1,12 +1,12 @@
 -- Check if the database exists
-SELECT datname FROM pg_database WHERE datname = 'hepha_db';
+SELECT datname FROM pg_database WHERE datname = 'hefa_db';
 
 -- If the database doesn't exist, create it
-DROP DATABASE IF EXISTS hepha_db;
-CREATE DATABASE hepha_db;
+DROP DATABASE IF EXISTS hefa_db;
+CREATE DATABASE hefa_db;
 
 -- Connect to the newly created database
-\c hepha_db;
+\c hefa_db;
 
 -- Create the tables
 CREATE TABLE System (

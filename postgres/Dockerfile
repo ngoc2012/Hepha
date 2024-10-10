@@ -18,10 +18,10 @@ RUN mkdir /run/postgresql
 RUN chown postgres:postgres /run/postgresql/
 
 # RUN addgroup postgres
-# RUN adduser -D -G postgres hepha
+# RUN adduser -D -G postgres hefa
 
 # RUN mkdir /run/postgresql && \
-#     chown hepha:postgres /run/postgresql && \
+#     chown hefa:postgres /run/postgresql && \
 #     chmod 755 /run/postgresql
 
 # Expose the PostgreSQL port

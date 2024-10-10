@@ -4,8 +4,8 @@ RUN apk update && \
     apk add --no-cache mysql mysql-client expect \
     && rm -rf /var/cache/apk/*
 
-RUN addgroup hepha
-RUN adduser -D -G hepha hepha
+RUN addgroup hefa
+RUN adduser -D -G hefa hefa
 
 WORKDIR /app
 

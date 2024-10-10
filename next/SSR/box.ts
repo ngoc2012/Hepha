@@ -11,7 +11,7 @@ export async function newBox(data_type:string, data: string, lang: string, ver: 
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ user: "hepha", sheet: 1, type: data_type, lang: lang, ver: ver, data: data, caption: "test" }),
+    body: JSON.stringify({ user: "hefa", sheet: 1, type: data_type, lang: lang, ver: ver, data: data, caption: "test" }),
     cache: 'no-cache'
   });
  
@@ -34,7 +34,7 @@ export async function exeBox(data_type:string, data: string, lang: string, ver: 
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ user: "hepha", sheet: 1, type: data_type, lang: lang, ver: ver, data: data, caption: "test" }),
+    body: JSON.stringify({ user: "hefa", sheet: 1, type: data_type, lang: lang, ver: ver, data: data, caption: "test" }),
     cache: 'no-cache'
   });
  

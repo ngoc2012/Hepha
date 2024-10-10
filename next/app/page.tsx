@@ -53,7 +53,7 @@ export default function Home() {
   }, []);
 
   const handleNewSheetButtonClick = async () => {
-    const res = await newSheet("hepha", "No title", "No description")
+    const res = await newSheet("hefa", "No title", "No description")
     if (res.error) {
       console.error(res.error)
       return;

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export PATH="/home/hepha/app/zig:/home/hepha/app/build/zig-out/bin:$PATH"
+export PATH="/home/hefa/app/zig:/home/hefa/app/build/zig-out/bin:$PATH"
 
 zig version
 

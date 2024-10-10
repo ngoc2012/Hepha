@@ -3,7 +3,7 @@
 postgres
 /app $ psql
 
-\c hepha_db
+\c hefa_db
 
 
 postgres=# \d sheet-id_seq;
@@ -29,17 +29,17 @@ postgres=# SELECT current_user;
 (1 row)
 
 postgres=# exit
-a41f8c957457:~$ psql -U ngoc2012 -d hepha_db -h local -p 5432
+a41f8c957457:~$ psql -U ngoc2012 -d hefa_db -h local -p 5432
 psql: error: could not translate host name "local" to address: Try again
-a41f8c957457:~$ psql -U ngoc2012 -d hepha_db -h localhost -p 5432
+a41f8c957457:~$ psql -U ngoc2012 -d hefa_db -h localhost -p 5432
 psql (16.3)
 Type "help" for help.
 
-hepha_db=> \d sheet-id_seq;
+hefa_db=> \d sheet-id_seq;
 Did not find any relation named "sheet-id_seq".
-hepha_db=> CREATE SEQUENCE sheet_id_seq;
+hefa_db=> CREATE SEQUENCE sheet_id_seq;
 ERROR:  permission denied for schema public
-hepha_db=> 
+hefa_db=> 
 
 
 a41f8c957457:~$ psql
@@ -49,19 +49,19 @@ Type "help" for help.
 postgres=# GRANT CREATE ON SCHEMA public TO ngoc2012;
 GRANT
 postgres=# exit
-a41f8c957457:~$ psql -U ngoc2012 -d hepha_db -h localhost -p 5432
+a41f8c957457:~$ psql -U ngoc2012 -d hefa_db -h localhost -p 5432
 psql (16.3)
 Type "help" for help.
 
-hepha_db=> SELECT current_schema();
+hefa_db=> SELECT current_schema();
  current_schema 
 ----------------
  public
 (1 row)
 
-hepha_db=> CREATE SEQUENCE sheet_id_seq;
+hefa_db=> CREATE SEQUENCE sheet_id_seq;
 ERROR:  permission denied for schema public
-hepha_db=> 
+hefa_db=> 
 
 a41f8c957457:~$ psql
 psql (16.3)
@@ -70,14 +70,14 @@ Type "help" for help.
 postgres=# GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO ngoc2012;
 GRANT
 postgres=# exit
-a41f8c957457:~$ psql -U ngoc2012 -d hepha_db -h localhost -p 5432
+a41f8c957457:~$ psql -U ngoc2012 -d hefa_db -h localhost -p 5432
 psql (16.3)
 Type "help" for help.
 
-hepha_db=> \dp public;
+hefa_db=> \dp public;
                             Access privileges
  Schema | Name | Type | Access privileges | Column privileges | Policies 
 --------+------+------+-------------------+-------------------+----------
 (0 rows)
 
-hepha_db=> 
+hefa_db=> 

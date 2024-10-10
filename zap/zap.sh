@@ -16,18 +16,18 @@ fi
 
 # echo "Running as user: $(whoami)"
 # pwd
-# ls /home/hepha/app/build/
+# ls /home/hefa/app/build/
 # echo "==================="
-# ls /home/hepha/app/build/zig-out
+# ls /home/hefa/app/build/zig-out
 # echo "==================="
-# ls /home/hepha/app/build/zig-out/bin
+# ls /home/hefa/app/build/zig-out/bin
 # echo "==================="
 
-# chmod +x /home/hepha/app/build/zig-out/bin/zap
+# chmod +x /home/hefa/app/build/zig-out/bin/zap
 
-# su - hepha
+# su - hefa
 
-# export PATH="/home/hepha/app/build/zig-out/bin:$PATH"
+# export PATH="/home/hefa/app/build/zig-out/bin:$PATH"
 
 echo "Running as user: $(whoami)"
 

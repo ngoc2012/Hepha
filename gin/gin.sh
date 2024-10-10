@@ -21,9 +21,9 @@ go mod download
 # echo "go mod download ... done"
 
 # go run main.go
-go build -o hepha
+go build -o hefa
 
 echo "go build ... done"
 ls
 
-./hepha
+./hefa

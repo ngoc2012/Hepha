@@ -14,7 +14,7 @@ import (
 
 	// _ "github.com/go-sql-driver/mysql"
 
-	"hepha/routes"
+	"hefa/routes"
 )
 
 func main() {

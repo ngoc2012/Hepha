@@ -34,7 +34,7 @@ export async function exeSheet(data: string) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ user: "hepha", sheet: 1, type: "Code", language: "Python", language_version: "3", data: data, caption: "test" }),
+    body: JSON.stringify({ user: "hefa", sheet: 1, type: "Code", language: "Python", language_version: "3", data: data, caption: "test" }),
     cache: 'no-cache'
   });
  

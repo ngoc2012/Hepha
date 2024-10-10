@@ -1,4 +1,4 @@
-module hepha
+module hefa
 
 go 1.22.1
 
@@ -38,4 +38,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace hepha/routes => ./routes
+replace hefa/routes => ./routes

@@ -10,17 +10,17 @@
 # vim /etc/my.cnf.d/mariadb-server.cnf
 
 # Inialization mysql
-chown hepha:hepha /var/lib/mysql
+chown hefa:hefa /var/lib/mysql
 chmod 750 /var/lib/mysql
 
 mkdir -p /run/mysqld
-chown -R hepha:hepha /run/mysqld
+chown -R hefa:hefa /run/mysqld
 chmod 750 /var/lib/mysql
 
 # Run with mysql as user
-mysql_install_db --user=hepha --datadir=/var/lib/mysql
+mysql_install_db --user=hefa --datadir=/var/lib/mysql
 
-mysqld --user=hepha &
+mysqld --user=hefa &
 
 # Wait for MySQL to start
 until mysqladmin ping --silent; do
@@ -68,7 +68,7 @@ expect eof
 EOF
 
 mysqladmin -u root -p"$DB_ROOT_PASSWORD" shutdown
-mysqld_safe --user=hepha --datadir=/var/lib/mysql &
+mysqld_safe --user=hefa --datadir=/var/lib/mysql &
 
 # Wait for MySQL to start again
 until mysqladmin ping --silent; do
@@ -88,7 +88,7 @@ done
 
 mysqladmin -u root -p"$DB_ROOT_PASSWORD" shutdown
 
-mysqld_safe --user=hepha --datadir=/var/lib/mysql --skip-networking=0 --bind-address=0.0.0.0 --skip-name-resolve
+mysqld_safe --user=hefa --datadir=/var/lib/mysql --skip-networking=0 --bind-address=0.0.0.0 --skip-name-resolve
 
 # #skip-networking
 # If you enable skip-networking by removing the hash (#) symbol, the database server will only accept connections from local clients using Unix sockets or named pipes. This means remote clients won't be able to connect to the database server.
