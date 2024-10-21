@@ -10,6 +10,7 @@ RUN chmod -R 755 /var/www/html
 
 # Copy your custom Nginx configuration file to the container
 COPY nginx.conf /etc/nginx/http.d
+COPY . /var/www/html
 EXPOSE 3001
 
 # Start Nginx in the foreground
