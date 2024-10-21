@@ -1,0 +1,2 @@
+2024/10/21 08:58:24 [crit] 55192#55192: *1 stat() "/home/ngoc/Hefa/interface/index.html" failed (13: Permission denied), client: ::1, server: localhost, request: "GET /index.html HTTP/1.1", host: "localhost:3001"
+2024/10/21 08:58:24 [crit] 55192#55192: *1 stat() "/home/ngoc/Hefa/interface/index.html" failed (13: Permission denied), client: ::1, server: localhost, request: "GET /index.html HTTP/1.1", host: "localhost:3001"
