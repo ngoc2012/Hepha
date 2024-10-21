@@ -27,7 +27,7 @@ include_dir = []
 # Watch these files.
 include_file = ["*.ico:"]
 # Exclude files.
-exclude_file = ["dist/*\\.js", "dist/*\\.html", "*.md", "*.txt"]
+exclude_file = ["Dockerfile", "*.log", "*.md", "*.txt"]
 # Exclude specific regular expressions.
 exclude_regex = []
 # Exclude unchanged files.
@@ -81,5 +81,5 @@ keep_scroll = true
 #  app_port = 8080
 [proxy]
   enabled = true
-  proxy_port = 8090
-  app_port = 7070
+  proxy_port = 3002
+  app_port = 3001
