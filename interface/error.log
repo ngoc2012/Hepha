@@ -22,3 +22,7 @@
 2024/10/21 10:25:12 [crit] 70377#70377: *1 stat() "/home/ngoc/test/" failed (13: Permission denied), client: ::1, server: localhost, request: "GET / HTTP/1.1", host: "localhost:3001"
 2024/10/21 10:25:16 [crit] 70377#70377: *1 stat() "/home/ngoc/test/index.html" failed (13: Permission denied), client: ::1, server: localhost, request: "GET /index.html HTTP/1.1", host: "localhost:3001"
 2024/10/21 10:25:16 [crit] 70377#70377: *1 stat() "/home/ngoc/test/index.html" failed (13: Permission denied), client: ::1, server: localhost, request: "GET /index.html HTTP/1.1", host: "localhost:3001"
+2024/10/21 10:27:14 [crit] 70377#70377: *4 stat() "/home/ngoc/test/index.html" failed (13: Permission denied), client: 127.0.0.1, server: localhost, request: "GET /index.html HTTP/1.1", host: "127.0.0.1:3001"
+2024/10/21 10:27:14 [crit] 70377#70377: *4 stat() "/home/ngoc/test/index.html" failed (13: Permission denied), client: 127.0.0.1, server: localhost, request: "GET /index.html HTTP/1.1", host: "127.0.0.1:3001"
+2024/10/21 10:27:14 [crit] 70377#70377: *4 stat() "/home/ngoc/test/favicon.ico" failed (13: Permission denied), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "127.0.0.1:3001", referrer: "http://127.0.0.1:3001/index.html"
+2024/10/21 10:27:14 [crit] 70377#70377: *4 stat() "/home/ngoc/test/favicon.ico" failed (13: Permission denied), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "127.0.0.1:3001", referrer: "http://127.0.0.1:3001/index.html"
