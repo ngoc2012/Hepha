@@ -103,7 +103,7 @@ docknest:
 		img sh
 
 interface:
-	docker build -t img -f "./interface/Dockerfile" "./interface"
+	docker build -t interface -f "./interface/Dockerfile" "./interface"
 	docker run --rm -ti \
 		--name interface \
     	-p 3001:3001
