@@ -6,7 +6,7 @@
 #    By: minh-ngu <minh-ngu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2024/10/21 17:14:39 by ngoc             ###   ########.fr        #
+#    Updated: 2024/10/21 17:16:03 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,8 +106,7 @@ interface:
 	docker build -t img -f "./interface/Dockerfile" "./interface"
 	docker run --rm -ti \
 		--name interface \
-    	-p 3001:3001 \
-		img sh
+    	-p 3001:3001
 dockzap:
 	docker build -t img -f "./zap/Dockerfile" "./zap"
 	docker run --rm -ti \
