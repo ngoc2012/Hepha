@@ -8,6 +8,8 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
   setModeIcon('light');
 }
 
+onClick($('.mode-toggle')[0], toggleMode);
+
 function toggleMode() {
   const currentTheme = document.documentElement.getAttribute('data-theme');
   const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
