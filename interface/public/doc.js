@@ -5,17 +5,17 @@ function toggleMode() {
 
   const toggleIcon = document.getElementById('toggle-icon');
     if (newTheme === 'dark') {
-        toggleIcon.src = '/sun.svg';
+        toggleIcon.data = '/sun.svg';
     } else {
-        toggleIcon.src = '/moon.svg';
+        toggleIcon.data = '/moon.svg';
     }
 }
 
 // Apply dark mode class if user prefers dark mode
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
   document.documentElement.setAttribute('data-theme', 'dark');
-  document.getElementById('toggle-icon').src = '/sun.svg';
+  document.getElementById('toggle-icon').data = '/sun.svg';
 } else {
   document.documentElement.setAttribute('data-theme', 'light');
-  document.getElementById('toggle-icon').src = '/moon.svg';
+  document.getElementById('toggle-icon').data = '/moon.svg';
 }
