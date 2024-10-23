@@ -48,7 +48,7 @@ h1, h2, h3 {
   color: var(--text-color);
 }
 
-.toggle-button {
+.toggle-mode {
   position: fixed;
   top: 20px;
   right: 20px;
