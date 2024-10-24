@@ -40,8 +40,8 @@ body {
 .page {
   height: 27cm;
   width: 21cm;
-  margin: 0 0 0 0;
-  padding: 0;
+  margin: 0 0 0 1cm;
+  padding: 0 0 0 1cm;
   background-color: var(--paper-color);
   border-radius: 5px;
   /* border: #000000 solid 1px; */
