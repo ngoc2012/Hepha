@@ -37,17 +37,13 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
-.container {
-  width: 80%;
+.page {
+  width: 800px;
   margin: 0 auto;
-  padding: 20px;
-  background-color: var(--secondary-color);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-}
-
-h1, h2, h3 {
-  color: var(--text-color);
+  padding-left: 20px;
+  background-color: var(--paper-color);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .mode-toggler {
