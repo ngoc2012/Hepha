@@ -30,6 +30,7 @@
 
 body {
   font-family: Arial, sans-serif;
+  font-size: 12pt; /* Set a print-specific font size */
   margin: 0;
   padding: 0;
   background-color: var(--bg-color);
@@ -87,6 +88,7 @@ button:hover {
   body {
     background-color: #FFFFFF; /* Ensure white background for printing */
     color: #000000; /* Ensure black text for printing */
+    font-size: 12pt; /* Set a print-specific font size */
   }
 
   .page {
