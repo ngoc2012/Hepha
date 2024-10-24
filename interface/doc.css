@@ -32,7 +32,7 @@ body {
   font-family: Arial, sans-serif;
   font-size: 12pt; /* Set a print-specific font size */
   line-height: 1.5; /* Adjust this to match the screen layout */
-  margin: 0;
+  margin: 1cm 0 0 0;
   padding: 0;
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -106,5 +106,9 @@ button:hover {
   .page p {
     margin: 0;
     padding: 0;
+  }
+
+  button {
+    visibility: hidden; /* Hide the mode toggler button */
   }
 }
