@@ -15,7 +15,7 @@
 
 [data-theme="dark"] {
   /* Dark mode colors */
-  --bg-color: #121212;
+  --bg-color: #232323;
   --paper-color: #000000;
   --text-color: #E0E0E0;
   --primary-color: #4A4A4A;
@@ -38,7 +38,8 @@ body {
 }
 
 .page {
-  width: 800px;
+  height: 27cm;
+  width: 21cm;
   margin: 0 auto;
   padding-left: 20px;
   background-color: var(--paper-color);
