@@ -1,6 +1,7 @@
 :root {
   /* Default light mode colors */
   --bg-color: #F5F5F5;
+  --paper-color: #FFFFFF;
   --text-color: #333333;
   --primary-color: #AAAAAA;
   --secondary-color: #CCCCCC;
