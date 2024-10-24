@@ -41,7 +41,7 @@ body {
   height: 27cm;
   width: 21cm;
   margin: 0 0 0 1cm;
-  padding: 0 0 0 1cm;
+  padding: 0.5cm 0 0 1cm;
   background-color: var(--paper-color);
   border-radius: 5px;
   /* border: #000000 solid 1px; */
@@ -88,6 +88,7 @@ button:hover {
     background-color: #FFFFFF; /* Ensure white background for printing */
     box-shadow: none; /* Remove box shadow */
     border-radius: 0; /* Remove border radius */
-    margin: 0; /* Remove margins (keep padding) */
+    margin: 0; /* Remove margins*/
+    padding: 0.5cm 0 0 1cm; /* Keep padding */
   }
 }
