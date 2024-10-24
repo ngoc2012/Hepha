@@ -40,7 +40,7 @@ body {
 .page {
   height: 27cm;
   width: 21cm;
-  margin: 0 auto;
+  margin: 0 0 0 0;
   padding: 0;
   background-color: var(--paper-color);
   border-radius: 5px;
