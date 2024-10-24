@@ -76,3 +76,18 @@ button {
 button:hover {
   background-color: var(--hover-color);
 }
+
+@media print {
+  body {
+    background-color: #FFFFFF; /* Ensure white background for printing */
+    color: #000000; /* Ensure black text for printing */
+  }
+
+  .page {
+    background-color: #FFFFFF; /* Ensure white background for printing */
+    box-shadow: none; /* Remove box shadow */
+    border-radius: 0; /* Remove border radius */
+    margin: 0; /* Remove margins */
+    padding: 0; /* Remove padding */
+  }
+}
