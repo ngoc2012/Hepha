@@ -41,9 +41,10 @@ body {
   height: 27cm;
   width: 21cm;
   margin: 0 auto;
-  padding-left: 20px;
+  padding: 1cm;
   background-color: var(--paper-color);
   border-radius: 5px;
+  border: #000000 solid 1px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
