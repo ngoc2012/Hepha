@@ -48,6 +48,11 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.page p {
+  margin: 0;
+  padding: 0;
+}
+
 .mode-toggler {
   position: fixed;
   top: 20px;
@@ -90,5 +95,10 @@ button:hover {
     border-radius: 0; /* Remove border radius */
     margin: 0; /* Remove margins*/
     padding: 0.5cm 0 0 1cm; /* Keep padding */
+  }
+
+  .page p {
+    margin: 0;
+    padding: 0;
   }
 }
