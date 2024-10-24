@@ -32,7 +32,7 @@ body {
   font-family: Arial, sans-serif;
   font-size: 12pt; /* Set a print-specific font size */
   line-height: 1.5; /* Adjust this to match the screen layout */
-  margin: 1cm 0 0 0;
+  margin: 0 0 0 0;
   padding: 0;
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -91,6 +91,7 @@ button:hover {
     color: #000000; /* Ensure black text for printing */
     font-size: 12pt; /* Set a print-specific font size */
     line-height: 1.5; /* Adjust this to match the screen layout */
+    margin: 1cm 0 0 0;
   }
 
   .page {
