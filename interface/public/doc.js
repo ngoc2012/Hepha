@@ -26,15 +26,20 @@ function setModeIcon(theme) {
   }
 }
 
+const scrollTop = window.scrollY || document.documentElement.scrollTop;
+function getBottom(e) {
+  return e.getBoundingClientRect().bottom + scrollTop;
+}
 
 // console.log($(".page p"));
 console.log($(".page *"));
 var currentPage = $(".page")[0];
 const elements = Array.from($(".page *"));
+var i = 0;
 elements.forEach(e => {
-  console.log(e.nodeType, e.getBoundingClientRect())
-  console.log(e.getBoundingClientRect().bottom, currentPage.getBoundingClientRect().bottom)
-  if (e.getBoundingClientRect().bottom > currentPage.getBoundingClientRect().bottom) {
+  console.log(e.nodeType, getBottom(e), getBottom(currentPage));
+  e.innerHtml += i++;
+  if (getBottom(e) > getBottom(currentPage)) {
     console.log("new page");
     currentPage.insertAdjacentHTML("afterend", '<div class="page"></div>');
     currentPage = currentPage.nextElementSibling;
