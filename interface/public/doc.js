@@ -33,7 +33,8 @@ var currentPage = $(".page")[0];
 $(".page *").forEach(e => {
   if (e.bottom > currentPage.bottom) {
     console.log(e);
-
+    
+    currentPage = e;
   }
 });
 console.log($(".page")[0].getBoundingClientRect());
