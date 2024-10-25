@@ -30,7 +30,8 @@ function setModeIcon(theme) {
 // console.log($(".page p"));
 console.log($(".page *"));
 var currentPage = $(".page")[0];
-$(".page *").forEach(e => {
+const elements = Array.from($(".page *"));
+elements.forEach(e => {
   console.log(e.nodeType, e.getBoundingClientRect())
   console.log(e.getBoundingClientRect().bottom, currentPage.getBoundingClientRect().bottom)
   if (e.getBoundingClientRect().bottom > currentPage.getBoundingClientRect().bottom) {
