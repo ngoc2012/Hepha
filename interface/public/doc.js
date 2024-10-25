@@ -31,7 +31,7 @@ function setModeIcon(theme) {
 console.log($(".page *"));
 var currentPage = $(".page")[0];
 $(".page *").forEach(e => {
-  console.log(e.getBoundingClientRect())
+  console.log(e.nodeType, e.getBoundingClientRect())
   console.log(e.getBoundingClientRect().bottom, currentPage.getBoundingClientRect().bottom)
   if (e.getBoundingClientRect().bottom > currentPage.getBoundingClientRect().bottom) {
     console.log("new page");
