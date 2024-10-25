@@ -8,7 +8,7 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
   setModeIcon('light');
 }
 
-onClick($('.mode-toggler')[0], toggleMode);
+onClick($("#app button[name=mode-toggler]")[0], toggleMode);
 
 function toggleMode() {
   const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -19,7 +19,6 @@ function toggleMode() {
 
 function setModeIcon(theme) {
   var pathElement = $("#app button[name=mode-toggler] path")[0];
-  console.log($("#app button[name=mode-toggler] path")[0]);
   if (theme === 'dark') {
     pathElement.setAttribute('d', "M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z");
   } else {

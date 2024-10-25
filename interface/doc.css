@@ -59,7 +59,7 @@ body {
   padding: 0;
 }
 
-.mode-toggler {
+button[name=mode-toggler] {
   position: fixed;
   top: 20px;
   right: 20px;
