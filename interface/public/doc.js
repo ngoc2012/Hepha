@@ -27,7 +27,13 @@ function setModeIcon(theme) {
 }
 
 
-console.log($(".page p"));
-console.log($(".page *"));
+// console.log($(".page p"));
+// console.log($(".page *"));
+var currentPage = $(".page")[0];
+$(".page *").forEach(e => {
+  if (e.bottom > currentPage.bottom) {
+    console.log(e);
 
+  }
+});
 console.log($(".page")[0].getBoundingClientRect());
