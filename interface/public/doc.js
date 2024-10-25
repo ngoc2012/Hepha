@@ -28,10 +28,11 @@ function setModeIcon(theme) {
 
 
 // console.log($(".page p"));
-// console.log($(".page *"));
+console.log($(".page *"));
 var currentPage = $(".page")[0];
 $(".page *").forEach(e => {
-  if (e.bottom > currentPage.bottom) {
+  if (e.getBoundingClientRect().bottom > currentPage.getBoundingClientRect().bottom) {
+    console.log("new page");
     currentPage.insertAdjacentHTML("afterend", '<div class="page"></div>');
     currentPage = currentPage.nextElementSibling;
   }
