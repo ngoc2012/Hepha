@@ -26,6 +26,8 @@ function setModeIcon(theme) {
   }
 }
 
-console.log($(".page")[0]);
-console.log($(".page")[0].getBoundingClientRect());
+
+console.log($(".page p"));
+console.log($(".page *"));
+
 console.log($(".page")[0].getBoundingClientRect());
