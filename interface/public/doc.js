@@ -38,6 +38,7 @@ const elements = Array.from($(".page *"));
 var i = 0;
 elements.forEach(e => {
   console.log(e.nodeType, getBottom(e), getBottom(currentPage));
+  console.log(e);
   e.innerHtml += i++;
   if (getBottom(e) > getBottom(currentPage)) {
     console.log("new page");
