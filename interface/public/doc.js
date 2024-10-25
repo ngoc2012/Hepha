@@ -33,9 +33,8 @@ var currentPage = $(".page")[0];
 $(".page *").forEach(e => {
   if (e.bottom > currentPage.bottom) {
     currentPage.insertAdjacentHTML("afterend", '<div class="page"></div>');
-    console.log(e);
-
-    currentPage = e;
+    currentPage = currentPage.nextElementSibling;
   }
+  currentPage.appendChild(e);
 });
 console.log($(".page")[0].getBoundingClientRect());
