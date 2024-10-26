@@ -39,7 +39,7 @@ $(".page *").forEach(e => {
   if (getBottom(e) > getBottom(currentPage)) {
     console.log("new page");
     currentPage.insertAdjacentHTML("afterend", '<div class="page"></div>');
-  //   currentPage = currentPage.nextElementSibling;
+    currentPage = currentPage.nextElementSibling;
   }
   // currentPage.appendChild(e);
 });
