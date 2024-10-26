@@ -26,39 +26,22 @@ function setModeIcon(theme) {
   }
 }
 
-const scrollTop = window.scrollY || document.documentElement.scrollTop;
 function getBottom(e) {
-  return e.getBoundingClientRect().bottom + scrollTop;
-}
-
-// Function to get the absolute position of an element
-function getAbsolutePosition(element) {
-  const rect = element.getBoundingClientRect();
-  const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
   const scrollTop = window.scrollY || document.documentElement.scrollTop;
-
-
-  return {
-      top: rect.top + scrollTop,
-      left: rect.left + scrollLeft,
-      bottom: rect.bottom + scrollTop,
-      right: rect.right + scrollLeft
-  };
+  return e.getBoundingClientRect().bottom + scrollTop;
 }
 
 // console.log($(".page p"));
 console.log($(".page *"));
 var currentPage = $(".page")[0];
 $(".page *").forEach(e => {
-  const position = getAbsolutePosition(e);
-  console.log(`Element: ${e.textContent}, Position:`, position);
-  // console.log(e.nodeType, getBottom(e), getBottom(currentPage));
-  // console.log(e);
-  // if (getBottom(e) > getBottom(currentPage)) {
-  //   console.log("new page");
-  //   currentPage.insertAdjacentHTML("afterend", '<div class="page"></div>');
-  //   currentPage = currentPage.nextElementSibling;
-  // }
-  // currentPage.appendChild(e);
+  console.log(e.nodeType, getBottom(e), getBottom(currentPage));
+  console.log(e);
+  if (getBottom(e) > getBottom(currentPage)) {
+    console.log("new page");
+    currentPage.insertAdjacentHTML("afterend", '<div class="page"></div>');
+    currentPage = currentPage.nextElementSibling;
+  }
+  currentPage.appendChild(e);
 });
 console.log($(".page")[0].getBoundingClientRect());
