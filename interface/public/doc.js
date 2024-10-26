@@ -35,13 +35,12 @@ function getBottom(e) {
 console.log($(".page *"));
 var currentPage = $(".page")[0];
 const elements = Array.from($(".page *"));
-$(".page *").forEach(e => {
+elements.forEach(e => {
   console.log(e.nodeType, getBottom(e), getBottom(currentPage));
-  // if (getBottom(e) > getBottom(currentPage)) {
-  //   console.log("new page");
-  //   currentPage.insertAdjacentHTML("afterend", '<div class="page"></div>');
-  //   currentPage = currentPage.nextElementSibling;
-  //   currentPage.appendChild(e);
-  // }
+  if (getBottom(e) > getBottom(currentPage)) {
+    console.log("new page");
+    currentPage.insertAdjacentHTML("afterend", '<div class="page"></div>');
+    currentPage = currentPage.nextElementSibling;
+  }
   currentPage.appendChild(e);
 });
