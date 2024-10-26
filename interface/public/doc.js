@@ -44,4 +44,3 @@ $(".page *").forEach(e => {
   }
   
 });
-console.log($(".page")[0].getBoundingClientRect());
