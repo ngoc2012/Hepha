@@ -32,8 +32,9 @@ function getBottom(e) {
 }
 
 // console.log($(".page p"));
-console.log($(".page *"));
-var currentPage = $(".page")[0];
+// console.log($(".page *"));
+// var currentPage = $(".page")[0];
+var i = 0;
 // const elements = Array.from($(".page *"));
 // const elements = Array.from(currentPage.querySelectorAll("*"));
 $(".page *").forEach(e => {
