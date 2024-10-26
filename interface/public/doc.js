@@ -1,15 +1,5 @@
 import { $, ready, onClick } from "/selector.js";
 
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  document.documentElement.setAttribute('data-theme', 'dark');
-  setModeIcon('dark');
-} else {
-  document.documentElement.setAttribute('data-theme', 'light');
-  setModeIcon('light');
-}
-
-onClick($("#app button[name=mode-toggler]")[0], toggleMode);
-
 function toggleMode() {
   const currentTheme = document.documentElement.getAttribute('data-theme');
   const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -31,18 +21,30 @@ function getBottom(e) {
   return e.getBoundingClientRect().bottom + scrollTop;
 }
 
-// console.log($(".page p"));
-// console.log($(".page *"));
-// var currentPage = $(".page")[0];
-var i = 0;
-// const elements = Array.from($(".page *"));
-// const elements = Array.from(currentPage.querySelectorAll("*"));
-$(".page *").forEach(e => {
-  console.log(e.nodeType, getBottom(e), getBottom(currentPage));
-  if (getBottom(e) > getBottom(currentPage)) {
-    console.log("new page");
-    currentPage.insertAdjacentHTML("afterend", '<div class="page"></div>');
-    currentPage = currentPage.nextElementSibling;
-    currentPage.appendChild(e);
+ready(() => {
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    setModeIcon('dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    setModeIcon('light');
   }
+  
+  onClick($("#app button[name=mode-toggler]")[0], toggleMode);
+
+  // console.log($(".page p"));
+  // console.log($(".page *"));
+  // var currentPage = $(".page")[0];
+  var i = 0;
+  // const elements = Array.from($(".page *"));
+  // const elements = Array.from(currentPage.querySelectorAll("*"));
+  $(".page *").forEach(e => {
+    console.log(e.nodeType, getBottom(e), getBottom(currentPage));
+    if (getBottom(e) > getBottom(currentPage)) {
+      console.log("new page");
+      currentPage.insertAdjacentHTML("afterend", '<div class="page"></div>');
+      currentPage = currentPage.nextElementSibling;
+      currentPage.appendChild(e);
+    }
+  });
 });
