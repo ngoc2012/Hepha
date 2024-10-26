@@ -35,8 +35,8 @@ function getBottom(e) {
 console.log($(".page *"));
 var currentPage = $(".page")[0];
 // const elements = Array.from($(".page *"));
-const elements = Array.from(currentPage.querySelectorAll("*"));
-elements.forEach(e => {
+// const elements = Array.from(currentPage.querySelectorAll("*"));
+$(".page *").forEach(e => {
   console.log(e.nodeType, getBottom(e), getBottom(currentPage));
   if (getBottom(e) > getBottom(currentPage)) {
     console.log("new page");
