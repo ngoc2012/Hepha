@@ -46,7 +46,7 @@ body {
 .page {
   width: 21cm;
   height: 29.7cm;
-  margin: 0 0 0 1cm;
+  margin: 1cm 0 0 1cm;
   padding: 0.5cm 0.5cm 0 1cm;
   background-color: var(--paper-color);
   border-radius: 5px;
