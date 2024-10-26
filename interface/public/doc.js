@@ -34,6 +34,7 @@ function getBottom(e) {
 // console.log($(".page p"));
 console.log($(".page *"));
 var currentPage = $(".page")[0];
+const elements = Array.from($(".page *"));
 $(".page *").forEach(e => {
   console.log(e.nodeType, getBottom(e), getBottom(currentPage));
   // if (getBottom(e) > getBottom(currentPage)) {
