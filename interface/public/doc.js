@@ -40,7 +40,8 @@ $(".page *").forEach(e => {
     console.log("new page");
     currentPage.insertAdjacentHTML("afterend", '<div class="page"></div>');
     currentPage = currentPage.nextElementSibling;
+    currentPage.appendChild(e);
   }
-  // currentPage.appendChild(e);
+  
 });
 console.log($(".page")[0].getBoundingClientRect());
