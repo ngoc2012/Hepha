@@ -37,6 +37,7 @@ ready(() => {
   var currentPage = $(".page")[0];
   // var i = 0;
   const elements = Array.from($(".page *"));
+  console.log(elements)
   // const elements = Array.from(currentPage.querySelectorAll("*"));
   elements.forEach(e => {
     console.log(e.nodeType, getBottom(e), getBottom(currentPage));
