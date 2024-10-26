@@ -28,8 +28,8 @@
         // Function to get the absolute position of an element
         function getAbsolutePosition(element) {
             const rect = element.getBoundingClientRect();
-            const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
             return {
                 top: rect.top + scrollTop,
