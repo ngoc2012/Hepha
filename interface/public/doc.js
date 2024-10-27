@@ -35,6 +35,9 @@ ready(() => {
   // console.log($(".page p"));
   // console.log($(".page *"));
   var nPages = $(".page").length;
+  console.log("n pages:", nPages)
+  const lastChild = $(".page *").lastElementChild;
+  console.log(lastChild)
   var currentPage = $(".page")[0];
   // var i = 0;
   const elements = Array.from($(".page *"));
