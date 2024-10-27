@@ -46,5 +46,7 @@ ready(() => {
       pages = $(".page");
       pages[i].appendChild(e);
     }
+    if (e.parentElement !== pages[i])
+      pages[i].appendChild(e);
   });
 });
