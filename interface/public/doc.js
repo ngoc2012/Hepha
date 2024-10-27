@@ -39,12 +39,12 @@ ready(() => {
   const elements = $(".page *");
   const lastElement = elements[elements.length - 1]
   elements.forEach(e => {
-    console.log(e, getBottom(e), getBottom(currentPage));
-    if (getBottom(e) > getBottom(currentPage)) {
+    // console.log(e, getBottom(e), getBottom(pages[i]));
+    if (getBottom(e) > getBottom(pages[i])) {
       console.log("new page");
-      currentPage.insertAdjacentHTML("afterend", '<div class="page"></div>');
-      currentPage = currentPage.nextElementSibling;
-      currentPage.appendChild(e);
+      pages[i++].insertAdjacentHTML("afterend", '<div class="page"></div>');
+      console.log(i)
+      pages[i].appendChild(e);
     }
   });
 });
