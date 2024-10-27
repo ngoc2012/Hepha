@@ -34,12 +34,10 @@ ready(() => {
 
   // console.log($(".page p"));
   // console.log($(".page *"));
-  var nPages = $(".page").length;
-  console.log("n pages:", nPages)
-  var currentPage = $(".page")[0];
-  // var i = 0;
+  var pages = Array.from($(".page"));
+  var i = 0;
   const elements = Array.from($(".page *"));
-  console.log(elements[elements.length - 1])
+  const lastElement = elements[elements.length - 1]
   // const elements = Array.from(currentPage.querySelectorAll("*"));
   elements.forEach(e => {
     console.log(e, getBottom(e), getBottom(currentPage));
