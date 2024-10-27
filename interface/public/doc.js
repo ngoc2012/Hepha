@@ -34,6 +34,7 @@ ready(() => {
 
   // console.log($(".page p"));
   // console.log($(".page *"));
+  var nPages = $(".page").length;
   var currentPage = $(".page")[0];
   // var i = 0;
   const elements = Array.from($(".page *"));
@@ -47,6 +48,5 @@ ready(() => {
       currentPage = currentPage.nextElementSibling;
       currentPage.appendChild(e);
     }
-    // 
   });
 });
