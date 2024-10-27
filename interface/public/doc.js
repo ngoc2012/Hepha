@@ -43,7 +43,6 @@ ready(() => {
     if (getBottom(e) > getBottom(pages[i])) {
       console.log("new page");
       pages[i++].insertAdjacentHTML("afterend", '<div class="page"></div>');
-      console.log(i)
       pages = $(".page");
       pages[i].appendChild(e);
     }
