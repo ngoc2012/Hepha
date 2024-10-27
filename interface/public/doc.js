@@ -34,11 +34,10 @@ ready(() => {
 
   // console.log($(".page p"));
   // console.log($(".page *"));
-  var pages = Array.from($(".page"));
+  var pages = $(".page");
   var i = 0;
-  const elements = Array.from($(".page *"));
+  const elements = $(".page *");
   const lastElement = elements[elements.length - 1]
-  // const elements = Array.from(currentPage.querySelectorAll("*"));
   elements.forEach(e => {
     console.log(e, getBottom(e), getBottom(currentPage));
     if (getBottom(e) > getBottom(currentPage)) {
