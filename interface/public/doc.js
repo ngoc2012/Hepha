@@ -38,6 +38,7 @@ ready(() => {
   var i = 0;
   const elements = $(".page *");
   const lastElement = elements[elements.length - 1]
+  var elementsPage = Array(n).fill(0);
   elements.forEach(e => {
     // console.log(e, getBottom(e), getBottom(pages[i]));
     if (getBottom(e) > getBottom(pages[i])) {
