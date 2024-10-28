@@ -38,8 +38,7 @@ ready(() => {
   var i = 0;
   const elements = $(".page *");
   const lastElement = elements[elements.length - 1]
-  while (getBottom(lastElement) > getBottom(pages[i])) {
-    elements.forEach(e => {
+  elements.forEach(e => {
     // console.log(e, getBottom(e), getBottom(pages[i]));
     if (getBottom(e) > getBottom(pages[i])) {
       console.log("new page");
@@ -49,6 +48,5 @@ ready(() => {
     }
     if (e.parentElement !== pages[i])
       pages[i].appendChild(e);
-    });
-  }
+  });
 });
