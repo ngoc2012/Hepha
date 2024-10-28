@@ -46,8 +46,8 @@ ready(() => {
       pages[iP++].insertAdjacentHTML("afterend", '<div class="page"></div>');
       pages = $(".page");
       pages[iP].appendChild(e);
-      for (let j = m; j < elementsPage.length; i++) {
-        array[i] += x;
+      for (let j = m; j < elementsPage.length; j++) {
+        elementsPage[i] += x;
       }
     }
     if (e.parentElement !== pages[iP])
