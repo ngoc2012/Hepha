@@ -35,19 +35,22 @@ ready(() => {
   // console.log($(".page p"));
   // console.log($(".page *"));
   var pages = $(".page");
-  var i = 0;
+  var iP = 0;
   const elements = $(".page *");
   const lastElement = elements[elements.length - 1]
   var elementsPage = Array(n).fill(0);
-  elements.forEach(e => {
+  elements.forEach((e, iE) => {
     // console.log(e, getBottom(e), getBottom(pages[i]));
-    if (getBottom(e) > getBottom(pages[i])) {
+    if (getBottom(e) > getBottom(pages[iP])) {
       console.log("new page");
-      pages[i++].insertAdjacentHTML("afterend", '<div class="page"></div>');
+      pages[iP++].insertAdjacentHTML("afterend", '<div class="page"></div>');
       pages = $(".page");
-      pages[i].appendChild(e);
+      pages[iP].appendChild(e);
+      for (let j = m; j < elementsPage.length; i++) {
+        array[i] += x;
+      }
     }
-    if (e.parentElement !== pages[i])
-      pages[i].appendChild(e);
+    if (e.parentElement !== pages[iP])
+      pages[iP].appendChild(e);
   });
 });
