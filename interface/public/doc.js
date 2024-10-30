@@ -36,7 +36,8 @@ ready(() => {
   // console.log($(".page *"));
   var pages = $(".page");
   var iP = 0;
-  const elements = $(".page *");
+  const elements = $(".page .print");
+  console.log(elements.length)
   const lastElement = elements[elements.length - 1]
   var elementsPage = Array(elements.length).fill(0);
   elements.forEach((e, iE) => {

@@ -85,6 +85,7 @@ button {
   background-color: var(--button-bg-color);
   color: var(--button-text-color);
   border: 1px solid var(--border-color);
+  opacity: 50%;
 }
 
 button:hover {
