@@ -41,7 +41,7 @@ ready(() => {
   const lastElement = elements[elements.length - 1]
   var elementsPage = Array(elements.length).fill(0);
   elements.forEach((e, iE) => {
-    console.log(e, getBottom(e), getBottom(pages[i]));
+    console.log(e, getBottom(e), getBottom(pages[iP]));
     if (getBottom(e) > getBottom(pages[iP])) {
       if (iP >= (pages.length - 1)) {
         console.log("new page");
@@ -53,7 +53,5 @@ ready(() => {
         pages[iP].appendChild(e);
       }
     }
-    if (e.parentElement !== pages[iP])
-      pages[iP].appendChild(e);
   });
 });
