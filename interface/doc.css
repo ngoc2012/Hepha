@@ -15,6 +15,7 @@
   --border-color: #DDDDDD;
   --link-color: #555555;
   --hover-color: #888888;
+  --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="dark"] {
@@ -30,6 +31,7 @@
   --border-color: #2E2E2E;
   --link-color: #808080;
   --hover-color: #555555;
+  --shadow-color: rgba(255, 255, 255, 0.1);
 }
 
 body {
@@ -51,7 +53,7 @@ body {
   background-color: var(--paper-color);
   border-radius: 5px;
   /* border: #000000 solid 1px; */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px var(--shadow-color);
 }
 
 .page p {
