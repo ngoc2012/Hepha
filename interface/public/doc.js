@@ -48,8 +48,8 @@ ready(() => {
         pages[iP++].insertAdjacentHTML("afterend", '<div class="page"></div>');
         pages = $(".page");
       }
-      for (let j = m; j < elementsPage.length; j++) {
-        elementsPage[i] += x;
+      for (let j = iE; j < elementsPage.length; j++) {
+        elementsPage[i] = iP;
         pages[iP].appendChild(e);
       }
     }
