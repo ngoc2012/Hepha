@@ -36,8 +36,6 @@ ready(() => {
   var iP = 0;
   const elements = $(".page .print");
   console.log(elements.length)
-  const lastElement = elements[elements.length - 1]
-  var elementsPage = Array(elements.length).fill(0);
   elements.forEach((e, iE) => {
     console.log(iE, Math.round(getBottom(e)), iP, Math.round(getBottom(pages[iP])));
     if (getBottom(e) > getBottom(pages[iP])) {
@@ -46,9 +44,7 @@ ready(() => {
         pages[iP++].insertAdjacentHTML("afterend", '<div class="page"></div>');
         pages = $(".page");
       }
-      for (let j = iE; j < elementsPage.length; j++) {
-        
-        elementsPage[j] = iP;
+      for (let j = iE; j < elements.length; j++) {
         pages[iP].appendChild(elements[j]);
         console.log(j, "=>", iP)
       }
