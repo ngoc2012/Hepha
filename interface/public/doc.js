@@ -48,9 +48,10 @@ ready(() => {
         pages = $(".page");
       }
       
-      pages[iP].appendChild(e);
+      
       for (let j = m; j < elementsPage.length; j++) {
         elementsPage[i] += x;
+        pages[iP].appendChild(e);
       }
     }
     if (e.parentElement !== pages[iP])
