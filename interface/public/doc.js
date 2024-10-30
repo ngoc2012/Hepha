@@ -42,9 +42,12 @@ ready(() => {
   elements.forEach((e, iE) => {
     // console.log(e, getBottom(e), getBottom(pages[i]));
     if (getBottom(e) > getBottom(pages[iP])) {
-      console.log("new page");
-      pages[iP++].insertAdjacentHTML("afterend", '<div class="page"></div>');
-      pages = $(".page");
+      if (iP >= (pages.length - 1)) {
+        console.log("new page");
+        pages[iP++].insertAdjacentHTML("afterend", '<div class="page"></div>');
+        pages = $(".page");
+      }
+      
       pages[iP].appendChild(e);
       for (let j = m; j < elementsPage.length; j++) {
         elementsPage[i] += x;
