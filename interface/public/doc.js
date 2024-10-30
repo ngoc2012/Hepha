@@ -37,11 +37,10 @@ ready(() => {
   var pages = $(".page");
   var iP = 0;
   const elements = $(".page .print");
-  console.log(elements.length)
   const lastElement = elements[elements.length - 1]
   var elementsPage = Array(elements.length).fill(0);
   elements.forEach((e, iE) => {
-    console.log(e, getBottom(e), getBottom(pages[iP]));
+    console.log(iE, Math.round(getBottom(e)), iP, Math.round(getBottom(pages[iP])));
     if (getBottom(e) > getBottom(pages[iP])) {
       if (iP >= (pages.length - 1)) {
         console.log("new page");
