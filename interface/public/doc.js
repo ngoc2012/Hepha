@@ -35,18 +35,18 @@ ready(() => {
   var pages = $(".page");
   var iP = 0;
   const elements = $(".page .print");
-  console.log(elements.length)
+  // console.log(elements.length)
   elements.forEach((e, iE) => {
-    console.log(iE, Math.round(getBottom(e)), iP, Math.round(getBottom(pages[iP])));
+    // console.log(iE, Math.round(getBottom(e)), iP, Math.round(getBottom(pages[iP])));
     if (getBottom(e) > getBottom(pages[iP])) {
       if (iP >= (pages.length - 1)) {
-        console.log("new page");
+        // console.log("new page");
         pages[iP++].insertAdjacentHTML("afterend", '<div class="page"></div>');
         pages = $(".page");
       }
       for (let j = iE; j < elements.length; j++) {
         pages[iP].appendChild(elements[j]);
-        console.log(j, "=>", iP)
+        // console.log(j, "=>", iP)
       }
     }
   });
