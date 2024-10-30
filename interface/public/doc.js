@@ -49,7 +49,7 @@ ready(() => {
       for (let j = iE; j < elementsPage.length; j++) {
         
         elementsPage[j] = iP;
-        pages[iP].appendChild(e);
+        pages[iP].appendChild(elements[j]);
         console.log(j, "=>", iP)
       }
     }
