@@ -38,7 +38,7 @@ ready(() => {
   var iP = 0;
   const elements = $(".page *");
   const lastElement = elements[elements.length - 1]
-  var elementsPage = Array(n).fill(0);
+  var elementsPage = Array(elements.length).fill(0);
   elements.forEach((e, iE) => {
     // console.log(e, getBottom(e), getBottom(pages[i]));
     if (getBottom(e) > getBottom(pages[iP])) {
