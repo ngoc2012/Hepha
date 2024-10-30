@@ -47,9 +47,10 @@ ready(() => {
         pages = $(".page");
       }
       for (let j = iE; j < elementsPage.length; j++) {
-        console.log(j)
+        
         elementsPage[j] = iP;
         pages[iP].appendChild(e);
+        console.log(j, "=>", iP)
       }
     }
   });
