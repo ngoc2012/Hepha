@@ -53,7 +53,7 @@ body {
   background-color: var(--paper-color);
   border-radius: 5px;
   /* border: #000000 solid 1px; */
-  box-shadow: 0 0 10px var(--shadow-color);
+  box-shadow: 0 0 20px var(--shadow-color);
 }
 
 .page p {
