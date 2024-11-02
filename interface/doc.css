@@ -121,15 +121,14 @@ button:hover {
   }
 
   /* Override the default Prism.js styles for print */
-  pre[class*="language-"],
-  code[class^="language-"] {
+  pre[class*="language-"] {
     background: #ffffff; /* Change the background color */
-    /* border: 1px solid #cccccc;
-    border-radius: 5px; */
+    border: 1px solid #cccccc;
+    border-radius: 5px;
   }
 
   /* pre > code[class^="language-"] {
     border: 1px solid #cccccc;
     border-radius: 5px;
-  }
-} */
+  }*/
+}
