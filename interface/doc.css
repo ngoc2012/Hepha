@@ -119,4 +119,10 @@ button:hover {
   button {
     visibility: hidden; /* Hide the mode toggler button */
   }
+
+  /* Override the default Prism.js styles for print */
+  pre[class*="language-"],
+  code[class*="language-"] {
+    background: #ffffff; /* Change the background color */
+  }
 }
