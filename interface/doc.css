@@ -121,7 +121,8 @@ button:hover {
   }
 
   /* Override the default Prism.js styles for print */
-  pre[class*="language-"] {
+  /* pre[class*="language-"], */
+  pre > code[class^="language-"] {
     background: #ffffff; /* Change the background color */
     border: 1px solid #cccccc;
     border-radius: 5px;
