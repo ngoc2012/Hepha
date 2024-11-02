@@ -127,4 +127,9 @@ button:hover {
     /* border: 1px solid #cccccc;
     border-radius: 5px; */
   }
+
+  pre > code[class^="language-"] {
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+  }
 }
