@@ -92,6 +92,15 @@ button:hover {
   background-color: var(--hover-color);
 }
 
+#editor {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 @media print {
   body {
     background-color: #FFFFFF; /* Ensure white background for printing */
