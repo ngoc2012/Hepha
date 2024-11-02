@@ -101,6 +101,10 @@ button:hover {
   right: 0;
 }
 
+#code1 {
+  width: 21cm;
+  height: 29.7cm;
+}
 @media print {
   body {
     background-color: #FFFFFF; /* Ensure white background for printing */
