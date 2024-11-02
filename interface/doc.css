@@ -126,10 +126,4 @@ button:hover {
     border: 1px solid #cccccc;
     border-radius: 5px;
   }
-
-  code[class^="language-"] {
-    background: #ffffff;
-    border: 1px solid #d44646;
-    border-radius: 5px;
-  }
 }
