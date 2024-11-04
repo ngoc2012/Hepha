@@ -106,6 +106,9 @@ button:hover {
   width: 10cm;
   height: 5cm;
 }
+
+/* Prism back-ground */
+/* #content > div:nth-child(1) > pre */
 @media print {
   body {
     background-color: #FFFFFF; /* Ensure white background for printing */
