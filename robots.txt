@@ -1,0 +1,20 @@
+User-agent: *
+
+# blocage des dossiers sensibles
+Disallow: /wp-admin
+Disallow: /*.php$
+Disallow: /*.inc$
+Disallow: /*.gz$
+Disallow: /?s=
+Disallow: /search/
+
+# fichiers autorises
+Allow: /wp-admin/admin-ajax.php
+Allow: /*css?*
+Allow: /*js?*
+
+# connexion
+Disallow: /wp-login.php
+
+
+Sitemap: https://www.meilleure-note.com/sitemap_index.xml
