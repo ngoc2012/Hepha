@@ -73,6 +73,18 @@ button[name=mode-toggler] {
   border-radius: 5px;
 }
 
+button[name=print-toggler] {
+  position: fixed;
+  top: 20px;
+  right: 50px;
+  padding: 10px;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
 a {
   color: var(--link-color);
 }
