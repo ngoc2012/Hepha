@@ -79,6 +79,8 @@ button[name=print-toggler] {
   position: fixed;
   top: 20px;
   right: 80px;
+  height: 50px;
+  width: 50px;
   padding: 10px;
   background-color: var(--button-bg-color);
   color: var(--button-text-color);
