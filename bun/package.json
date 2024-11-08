@@ -3,7 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "build": "bun build ./index.ts --outfile=bundle.js"
+    "build": "bun build ./index.ts --outfile=bundle.js --minify"
   },
   "devDependencies": {
     "@types/bun": "latest"
