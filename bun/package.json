@@ -2,6 +2,9 @@
   "name": "bun",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "build": "bun build ./index.ts --outfile=bundle.js"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
