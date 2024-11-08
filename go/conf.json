@@ -2,5 +2,5 @@
 	"inputFolder": "src",
 	"outputFolder": "dist",
 	"compileExtension": ["html"],  
-	"publicExtension": ["css", "tff", "woff", "woff2", "svg", "icon", "js", "ts"]
+	"publicExtension": ["css", "tff", "woff", "woff2", "svg", "icon"]
 }
