@@ -1,7 +1,7 @@
 zap/zig-linux-x86_64-0.13.0/zig
 .env
 database-endpoint-gin/src/go1.22.5.linux-amd64.tar.gz
-server-go/go*.tar.gz
+server-go/app/go*.tar.gz
 database/ib_logfile0
 database/ib_logfile*
 *.node
