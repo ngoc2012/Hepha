@@ -107,7 +107,7 @@ services:
       - ${GO_PORT}
     volumes:
       - ./server-go/go-mod-cache:/go/pkg/mod
-      - ./server-go:/app
+      - ./server-go/app:/app
     restart: always
     env_file:
      - .env
