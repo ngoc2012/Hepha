@@ -1,4 +1,4 @@
-zap/zig-linux-x86_64-0.13.0/zig
+**/zig
 .env
 **/go*.tar.gz
 database/ib_logfile0
