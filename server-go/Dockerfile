@@ -9,6 +9,7 @@ RUN mkdir -p /var/lib/files
 WORKDIR /app
 
 COPY go.sh .
+COPY run .
 
 ENV PORT $GO_PORT
 RUN chmod +x go.sh
