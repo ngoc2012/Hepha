@@ -5,3 +5,4 @@ database/ib_logfile0
 database/ib_logfile*
 **/*.node
 data/
+**/zig-linux-x86_64-*.tar.xz
