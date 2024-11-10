@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/var/lib/files/code/1234.py", line 2, in <module>
-    dsafads
-NameError: name 'dsafads' is not defined

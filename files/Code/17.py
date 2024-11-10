@@ -1,1 +1,0 @@
-print("Hello", 1+1)
