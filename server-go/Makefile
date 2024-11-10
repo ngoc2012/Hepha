@@ -11,7 +11,5 @@
 # **************************************************************************** #
 
 all:
-	air -c run.toml
-run:
-	cd run-tool && go build -o app/run .
-.PHONY: all clean fclean re build run files
+	cd run-tool && go build -o app/run . && ./app/run
+.PHONY: all clean fclean re
