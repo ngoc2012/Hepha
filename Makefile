@@ -169,4 +169,6 @@ zig:
 
 test:
 	cd zap/build/src && zig build-exe test.zig && ./test
+go-build:
+	go build -o ../build html-template-go
 .PHONY: all clean fclean re test zap zig gin mysql next remix nginx interface
