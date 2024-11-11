@@ -127,12 +127,12 @@ func filesAreEqual(file1, file2 string) bool {
 	return string(buf1) == string(buf2)
 }
 
-func Clean() {
+func Clean() error {
 	// Load the configuration from the JSON file
 	config, err := LoadConfig("conf.json")
 	if err != nil {
 		fmt.Printf("failed to load config: %s\n", err)
-		return
+		return err
 	}
 
 	inputDir := config.InputFolder
@@ -212,4 +212,5 @@ func Clean() {
 		}
 		return nil
 	})
+	return nil
 }
