@@ -1,6 +1,6 @@
 {
-	"inputFolder": "src",
-	"outputFolder": "dist",
+	"inputFolder": "templates",
+	"outputFolder": "src",
 	"compileExtension": ["html"],  
 	"publicExtension": ["css", "tff", "woff", "woff2", "svg", "icon", "js", "xml"],
 	"gzip": true,

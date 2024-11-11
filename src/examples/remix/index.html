@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FreeStyle Framework</title>
+  
+  <link rel="stylesheet" href="/main.css"> 
+  <link rel="stylesheet" href="/fonts/inter.css"> 
+</head>
+<body>
+  <div id="app">
+    <nav id="menu">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="#">Documentation</a></li>
+        <li><a href="/examples">Examples</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </nav>
+<div id="content">
+  <div id="sidebar">
+    <h1>Remix Contacts</h1>
+    <div>
+      <form action="" method="post" id="search-form">
+        <input
+        id="q"
+        aria-label="Search contacts"
+        placeholder="Search"
+        type="search"
+        name="q"
+      />
+      <div id="search-spinner" aria-hidden hidden={true}></div>
+      </form>
+      <form action="" method="post" id="search-form"></form>
+        <button type="submit">New</button>
+      </form>
+    </div>
+
+  </div>
+  <div id="detail">
+    <Outlet />
+  </div>
+</div>
+
+  </div>
+  
+</body>
+</html>

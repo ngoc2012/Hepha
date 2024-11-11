@@ -12,16 +12,16 @@ type Map map[string]interface{}
 var GZip = true
 
 func react_page() {
-	button := cmp.Render2Html("src/examples/react/Button.html", Map{"Number": 1})
+	button := cmp.Render2Html("templates/examples/react/Button.html", Map{"Number": 1})
 
 	var buttons [10]template.HTML
 	for i := 0; i < 10; i++ {
 		buttons[i] = button
 	}
 
-	content := cmp.Render2Html("src/examples/react/Content.html", Map{"Buttons": buttons})
+	content := cmp.Render2Html("templates/examples/react/Content.html", Map{"Buttons": buttons})
 
-	cmp.Render("dist/examples/react/index.html", "src/layout.html", Map{
+	cmp.Render("src/examples/react/index.html", "templates/layout.html", Map{
 		"Content": content,
 		"Style":   []string{"/main.css", "/fonts/inter.css"},
 		"Script":  []string{"/utils.js", "button.js"},
@@ -29,8 +29,8 @@ func react_page() {
 }
 
 func remix_page() {
-	cmp.Render("dist/examples/remix/index.html", "src/layout.html", Map{
-		"Content": cmp.Read("src/examples/remix/Content.html"),
+	cmp.Render("src/examples/remix/index.html", "templates/layout.html", Map{
+		"Content": cmp.Read("templates/examples/remix/Content.html"),
 		"Style":   []string{"/main.css", "/fonts/inter.css"},
 		"Script":  []string{},
 	})
@@ -43,17 +43,17 @@ func main() {
 		return
 	}
 
-	cmp.Render("dist/index.html", "src/layout.html", Map{
-		"Content": cmp.Read("src/Content.html"),
+	cmp.Render("src/index.html", "templates/layout.html", Map{
+		"Content": cmp.Read("templates/Content.html"),
 		"Style":   []string{"/main.css", "/fonts/inter.css"},
 		"Script":  []string{},
 	})
-	cmp.Render("dist/examples/index.html", "src/layout.html", Map{
-		"Content": cmp.Read("src/examples/Content.html"),
+	cmp.Render("src/examples/index.html", "templates/layout.html", Map{
+		"Content": cmp.Read("templates/examples/Content.html"),
 		"Style":   []string{"/main.css", "/fonts/inter.css"},
 		"Script":  []string{"/utils.js"},
 	})
-	cmp.Render("dist/doc/index.html", "src/doc/index.html", Map{})
+	cmp.Render("src/doc/index.html", "templates/doc/index.html", Map{})
 
 	react_page()
 	remix_page()
