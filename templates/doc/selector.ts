@@ -1,3 +1,5 @@
-export const $ = s => document.querySelectorAll(s)
-export const ready = c => document.addEventListener('DOMContentLoaded', c)
-export const onClick = (e, c) => e.addEventListener('click', c)
+export const $ = (s: string): NodeListOf<Element> => document.querySelectorAll(s);
+export const ready = (c: (event: Event) => void): void => {document.addEventListener('DOMContentLoaded', c);};
+export const onClick = (e: EventTarget, c: (event: MouseEvent) => void): void => {
+    e.addEventListener('click', c as EventListener);
+};
