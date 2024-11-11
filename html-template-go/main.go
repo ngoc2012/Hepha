@@ -9,6 +9,8 @@ import (
 
 type Map map[string]interface{}
 
+var GZip = true
+
 func react_page() {
 	button := cmp.Render2Html("src/examples/react/Button.html", Map{"Number": 1})
 
