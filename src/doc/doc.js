@@ -1,4 +1,4 @@
-import { $, ready, onClick } from "selector.js";
+import { $, ready, onClick } from "./selector.js";
 
 function toggleMode() {
   const currentTheme = document.documentElement.getAttribute('data-theme');
