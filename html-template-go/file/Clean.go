@@ -16,6 +16,7 @@ type Config struct {
 	OutputFolder     string   `json:"outputFolder"`
 	CompileExtension []string `json:"compileExtension"`
 	PublicExtension  []string `json:"publicExtension"`
+	publicGzip       []string `json:"publicExtension"`
 }
 
 // LoadConfig reads the JSON configuration file and returns a Config struct
