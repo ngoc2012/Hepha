@@ -53,6 +53,7 @@ func main() {
 		"Style":   []string{"/main.css", "/fonts/inter.css"},
 		"Script":  []string{"/utils.js"},
 	})
+	cmp.Render("dist/doc/index.html", "src/doc/index.html", Map{})
 
 	react_page()
 	remix_page()
