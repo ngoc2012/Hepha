@@ -2,7 +2,7 @@
 	"inputFolder": "templates",
 	"outputFolder": "src",
 	"compileExtension": ["html"],  
-	"publicExtension": ["css", "tff", "woff", "woff2", "svg", "icon", "js", "xml"],
+	"publicExtension": ["css", "tff", "woff", "woff2", "svg", "icon", "js", "ts", "xml"],
 	"gzip": true,
 	"publicGzip": ["xml"]
 }
