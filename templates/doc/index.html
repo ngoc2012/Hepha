@@ -223,6 +223,11 @@ print('The sum of {0} and {1} is {2}'.format(num1, num2, sum))</code></pre>
   <script src="prism.js" type="module" defer></script>
   <script src="ace/src-min-noconflict/ace.js"></script>
   <script src="ace/src-min-noconflict/ext-language_tools.js"></script>
+  <script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.session.setMode("ace/mode/javascript");
+  </script>
   <script src="selector.js" type="module" defer></script>
   <script src="doc.js" type="module" defer></script>
 </body>
