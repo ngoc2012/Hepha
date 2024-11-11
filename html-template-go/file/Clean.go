@@ -131,7 +131,6 @@ func Clean() error {
 	// Load the configuration from the JSON file
 	config, err := LoadConfig("conf.json")
 	if err != nil {
-		fmt.Printf("failed to load config: %s\n", err)
 		return err
 	}
 

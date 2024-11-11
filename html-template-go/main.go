@@ -3,6 +3,7 @@ package main
 import (
 	"build/cmp"
 	"build/file"
+	"fmt"
 	"html/template"
 )
 
@@ -34,7 +35,11 @@ func remix_page() {
 }
 
 func main() {
-	file.Clean()
+	err := file.Clean()
+	if err != nil {
+		fmt.Printf("failed to clean: %s\n", err)
+		return
+	}
 
 	cmp.Render("dist/index.html", "src/layout.html", Map{
 		"Content": cmp.Read("src/Content.html"),
