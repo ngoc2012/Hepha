@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "target": "es5",
+      "module": "commonjs",
+      "strict": true,
+      "jsx": "react",
+      "esModuleInterop": true,
+      "outDir": "dist",
+      "types": ["node"]
+    },
+    "include": ["src/**/*", "server.ts"]
+  }
+  
