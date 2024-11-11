@@ -3,5 +3,6 @@
 	"outputFolder": "dist",
 	"compileExtension": ["html"],  
 	"publicExtension": ["css", "tff", "woff", "woff2", "svg", "icon"],
-	"gzip": true
+	"gzip": true,
+	"publicGzip": ["xml"]
 }

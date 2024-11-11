@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Default light mode colors */
+  --bg-color: #F5F5F5;
+  --paper-color: #FFFFFF;
+  --text-color: #333333;
+  --primary-color: #AAAAAA;
+  --secondary-color: #CCCCCC;
+  --accent-color: #E0E0E0;
+  --button-bg-color: #AAAAAA;
+  --button-text-color: #FFFFFF;
+  --border-color: #DDDDDD;
+  --link-color: #555555;
+  --hover-color: #888888;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  /* Dark mode colors */
+  --bg-color: #242424;
+  --paper-color: #000000;
+  --text-color: #E0E0E0;
+  --primary-color: #4A4A4A;
+  --secondary-color: #616161;
+  --accent-color: #BBBBBB;
+  --button-bg-color: #393939;
+  --button-text-color: #FFFFFF;
+  --border-color: #2E2E2E;
+  --link-color: #808080;
+  --hover-color: #555555;
+  --shadow-color: rgba(255, 255, 255, 0.1);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 12pt; /* Set a print-specific font size */
+  line-height: 1.5; /* Adjust this to match the screen layout */
+  margin: 0 0 0 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.page {
+  width: 21cm;
+  height: 29.7cm;
+  margin: 1cm 0 0 1cm;
+  padding: 0.5cm 0.5cm 0 1cm;
+  background-color: var(--paper-color);
+  border-radius: 5px;
+  /* border: #000000 solid 1px; */
+  box-shadow: 0 0 20px var(--shadow-color);
+}
+
+.page p {
+  margin: 0;
+  padding: 0;
+}
+
+button[name=mode-toggler] {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  height: 50px;
+  width: 50px;
+  padding: 10px;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button[name=print-toggler] {
+  position: fixed;
+  top: 20px;
+  right: 80px;
+  height: 50px;
+  width: 50px;
+  padding: 10px;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+a {
+  color: var(--link-color);
+}
+
+a:hover {
+  color: var(--hover-color);
+}
+
+button {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: 1px solid var(--border-color);
+  opacity: 50%;
+}
+
+button:hover {
+  background-color: var(--hover-color);
+}
+
+#editor {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+#code1 {
+  position: relative;
+  width: 10cm;
+  height: 5cm;
+}
+
+/* Prism back-ground */
+/* #content > div:nth-child(1) > pre */
+@media print {
+  body {
+    background-color: #FFFFFF; /* Ensure white background for printing */
+    color: #000000; /* Ensure black text for printing */
+    font-size: 12pt; /* Set a print-specific font size */
+    line-height: 1.5; /* Adjust this to match the screen layout */
+    margin: 0;
+  }
+
+  .page {
+    width: 21cm;
+    height: 29.7cm;
+    background-color: #FFFFFF; /* Ensure white background for printing */
+    box-shadow: none; /* Remove box shadow */
+    border-radius: 0; /* Remove border radius */
+    margin: 0; /* Remove margins*/
+    padding: 0.5cm 0.5cm 0 1cm; /* Keep padding */
+  }
+
+  .page p {
+    margin: 0;
+    padding: 0;
+  }
+
+  button {
+    visibility: hidden; /* Hide the mode toggler button */
+  }
+
+  /* Override the default Prism.js styles for print */
+  pre[class*="language-"] {
+    background: #f9f9f9;
+  }
+}
