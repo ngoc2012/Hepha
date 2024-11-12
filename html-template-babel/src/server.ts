@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import App from './App';
 
-const htmlTemplate = fs.readFileSync(path.resolve(__dirname, 'src/index.html'), 'utf8');
+const htmlTemplate = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf8');
 
 const appHtml = ReactDOMServer.renderToString(React.createElement(App));
 
