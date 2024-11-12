@@ -1,12 +1,12 @@
 {
     "compilerOptions": {
-      "target": "es5",
-      "module": "commonjs",
+      "target": "es6",
+      "module": "esnext",
       "strict": true,
       "jsx": "react",
       "esModuleInterop": true,
       "outDir": "dist",
-      "types": ["node"]
+      "moduleResolution": "node"
     },
     "include": ["src/**/*", "server.ts"]
   }
