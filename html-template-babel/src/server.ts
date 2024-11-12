@@ -11,6 +11,6 @@ const appHtml = ReactDOMServer.renderToString(React.createElement(App));
 
 const finalHtml = htmlTemplate.replace('<!-- APP -->', appHtml);
 
-fs.writeFileSync(path.resolve(__dirname, 'dist/index.html'), finalHtml);
+fs.writeFileSync(path.resolve(__dirname, 'index.html'), finalHtml);
 
 console.log('Static HTML generated successfully!');
