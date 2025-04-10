@@ -172,7 +172,7 @@ services:
     depends_on:
       # - mysql
       - postgres
-    expose:
+    ports:
      - ${ADMIN_PORT}
     networks:
       - network
